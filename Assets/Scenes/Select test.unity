@@ -1264,15 +1264,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.506
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.33
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -4.985
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4234,6 +4234,7 @@ GameObject:
   - component: {fileID: 1813928252}
   - component: {fileID: 1813928253}
   - component: {fileID: 1813928254}
+  - component: {fileID: 1813928255}
   m_Layer: 7
   m_Name: Unit
   m_TagString: Unit
@@ -4303,6 +4304,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746fe1d3d8a1b9841b060b81f44c2fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPointing:
+    actionPath: /actions/default/in/GrabGrip
+    needsReinit: 0
+  pointingHand: {fileID: 0}
+  collectedLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastDistance: 0
+--- !u!114 &1813928255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813928250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeba92f6930443044b5df078cc725751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedMaterial: {fileID: 2100000, guid: 3423af6ddc0e8c042aceb13b5b65a90d, type: 2}
 --- !u!1 &1855230776
 GameObject:
   m_ObjectHideFlags: 0

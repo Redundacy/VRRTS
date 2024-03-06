@@ -31,6 +31,9 @@ public class UnitMove : MonoBehaviour
             {
                 lrend.SetPosition(0, pointingHand.transform.position);
                 lrend.SetPosition(1, hit.point);
+
+                //Selecting stuff
+
             } else
             {
                 lrend.SetPosition(0, pointingHand.transform.position);
