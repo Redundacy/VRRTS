@@ -35,7 +35,7 @@ public class PlayerActions : MonoBehaviour
         {
             if (indexFinger == null)
             {
-                indexFinger = pointingHand.Find("RightRenderModel Slim(Clone)").Find("vr_glove_right_model_slim(Clone)").Find("slim_r").Find("Root").Find("finger_index_r_aux");
+                indexFinger = pointingHand.Find("RightRenderModel Slim(Clone)").Find("vr_glove_right_model_slim(Clone)").Find("slim_r").Find("Root").Find("finger_index_r_aux"); //replace with object that replicates that
                 Debug.Log("Do only once pls");
             }
             if (Physics.Raycast(indexFinger.position, indexFinger.right, out lastHit, raycastDistance)) //currently pointing in the wrong direction (and also I would like to change the angle
