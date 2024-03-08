@@ -50,6 +50,14 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/CycleActions",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/OpenActionWheel",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },

@@ -105,6 +105,22 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean CycleActions
+        {
+            get
+            {
+                return SteamVR_Actions.default_CycleActions;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean OpenActionWheel
+        {
+            get
+            {
+                return SteamVR_Actions.default_OpenActionWheel;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get
