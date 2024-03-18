@@ -23,6 +23,7 @@ public class PlayerActions : MonoBehaviour
     public enum ActionTypes
     {
         None,
+        Select,
         Move,
         Attack,
         Interact
@@ -99,9 +100,14 @@ public class PlayerActions : MonoBehaviour
                 if (currentAction == ActionTypes.Move)
                 {
                     MoveSelectedUnits?.Invoke(lastHit.point);
-                } else if (currentAction == ActionTypes.Attack)
+                }
+                else if (currentAction == ActionTypes.Attack)
                 {
                     TryAttackObject?.Invoke(lastHit.collider.gameObject);
+                } else if (currentAction == ActionTypes.Select)
+                {
+                    //more checking
+                    lastHit.collider.gameObject.GetComponent<UnitState>().isSelected = true;
                 }
                 actionWheel.SetActive(false);
                 lrend.SetPositions(new Vector3[] { Vector3.zero, Vector3.zero });
