@@ -13,6 +13,7 @@ public class UnitState : MonoBehaviour
     public float maxHealth;
     public float damage;
     public float maxAttackRange;
+    public float vision = 5;
 
     //Objects to interact with.
     GameObject targetedObject;
@@ -44,6 +45,7 @@ public class UnitState : MonoBehaviour
 
         health = maxHealth;
         m_Agent = GetComponent<NavMeshAgent>();
+        PlayerActions.MoveSelectedUnits += MoveToLocation;
     }
 
     // Update is called once per frame
@@ -79,6 +81,10 @@ public class UnitState : MonoBehaviour
 
     void MoveToLocation(Vector3 location)
     {
+        if(!isSelected)
+        {
+            return;
+        }
         //Sets nav agent destination to the targeted location.
         m_Agent.destination = location;
     }

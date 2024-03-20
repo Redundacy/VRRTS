@@ -76,40 +76,41 @@ public class PlayerActions : MonoBehaviour
             {
                 Debug.Log(lastHit.point);
                 //if lastHit was a world thing, do the action on that thing. If it was a UI thing, do the UI procedure
-                if (lastHit.collider.name == "None Button")
+                if (actionWheel.activeSelf)
                 {
-                    currentAction = ActionTypes.None;
-                    currentActionText.text = currentAction.ToString();
+                    switch (lastHit.collider.name)
+                    {
+                        case "Move":
+                            currentAction = ActionTypes.Move; break;
+                        case "Select":
+                            currentAction = ActionTypes.Select; break;
+                        case "Attack":
+                            currentAction = ActionTypes.Attack; break;
+                        case "Interact":
+                            currentAction = ActionTypes.Interact; break;
+						default:
+							currentAction = ActionTypes.None; break;
+					}
+					currentActionText.text = currentAction.ToString();
+					actionWheel.SetActive(false);
+				}
+                switch(currentAction)
+                {
+                    case ActionTypes.Select:
+                        if(lastHit.collider.gameObject.GetComponent<UnitState>() != null)
+    						lastHit.collider.gameObject.GetComponent<UnitState>().isSelected = true;
+						break;
+                    case ActionTypes.Move:
+                        MoveSelectedUnits?.Invoke(lastHit.point);
+                        break;
+                    case ActionTypes.Attack:
+						TryAttackObject?.Invoke(lastHit.collider.gameObject);
+						break;
+                    case ActionTypes.Interact:
+                        break;
+                    default:
+                        break;
                 }
-                else if (lastHit.collider.name == "Move")
-                {
-                    currentAction = ActionTypes.Move;
-                    currentActionText.text = currentAction.ToString();
-                }
-                else if (lastHit.collider.name == "Attack")
-                {
-                    currentAction = ActionTypes.Attack;
-                    currentActionText.text = currentAction.ToString();
-                }
-                else if (lastHit.collider.name == "Interact")
-                {
-                    currentAction = ActionTypes.Interact;
-                    currentActionText.text = currentAction.ToString();
-                } 
-
-                if (currentAction == ActionTypes.Move)
-                {
-                    MoveSelectedUnits?.Invoke(lastHit.point);
-                }
-                else if (currentAction == ActionTypes.Attack)
-                {
-                    TryAttackObject?.Invoke(lastHit.collider.gameObject);
-                } else if (currentAction == ActionTypes.Select)
-                {
-                    //more checking
-                    lastHit.collider.gameObject.GetComponent<UnitState>().isSelected = true;
-                }
-                actionWheel.SetActive(false);
                 lrend.SetPositions(new Vector3[] { Vector3.zero, Vector3.zero });
             }
         }

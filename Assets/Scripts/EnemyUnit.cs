@@ -90,7 +90,7 @@ public class EnemyUnit : MonoBehaviour
 
     void Attack(GameObject target)
     {
-        target.GetComponent<UnitState>
+        target.GetComponent<UnitState>();
     }
 
     void MoveToLocation(Vector3 target)
