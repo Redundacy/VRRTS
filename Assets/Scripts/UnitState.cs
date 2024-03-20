@@ -8,6 +8,14 @@ public class UnitState : MonoBehaviour
 {
     //Unit type, responsible for stats and whatnot.
     public string unitType;
+
+    public enum Team
+    {
+        AlliedTeam,
+        EnemyTeam,
+        Hostile,
+        Neutral
+    }
     
     //Various stats.
     float health;
@@ -49,6 +57,9 @@ public class UnitState : MonoBehaviour
         }
 
         health = maxHealth;
+        //set color based on team
+
+        // always stuff
         m_Agent = GetComponent<NavMeshAgent>();
         PlayerActions.MoveSelectedUnits += MoveToLocation;
         PlayerActions.TryAttackObject += SetAttacks;
