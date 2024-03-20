@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public float enemyResources;
     public int enemyUnitCount;
+
+    public GameObject playerInfo; //change later
 
     // Start is called before the first frame update
     void Start()
@@ -26,5 +29,6 @@ public class GameManager : MonoBehaviour
     public void GivePlayerResources(float resourceAmount)
     {
         playerResources += resourceAmount;
+        playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
     }
 }

@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.vrrts.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\edundas2\\VRRTS\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\edundas2\\Documents\\GitHub\\VRRTS\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "VRRTS [Testing]"

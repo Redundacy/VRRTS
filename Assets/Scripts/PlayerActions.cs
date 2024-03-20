@@ -74,7 +74,7 @@ public class PlayerActions : MonoBehaviour
                 Debug.Log("pointing? " + lastHit.collider);
             } else if (isSelectButtonPressed.stateUp)
             {
-                Debug.Log(lastHit.point);
+                //Debug.Log(lastHit.point);
                 //if lastHit was a world thing, do the action on that thing. If it was a UI thing, do the UI procedure
                 if (actionWheel.activeSelf)
                 {
@@ -97,8 +97,9 @@ public class PlayerActions : MonoBehaviour
                 switch(currentAction)
                 {
                     case ActionTypes.Select:
-                        if(lastHit.collider.gameObject.GetComponent<UnitState>() != null)
-    						lastHit.collider.gameObject.GetComponent<UnitState>().isSelected = true;
+                        if(lastHit.collider.gameObject.GetComponentInParent<UnitState>() != null)
+    						lastHit.collider.gameObject.GetComponentInParent<UnitState>().isSelected = true;
+                        Debug.Log("select " + lastHit.collider.name);
 						break;
                     case ActionTypes.Move:
                         MoveSelectedUnits?.Invoke(lastHit.point);

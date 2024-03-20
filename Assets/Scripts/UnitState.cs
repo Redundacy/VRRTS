@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class UnitState : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class UnitState : MonoBehaviour
     //Objects to interact with.
     GameObject targetedObject;
     Vector3 locationToMoveTo;
+    public LayerMask hostileTargets;
 
     //Booleans for determining actions.
     public bool isSelected;
@@ -26,6 +28,9 @@ public class UnitState : MonoBehaviour
 
     //The nav mesh agent.
     NavMeshAgent m_Agent;
+
+    //overhead text
+    public TextMeshProUGUI selectedText; //Unit text needs to look at camera otherwse its weird.
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +51,7 @@ public class UnitState : MonoBehaviour
         health = maxHealth;
         m_Agent = GetComponent<NavMeshAgent>();
         PlayerActions.MoveSelectedUnits += MoveToLocation;
+        PlayerActions.TryAttackObject += SetAttacks;
     }
 
     // Update is called once per frame
@@ -64,13 +70,14 @@ public class UnitState : MonoBehaviour
 
         else
         {
-            CheckForEnemies();
+            //CheckForEnemies();
         }
+        selectedText.text = "Selected: " + isSelected;
     }
 
     void CheckForEnemies()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, vision); //Add a layermask here to only interact with units
+        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, vision, hostileTargets); //Add a layermask here to only interact with units
 
         if (hitColliders.Length != 0)
         {
@@ -89,6 +96,16 @@ public class UnitState : MonoBehaviour
         m_Agent.destination = location;
     }
 
+    void SetAttacks(GameObject target)
+    {
+        if(target.tag == "Object")
+        {
+            isAttacking = true;
+            targetedObject = target;
+        }
+        
+    }
+
     void AttackTarget(GameObject target)
     {
         //While the unit is too far from the target, move towards the target. Otherwise, attack the target.
@@ -105,7 +122,19 @@ public class UnitState : MonoBehaviour
 
     void Attack(GameObject target)
     {
-        target.GetComponent<UnitState>().TakeDamage(damage);
+        if(target.GetComponentInParent<UnitState>() != null)
+        {
+            target.GetComponent<UnitState>().TakeDamage(damage);
+        } else
+        {
+            target.GetComponent<Structures>().TakeDamage(damage);
+            if(target.GetComponent<Structures>() == null)
+            {
+                isAttacking = false;
+                target = null;
+            }
+        }
+        
     }
 
     void InteractWithThing()
@@ -127,5 +156,6 @@ public class UnitState : MonoBehaviour
     void SlayUnit()
     {
         //Unit dies, probably destroy it and do some stuff on death.
+        Debug.Log("dead");
     }
 }
