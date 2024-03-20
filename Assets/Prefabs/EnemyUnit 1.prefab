@@ -220,6 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2908604809401939997}
   - component: {fileID: 2516430373917961323}
+  - component: {fileID: -7948396269171008913}
   m_Layer: 7
   m_Name: EnemyUnit 1
   m_TagString: Unit
@@ -265,6 +266,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-7948396269171008913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7400978555933960118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b06b24e44c07cb458a32aad031449d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitType: Basic
+  maxAttackRange: 1
+  isSelected: 0
 --- !u!1 &7564316288111980868
 GameObject:
   m_ObjectHideFlags: 0

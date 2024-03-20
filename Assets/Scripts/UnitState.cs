@@ -10,8 +10,8 @@ public class UnitState : MonoBehaviour
     
     //Various stats.
     float health;
-    float maxHealth;
-    float damage;
+    public float maxHealth;
+    public float damage;
     public float maxAttackRange;
 
     //Objects to interact with.
@@ -55,9 +55,25 @@ public class UnitState : MonoBehaviour
             AttackTarget(targetedObject);
         }
 
-        if (isMoving)
+        else if (isMoving)
         {
             MoveToLocation(locationToMoveTo);
+        }
+
+        else
+        {
+            CheckForEnemies();
+        }
+    }
+
+    void CheckForEnemies()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, vision); //Add a layermask here to only interact with units
+
+        if (hitColliders.Length != 0)
+        {
+            targetedObject = hitColliders[0].gameObject;
+            isAttacking = true;
         }
     }
 
@@ -81,9 +97,9 @@ public class UnitState : MonoBehaviour
         }
     }
 
-    void Attack(GameObject sorryFool)
+    void Attack(GameObject target)
     {
-        //Do things to attack the opponent thing.
+        target.GetComponent<UnitState>().TakeDamage(damage);
     }
 
     void InteractWithThing()

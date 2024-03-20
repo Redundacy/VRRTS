@@ -16,6 +16,7 @@ public class EnemyUnit : MonoBehaviour
     float maxHealth;
     float damage;
     public float maxAttackRange;
+    public float vision; //Used to see units to attack.
 
     //Objects to interact with.
     GameObject targetedObject;
@@ -51,12 +52,50 @@ public class EnemyUnit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!isAttacking)
+        {
+            CheckForEnemies();
+        }
+        else
+        {
+            AttackTarget(targetedObject);
+        }
     }
 
     void CheckForEnemies()
     {
+        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, vision); //Add a layermask here to only interact with units
+        
+        if (hitColliders.Length != 0)
+        {
+            targetedObject = hitColliders[0].gameObject;
+            isAttacking = true;
+        }
+    }
 
+    void AttackTarget(GameObject target)
+    {
+        //While the unit is too far from the target, move towards the target. Otherwise, attack the target.
+        float distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
+
+        if (distance < maxAttackRange)
+        {
+            Attack(target);
+        }
+        else
+        {
+            MoveToLocation(target.transform.position);
+        }
+    }
+
+    void Attack(GameObject target)
+    {
+        target.GetComponent<UnitState>
+    }
+
+    void MoveToLocation(Vector3 target)
+    {
+        m_Agent.destination = target;
     }
 
     void TakeDamage(float damage)
