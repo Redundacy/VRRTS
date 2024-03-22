@@ -97,8 +97,8 @@ public class PlayerActions : MonoBehaviour
                 switch(currentAction)
                 {
                     case ActionTypes.Select:
-                        if(lastHit.collider.gameObject.GetComponentInParent<UnitState>() != null)
-    						lastHit.collider.gameObject.GetComponentInParent<UnitState>().isSelected = true;
+                        if (lastHit.collider.gameObject.GetComponentInParent<UnitState>() != null)
+                            lastHit.collider.gameObject.GetComponentInParent<UnitState>().ToggleSelection();
                         Debug.Log("select " + lastHit.collider.name);
 						break;
                     case ActionTypes.Move:

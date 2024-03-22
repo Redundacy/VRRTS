@@ -31,6 +31,7 @@ public class UnitState : MonoBehaviour
 
     //Booleans for determining actions.
     public bool isSelected;
+    Outline outline;
     bool isAttacking;
     bool isMoving;
 
@@ -61,6 +62,7 @@ public class UnitState : MonoBehaviour
 
         // always stuff
         m_Agent = GetComponent<NavMeshAgent>();
+        outline = GetComponent<Outline>();
         PlayerActions.MoveSelectedUnits += MoveToLocation;
         PlayerActions.TryAttackObject += SetAttacks;
     }
@@ -84,6 +86,12 @@ public class UnitState : MonoBehaviour
             //CheckForEnemies();
         }
         selectedText.text = "Selected: " + isSelected;
+    }
+
+    public void ToggleSelection()
+    {
+        isSelected = !isSelected;
+        outline.enabled = !outline.enabled;
     }
 
     void CheckForEnemies()
