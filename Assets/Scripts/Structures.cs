@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Structures : MonoBehaviour
+public class Structures : GamePieces
 {
     //Game Manager to refer to. I doubt this is the cleanest way to do it but we can change later.
     public GameManager gameManager;
