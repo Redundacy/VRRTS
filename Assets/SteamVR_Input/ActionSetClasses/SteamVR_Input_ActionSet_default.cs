@@ -121,6 +121,14 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean SupersizeMode
+        {
+            get
+            {
+                return SteamVR_Actions.default_SupersizeMode;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get

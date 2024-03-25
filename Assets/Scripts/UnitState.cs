@@ -92,6 +92,7 @@ public class UnitState : MonoBehaviour
     {
         isSelected = !isSelected;
         outline.enabled = !outline.enabled;
+        Debug.Log(isSelected + "\n" + outline.enabled);
     }
 
     void CheckForEnemies()

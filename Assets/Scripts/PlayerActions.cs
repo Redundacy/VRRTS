@@ -59,7 +59,7 @@ public class PlayerActions : MonoBehaviour
             if (isSelectButtonPressed.GetState(source))
             {
                 indexFinger = indexFingers[sources.IndexOf(source)];
-                if (Physics.Raycast(indexFinger.position, indexFinger.right, out lastHit, raycastDistance)) //currently pointing in the wrong direction (and also I would like to change the angle
+                if (Physics.Raycast(indexFinger.position, indexFinger.right, out lastHit, raycastDistance, collectedLayers)) //currently pointing in the wrong direction (and also I would like to change the angle
                 {
                     lrend.SetPosition(0, indexFinger.position);
                     lrend.SetPosition(1, lastHit.point);
@@ -72,7 +72,7 @@ public class PlayerActions : MonoBehaviour
                     lrend.SetPosition(1, indexFinger.position + indexFinger.right);
                 }
                 Debug.Log("pointing? " + lastHit.collider);
-            } else if (isSelectButtonPressed.stateUp)
+            } else if (isSelectButtonPressed.GetStateUp(source))
             {
                 //Debug.Log(lastHit.point);
                 //if lastHit was a world thing, do the action on that thing. If it was a UI thing, do the UI procedure
@@ -97,8 +97,13 @@ public class PlayerActions : MonoBehaviour
                 switch(currentAction)
                 {
                     case ActionTypes.Select:
-                        if (lastHit.collider.gameObject.GetComponentInParent<UnitState>() != null)
-                            lastHit.collider.gameObject.GetComponentInParent<UnitState>().ToggleSelection();
+                        UnitState unit = lastHit.collider.gameObject.GetComponentInParent<UnitState>();
+                        if (unit != null)
+                        {
+                            unit.ToggleSelection();
+                            Debug.Log("selected " + unit);
+                        }
+                            
                         Debug.Log("select " + lastHit.collider.name);
 						break;
                     case ActionTypes.Move:
