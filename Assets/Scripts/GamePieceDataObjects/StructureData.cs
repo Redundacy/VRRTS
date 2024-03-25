@@ -8,6 +8,13 @@ public class StructureData : ScriptableObject
     public string structureType;
     public int maxHealth;
     public int cost;
+    public enum DestructionReward
+    {
+        None,
+        Resources
+    }
+    public DestructionReward destructionReward;
+    public int rewardAmount;
     public GameObject model;
     public LayerMask hostileTargets;
     public enum Team

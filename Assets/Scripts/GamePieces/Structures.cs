@@ -5,25 +5,18 @@ using TMPro;
 
 public class Structures : GamePieces
 {
-    //Game Manager to refer to. I doubt this is the cleanest way to do it but we can change later.
-    public GameManager gameManager;
+    public StructureData structure;
 
     //General structure stats
     float health;
-    public float maxHealth;
-    
-    public string structureType; //May want to specify what kind of structure it is within this script? Would maybe be used to determine what the structure is doing for the player. Adding this here for now.
-
-    public string destroyReward;
-    public float rewardAmount;
 
     public TextMeshProUGUI healthBarText;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
-        healthBarText.text = "Health: " + health + "/" + maxHealth;
+        health = structure.maxHealth;
+        healthBarText.text = "Health: " + health + "/" + structure.maxHealth;
     }
 
     // Update is called once per frame
@@ -31,17 +24,17 @@ public class Structures : GamePieces
     {
 
         //TESTING Dealing Damage to Structure.
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            TakeDamage(10f);
-        }
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+        //    TakeDamage(10f);
+        //}
     }
 
     public void TakeDamage(float damage)
     {
         health -= damage;
         Debug.Log("Damage taken! Health: " + health);
-        healthBarText.text = "Health: " + health + "/" + maxHealth; //Kinda not a fan of just having this line here, but making  method feels silly. Idk.
+        healthBarText.text = "Health: " + health + "/" + structure.maxHealth; //Kinda not a fan of just having this line here, but making a method feels silly. Idk.
         if (health <= 0)
         {
             DestroyStructure();
@@ -51,9 +44,9 @@ public class Structures : GamePieces
     void DestroyStructure()
     {
         //If the reward for destruction is resources (which is the only reward right now as far as I'm aware) call the game manager to award the correct amount of resources to the player.
-        if (destroyReward == "Resources")
+        if (structure.destructionReward == StructureData.DestructionReward.Resources)
         {
-            gameManager.GetComponent<GameManager>().GivePlayerResources(rewardAmount);
+            //Find the gameManager, call it to give resources to the player equal to the rewardAmount.
         }
 
         //Destroy self when all is done.
