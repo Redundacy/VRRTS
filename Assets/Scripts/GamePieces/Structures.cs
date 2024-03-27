@@ -46,7 +46,7 @@ public class Structures : GamePieces
         //If the reward for destruction is resources (which is the only reward right now as far as I'm aware) call the game manager to award the correct amount of resources to the player.
         if (structure.destructionReward == StructureData.DestructionReward.Resources)
         {
-            //Find the gameManager, call it to give resources to the player equal to the rewardAmount.
+            GameObject.Find("GameManager").GetComponent<GameManager>().GivePlayerResources(structure.rewardAmount);
         }
 
         //Destroy self when all is done.

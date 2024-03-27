@@ -7,6 +7,7 @@ public class ResourceEntityData : ScriptableObject
 {
     public string entityType;
     public int numResourcesGranted;
+    public int maxHealth;
     public GameObject model;
     public enum Team
     {
