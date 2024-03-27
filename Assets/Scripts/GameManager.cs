@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject playerInfo; //change later
 
+    public GameObject UnitPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,5 +32,14 @@ public class GameManager : MonoBehaviour
     {
         playerResources += resourceAmount;
         playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
+    }
+
+    public void RequestMakeGuy(/*also put user's team here*/ UnitData boughtUnit, Vector3 spawnPoint)
+    {
+        if(playerResources>= boughtUnit.cost)
+        {
+            playerResources -= boughtUnit.cost;
+            Instantiate(UnitPrefab, spawnPoint, new Quaternion());
+        }
     }
 }

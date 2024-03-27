@@ -13,6 +13,12 @@ public class ArmWheelHandler : MonoBehaviour
     void Start()
     {
         currentPodiumUnits = buyableUnits.GetRange(0, 3);
+        foreach(GameObject showcaseUnit in shopPodiums)
+        {
+            showcaseUnit.GetComponentInChildren<ShowcaseUnits>().unit = buyableUnits[shopPodiums.IndexOf(showcaseUnit)];
+            VisualizePodium(shopPodiums.IndexOf(showcaseUnit));
+        }
+
     }
 
     // Update is called once per frame
@@ -33,7 +39,7 @@ public class ArmWheelHandler : MonoBehaviour
 
     public void VisualizePodium(int podiumIndex)
     {
-        UnitState showcaseUnit = shopPodiums[podiumIndex].GetComponentInChildren<UnitState>();
+        //UnitState showcaseUnit = shopPodiums[podiumIndex].GetComponentInChildren<UnitState>();
         //set unit
         //update that unit
     }

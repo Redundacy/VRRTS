@@ -26,7 +26,8 @@ public class PlayerActions : MonoBehaviour
         Select,
         Move,
         Attack,
-        Interact
+        Interact,
+        Buy
     }
     public List<SteamVR_Input_Sources> sources;
     public List<Transform> indexFingers;
@@ -43,6 +44,8 @@ public class PlayerActions : MonoBehaviour
     private LineRenderer lrend;
     private Transform indexFinger;
     private RaycastHit lastHit;
+
+    private UnitData handUnit = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -76,6 +79,7 @@ public class PlayerActions : MonoBehaviour
             {
                 //Debug.Log(lastHit.point);
                 //if lastHit was a world thing, do the action on that thing. If it was a UI thing, do the UI procedure
+
                 if (actionWheel.activeSelf)
                 {
                     switch (lastHit.collider.name)
@@ -114,6 +118,10 @@ public class PlayerActions : MonoBehaviour
 						break;
                     case ActionTypes.Interact:
                         break;
+                    case ActionTypes.Buy:
+                        GameObject.Find("GameManager").GetComponent<GameManager>().RequestMakeGuy(handUnit, lastHit.point);
+                        Debug.Log("buy " + handUnit);
+                        break;
                     default:
                         break;
                 }
@@ -141,6 +149,13 @@ public class PlayerActions : MonoBehaviour
                 actionWheel.SetActive(!actionWheel.activeSelf);
             }
         }
+    }
+
+    public void OnShopSelect(ShowcaseUnits heldUnit)
+    {
+        currentAction = ActionTypes.Buy;
+        actionWheel.SetActive(false);
+        handUnit = heldUnit.unit;
     }
 
 }

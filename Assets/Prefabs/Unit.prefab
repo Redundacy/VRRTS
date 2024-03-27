@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 279070187616108293}
   - component: {fileID: 9108002102657472023}
   - component: {fileID: -411014626576081882}
+  - component: {fileID: 2218229082583653166}
   m_Layer: 7
   m_Name: Unit
   m_TagString: Unit
@@ -292,6 +293,24 @@ MonoBehaviour:
     m_Bits: 64
   isSelected: 0
   selectedText: {fileID: 66386139175096573}
+--- !u!114 &2218229082583653166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6704020865073524908}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.8548728, b: 0, a: 1}
+  outlineWidth: 5.1
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &8384417467382041204
 GameObject:
   m_ObjectHideFlags: 0
