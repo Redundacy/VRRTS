@@ -25,18 +25,28 @@ public class Supersizer : MonoBehaviour
         {
             if(supersizeMe.GetStateUp(source) && !supersized)
             {
-                transform.localScale = Vector3.one * scaleSize;
+                SteamVR_Fade.View(Color.black, 0.5f);
                 supersized = true;
+                Invoke("Resize", 0.5f);
             } else if(supersizeMe.GetStateUp(source) && supersized)
             {
-                transform.localScale = Vector3.one;
+                SteamVR_Fade.View(Color.black, 0.5f);
                 supersized = false;
+                Invoke("Resize", 0.5f);
             }
         }
     }
 
-    IEnumerator Resize()
+    void Resize()
     {
-        yield return null;
+        SteamVR_Fade.View(Color.clear, 0.5f);
+        if(supersized)
+        {
+            transform.localScale = Vector3.one * scaleSize;
+        } else
+        {
+            transform.localScale = Vector3.one;
+        }
+        
     }
 }

@@ -42,5 +42,9 @@ public class ArmWheelHandler : MonoBehaviour
         //UnitState showcaseUnit = shopPodiums[podiumIndex].GetComponentInChildren<UnitState>();
         //set unit
         //update that unit
+
+        GameObject targetObject = shopPodiums[podiumIndex];
+        Instantiate(targetObject.GetComponentInChildren<ShowcaseUnits>().unit.hat, targetObject.transform.Find("Showcase Unit").Find("HatSpot"));
+        
     }
 }
