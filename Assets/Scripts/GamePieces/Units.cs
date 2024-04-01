@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Services.Matchmaker.Models;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,6 +24,8 @@ public class Units : GamePieces
 
     //The nav mesh agent.
     NavMeshAgent m_Agent;
+
+    public LayerMask onlyTargetGamePieces;
 
     //overhead text
     public TextMeshProUGUI selectedText; //Unit text needs to look at camera otherwse its weird.
@@ -65,6 +69,26 @@ public class Units : GamePieces
             //CheckForEnemies();
         }
         selectedText.text = "Selected: " + isSelected;
+    }
+
+    void CheckForEnemies()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, unit.visionRange, onlyTargetGamePieces);
+
+        if (hitColliders.Length != 0)
+        {
+            foreach (Collider collider in hitColliders)
+            {
+                if (collider.gameObject.GetComponent<Units>().unit.GetTeamString() != "EnemyTeam" || collider.gameObject.GetComponent<Structures>().structure.GetTeamString() != "EnemyTeam")
+                {
+                    //Do nothing
+                } else
+                {
+                    targetedObject = hitColliders[0].gameObject;
+                    isAttacking = true;
+                }
+            }
+        }
     }
 
     void MoveToLocation(Vector3 location)

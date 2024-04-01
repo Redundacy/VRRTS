@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.Services.Matchmaker.Models;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,12 +35,13 @@ public class GameManager : MonoBehaviour
         playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
     }
 
-    public void RequestMakeGuy(/*also put user's team here*/ UnitData boughtUnit, Vector3 spawnPoint)
+    public void RequestMakeGuy(string team, UnitData boughtUnit, Vector3 spawnPoint)
     {
         if(playerResources>= boughtUnit.cost)
         {
             playerResources -= boughtUnit.cost;
-            Instantiate(UnitPrefab, spawnPoint, new Quaternion());
+            GameObject createdGuy = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
+            createdGuy.GetComponent<GamePieceData>().SetTeam(team);
         }
     }
 }
