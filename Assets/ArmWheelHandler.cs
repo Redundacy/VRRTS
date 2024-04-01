@@ -5,6 +5,8 @@ using UnityEngine;
 public class ArmWheelHandler : MonoBehaviour
 {
     [SerializeField]private List<UnitData> buyableUnits = new List<UnitData>();
+    [SerializeField]private List<StructureData> buildableStructures = new List<StructureData>();
+
     [SerializeField]private List<GameObject> shopPodiums = new List<GameObject>();
 
     private List<UnitData> currentPodiumUnits = new List<UnitData>();

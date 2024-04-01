@@ -119,7 +119,7 @@ public class PlayerActions : MonoBehaviour
                     case ActionTypes.Interact:
                         break;
                     case ActionTypes.Buy:
-                        GameObject.Find("GameManager").GetComponent<GameManager>().RequestMakeGuy(handUnit, lastHit.point);
+                        GameObject.Find("GameManager").GetComponent<GameManager>().RequestMakeGuy("AlliedUnit", handUnit, lastHit.point);
                         Debug.Log("buy " + handUnit);
                         break;
                     default:
