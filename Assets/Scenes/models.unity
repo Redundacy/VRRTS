@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0229dfdb7b3b03941b3f9fc226e4887e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceEntity: {fileID: 0}
+  resourceEntity: {fileID: 11400000, guid: 61cc3cdbccb56f644a2ee71ec5bf5b61, type: 2}
   healthBarText: {fileID: 0}
 --- !u!1 &961739749
 GameObject:
