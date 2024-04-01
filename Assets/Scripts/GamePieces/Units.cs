@@ -66,7 +66,7 @@ public class Units : GamePieces
 
         else
         {
-            //CheckForEnemies();
+            CheckForEnemies();
         }
         selectedText.text = "Selected: " + isSelected;
     }
