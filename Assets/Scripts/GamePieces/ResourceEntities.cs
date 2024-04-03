@@ -15,7 +15,7 @@ public class ResourceEntities : GamePieces
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = resourceEntity.maxHealth;
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class ResourceEntities : GamePieces
     {
         health -= damageTaken;
         Debug.Log("Damage taken! Health: " + health);
-        healthBarText.text = "Health: " + health + "/" + resourceEntity.maxHealth; //Kinda not a fan of just having this line here, but making a method feels silly. Idk.
+        //healthBarText.text = "Health: " + health + "/" + resourceEntity.maxHealth; //Kinda not a fan of just having this line here, but making a method feels silly. Idk.
         if (health <= 0)
         {
             DestroyEntity();

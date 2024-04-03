@@ -22,6 +22,7 @@ public class Units : GamePieces
     Outline outline;
     bool isAttacking;
     bool isMoving;
+    bool movingToAttack;
 
     //The nav mesh agent.
     NavMeshAgent m_Agent;
@@ -95,7 +96,8 @@ public class Units : GamePieces
         {
             foreach (Collider collider in hitColliders)
             {
-                if (collider.gameObject.GetComponent<Units>().unit.GetTeamString() != "EnemyTeam" || collider.gameObject.GetComponent<Structures>().structure.GetTeamString() != "EnemyTeam")
+                if ((collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().unit.GetTeamString() != "EnemyTeam") 
+                    || (collider.gameObject.GetComponent<Structures>() && collider.gameObject.GetComponent<Structures>().structure.GetTeamString() != "EnemyTeam"))
                 {
                     //Do nothing
                 } else
@@ -119,11 +121,16 @@ public class Units : GamePieces
 
     void AttackTarget(GameObject target)
     {
+        targetedObject = target;
+        isAttacking = true;
+        Debug.Log("omw to " + target.name);
         //While the unit is too far from the target, move towards the target. Otherwise, attack the target.
         float distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
+        //Debug.Log(distance + " and " + unit.attackRange);
 
         if (distance < unit.attackRange)
         {
+            isAttacking = false;
             StartCoroutine(Attack(target));
         }
         else
@@ -134,26 +141,30 @@ public class Units : GamePieces
 
     IEnumerator Attack(GameObject target)
     {
-        if (target.GetComponentInParent<Units>() != null)
+        Debug.Log("attacking " + target.name);
+        while (target != null)
         {
-            target.GetComponent<Units>().TakeDamage(unit.damage);
-        }
-        else if (target.GetComponentInParent<Structures>() != null)
-        { 
-            target.GetComponent<Structures>().TakeDamage(unit.damage);
-
-            //I don't think this needs to be here anymore.
-            if (target.GetComponent<Structures>() == null)
+            if (target.GetComponentInParent<Units>() != null)
             {
-                isAttacking = false;
-                target = null;
+                target.GetComponentInParent<Units>().TakeDamage(unit.damage);
             }
+            else if (target.GetComponent<Structures>() != null)
+            {
+                target.GetComponent<Structures>().TakeDamage(unit.damage);
+
+                //I don't think this needs to be here anymore.
+                if (target.GetComponent<Structures>() == null)
+                {
+                    isAttacking = false;
+                    target = null;
+                }
+            }
+            else if (target.GetComponentInParent<ResourceEntities>() != null)
+            {
+                target.GetComponent<ResourceEntities>().TakeDamage(unit.damage);
+            }
+            yield return new WaitForSeconds(unit.timeBetweenAttacks);
         }
-        else if (target.GetComponentInParent<ResourceEntities>() != null)
-        {
-            target.GetComponent<ResourceEntities>().TakeDamage(unit.damage);
-        }
-        yield return new WaitForSeconds(unit.timeBetweenAttacks);
     }
 
     void TakeDamage(int damage)
@@ -171,5 +182,6 @@ public class Units : GamePieces
     {
         //Unit dies, probably destroy it and do some stuff on death.
         Debug.Log("dead");
+        Destroy(gameObject);
     }
 }

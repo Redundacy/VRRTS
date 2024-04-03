@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 443884761696790020}
   - component: {fileID: 7843354645512053297}
   - component: {fileID: 4915786804096940488}
-  - component: {fileID: 880382601263309458}
   - component: {fileID: 3536687188927490001}
   - component: {fileID: 3096227544070256014}
   - component: {fileID: -7548635616052422677}
-  m_Layer: 7
+  - component: {fileID: -4080250506222835134}
+  m_Layer: 5
   m_Name: Showcase Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,21 +165,6 @@ MonoBehaviour:
   highlightOnHover: 1
   hideHighlight: []
   hoverPriority: 0
---- !u!114 &880382601263309458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668538337761749496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af2b4bdebbc774d41a3d0b4cf87eb38f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit: {fileID: 0}
-  isSelected: 0
-  selectedText: {fileID: 0}
 --- !u!114 &3536687188927490001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +203,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6d6653511aff5409d0827d4e3b79ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4080250506222835134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668538337761749496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d326b59883d12a64ea2b8f7a8fc138aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 0}
+  isSelected: 0
+  selectedText: {fileID: 0}
 --- !u!1 &2940496991761229462
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 565579935941897551}
   - component: {fileID: 1995485333279971021}
   - component: {fileID: 4723174687049864945}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

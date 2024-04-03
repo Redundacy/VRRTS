@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b56a9be052c285741a9e3ec2ece4d259, type: 3}
-  m_Name: Harvester
+  m_Name: Bandit
   m_EditorClassIdentifier: 
-  gamePieceName: 
-  maxHealth: 10
+  gamePieceName: Bandit
+  maxHealth: 25
   model: {fileID: 0}
-  team: 0
-  damage: 1
-  attackRange: 2
+  team: 1
+  damage: 2
+  attackRange: 1
   timeBetweenAttacks: 2
-  moveSpeed: 10
+  moveSpeed: 1
   visionRange: 3
-  cost: 10
-  speed: 0
-  hat: {fileID: 5673460838223092859, guid: 381eaf24cf7bd6d41b6021c4d164dd29, type: 3}
+  cost: 0
+  speed: 2
+  hat: {fileID: 0}

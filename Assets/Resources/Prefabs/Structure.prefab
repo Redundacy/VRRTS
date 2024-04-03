@@ -119,11 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008adf1fb186e2140ac223010619d843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  maxHealth: 100
-  structureType: Testing
-  destroyReward: Resources
-  rewardAmount: 100
+  structure: {fileID: 0}
   healthBarText: {fileID: 1435664524865023718}
 --- !u!1 &3277968704393903309
 GameObject:

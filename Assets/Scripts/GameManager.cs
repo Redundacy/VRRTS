@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
     }
 
     // Update is called once per frame
@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
             boughtUnit.SetTeam(team);
             createdGuy.GetComponent<Units>().unit = boughtUnit;
             createdGuy.GetComponent<Units>().InitializeData();
+            playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
         }
     }
 }
