@@ -41,7 +41,9 @@ public class GameManager : MonoBehaviour
         {
             playerResources -= boughtUnit.cost;
             GameObject createdGuy = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
-            createdGuy.GetComponent<GamePieceData>().SetTeam(team);
+            boughtUnit.SetTeam(team);
+            createdGuy.GetComponent<Units>().unit = boughtUnit;
+            createdGuy.GetComponent<Units>().InitializeData();
         }
     }
 }

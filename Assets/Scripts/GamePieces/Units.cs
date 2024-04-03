@@ -19,6 +19,7 @@ public class Units : GamePieces
 
     //Booleans for determining actions.
     public bool isSelected;
+    Outline outline;
     bool isAttacking;
     bool isMoving;
 
@@ -28,12 +29,20 @@ public class Units : GamePieces
     public LayerMask onlyTargetGamePieces;
 
     //overhead text
-    public TextMeshProUGUI selectedText; //Unit text needs to look at camera otherwse its weird.
+    //public TextMeshProUGUI selectedText; //Unit text needs to look at camera otherwse its weird.
     // Start is called before the first frame update
     void Start()
     {
-        health = unit.maxHealth;
+        //health = unit.maxHealth;
         m_Agent= GetComponent<NavMeshAgent>();
+        outline = GetComponent<Outline>();
+        PlayerActions.MoveSelectedUnits += MoveToLocation;
+        PlayerActions.TryAttackObject += AttackTarget;
+    }
+
+    public void InitializeData()
+    {
+        health = unit.maxHealth;
     }
 
     // Update is called once per frame
@@ -68,7 +77,14 @@ public class Units : GamePieces
         {
             CheckForEnemies();
         }
-        selectedText.text = "Selected: " + isSelected;
+        //selectedText.text = "Selected: " + isSelected;
+    }
+
+    public void ToggleSelection()
+    {
+        isSelected = !isSelected;
+        outline.enabled = !outline.enabled;
+        Debug.Log(isSelected + "\n" + outline.enabled);
     }
 
     void CheckForEnemies()

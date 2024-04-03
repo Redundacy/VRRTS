@@ -101,7 +101,7 @@ public class PlayerActions : MonoBehaviour
                 switch(currentAction)
                 {
                     case ActionTypes.Select:
-                        UnitState unit = lastHit.collider.gameObject.GetComponentInParent<UnitState>();
+                        Units unit = lastHit.collider.gameObject.GetComponentInParent<Units>();
                         if (unit != null)
                         {
                             unit.ToggleSelection();
