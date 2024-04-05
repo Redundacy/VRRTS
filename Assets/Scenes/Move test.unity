@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0a023b8c9d630b46af95435e5a5550c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerResources: 15
+  playerResources: 100
   playerUnitCount: 0
   enemyResources: 0
   enemyUnitCount: 0
@@ -512,6 +512,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &487608526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7852296863506688580, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1043384599732174390}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &609677293
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,6 +3104,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8876318987781472605, guid: b35b7fa1588a850468c842a3d2c4609b,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876318987781472605, guid: b35b7fa1588a850468c842a3d2c4609b,
+        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 402268308}
@@ -3666,6 +3677,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Treefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444640651934568220, guid: 159d148f3d0d33247b1e204443e7d5e5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4502,6 +4518,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 609677294}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1966908762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1064801224112788820, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1043384599732174390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1966908767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966908762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2ff8231cce3b346911343c4d7b6c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHandPanel: {fileID: 487608526}
 --- !u!1 &2023412054
 GameObject:
   m_ObjectHideFlags: 0
@@ -4797,7 +4832,7 @@ PrefabInstance:
     - target: {fileID: 279070187616108293, guid: a30353210057ce24cb15c41a1bae5f58,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.9218197
+      value: -0.68
       objectReference: {fileID: 0}
     - target: {fileID: 279070187616108293, guid: a30353210057ce24cb15c41a1bae5f58,
         type: 3}
@@ -4807,7 +4842,7 @@ PrefabInstance:
     - target: {fileID: 279070187616108293, guid: a30353210057ce24cb15c41a1bae5f58,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.9600012
+      value: -5.93
       objectReference: {fileID: 0}
     - target: {fileID: 279070187616108293, guid: a30353210057ce24cb15c41a1bae5f58,
         type: 3}
@@ -4843,6 +4878,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984882142079315448, guid: a30353210057ce24cb15c41a1bae5f58,
+        type: 3}
+      propertyPath: onlyTargetGamePieces.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 4322684917031236097, guid: a30353210057ce24cb15c41a1bae5f58,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 5160000191822901120, guid: a30353210057ce24cb15c41a1bae5f58,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy Cube
       objectReference: {fileID: 0}
     - target: {fileID: 6704020865073524908, guid: a30353210057ce24cb15c41a1bae5f58,
         type: 3}
@@ -4920,7 +4970,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1064801224112788820, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1966908767}
   m_SourcePrefab: {fileID: 100100000, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

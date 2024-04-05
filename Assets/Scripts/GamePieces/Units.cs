@@ -37,13 +37,23 @@ public class Units : GamePieces
     // Start is called before the first frame update
     void Start()
     {
-        //health = unit.maxHealth;
+        if(unit != null)
+        {
+            health = unit.maxHealth;
+        }
+        
         m_Agent= GetComponent<NavMeshAgent>();
         outline = GetComponent<Outline>();
         PlayerActions.MoveSelectedUnits += MoveToLocation;
         PlayerActions.TryAttackObject += AttackTarget;
 
         healthBarText.text = "Health: " + health + "/" + unit.maxHealth;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerActions.MoveSelectedUnits -= MoveToLocation;
+        PlayerActions.TryAttackObject -= AttackTarget;
     }
 
     public void InitializeData()
@@ -59,7 +69,7 @@ public class Units : GamePieces
         {
             if (targetedObject != null)
             {
-                AttackTarget(targetedObject);
+                AttackTarget(targetedObject, false);
             }
             else
             {
@@ -79,7 +89,7 @@ public class Units : GamePieces
             }
         }
 
-        else
+        else if(targetedObject == null)
         {
             CheckForEnemies();
         }
@@ -104,13 +114,15 @@ public class Units : GamePieces
         {
             foreach (Collider collider in hitColliders)
             {
-                if ((collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().unit.GetTeamString() != "EnemyTeam") 
-                    || (collider.gameObject.GetComponent<Structures>() && collider.gameObject.GetComponent<Structures>().structure.GetTeamString() != "EnemyTeam"))
+                if ((collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().unit.GetTeamString() == unit.GetTeamString()) 
+                    || (collider.gameObject.GetComponent<Structures>() && collider.gameObject.GetComponent<Structures>().structure.GetTeamString() == unit.GetTeamString()))
                 {
                     //Do nothing
                 } else
                 {
-                    targetedObject = hitColliders[0].gameObject;
+                    //Debug.Log(collider.gameObject.GetComponentInParent<Units>().unit.GetTeamString() + " And " + unit.GetTeamString());
+                    Debug.Log("Attacking " + collider.gameObject);
+                    targetedObject = collider.gameObject;
                     isAttacking = true;
                 }
             }
@@ -119,27 +131,37 @@ public class Units : GamePieces
 
     void MoveToLocation(Vector3 location)
     {
-        if (!isSelected)
+        if (!isSelected && !isAttacking)
         {
             return;
         }
         //Sets nav agent destination to the targeted location.
         m_Agent.destination = location;
+        //StopAllCoroutines(); //maybe
     }
 
-    void AttackTarget(GameObject target)
+    void AttackTarget(GameObject target, bool commanded)
     {
+        if(commanded)
+        {
+            if (!isSelected)
+            {
+                return;
+            }
+            isAttacking = true;
+        }
         targetedObject = target;
-        isAttacking = true;
-        Debug.Log("omw to " + target.name);
+        //Debug.Log("omw to " + target.name);
         //While the unit is too far from the target, move towards the target. Otherwise, attack the target.
         float distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
         //Debug.Log(distance + " and " + unit.attackRange);
 
-        if (distance < unit.attackRange)
+        if (distance < unit.attackRange && isAttacking)
         {
-            isAttacking = false;
+            m_Agent.isStopped = true;
             StartCoroutine(Attack(target));
+            Debug.Log("attack started");
+            isAttacking=false;
         }
         else
         {
@@ -164,7 +186,7 @@ public class Units : GamePieces
                 if (target.GetComponent<Structures>() == null)
                 {
                     isAttacking = false;
-                    target = null;
+                    targetedObject = null;
                 }
             }
             else if (target.GetComponentInParent<ResourceEntities>() != null)
@@ -173,13 +195,20 @@ public class Units : GamePieces
             }
             yield return new WaitForSeconds(unit.timeBetweenAttacks);
         }
+        isAttacking = false;
+        targetedObject = null;
+        Debug.Log("attack finished");
     }
 
     void TakeDamage(int damage)
     {
         //Take damage from some external source.
         health -= damage;
+
         healthBarText.text = "Health: " + health + "/" + unit.maxHealth;
+
+        //Debug.Log($"{unit.name} @{health}/{unit.maxHealth}");
+
         if (health <= 0)
         {
             SlayUnit();

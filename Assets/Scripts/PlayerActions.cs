@@ -39,7 +39,7 @@ public class PlayerActions : MonoBehaviour
     public GameObject actionWheel;
 
     public static event Action<Vector3> MoveSelectedUnits;
-    public static event Action<GameObject> TryAttackObject;
+    public static event Action<GameObject, bool> TryAttackObject;
 
     private LineRenderer lrend;
     private Transform indexFinger;
@@ -74,7 +74,7 @@ public class PlayerActions : MonoBehaviour
                     lrend.SetPosition(0, indexFinger.position);
                     lrend.SetPosition(1, indexFinger.position + indexFinger.right);
                 }
-                Debug.Log("pointing? " + lastHit.collider);
+                //Debug.Log("pointing? " + lastHit.collider);
             } else if (isSelectButtonPressed.GetStateUp(source))
             {
                 //Debug.Log(lastHit.point);
@@ -102,7 +102,7 @@ public class PlayerActions : MonoBehaviour
                 {
                     case ActionTypes.Select:
                         Units unit = lastHit.collider.gameObject.GetComponentInParent<Units>();
-                        if (unit != null)
+                        if (unit != null && unit.GetComponentInParent<Units>().unit.GetTeamString() == "AlliedTeam")
                         {
                             unit.ToggleSelection();
                             Debug.Log("selected " + unit);
@@ -114,7 +114,7 @@ public class PlayerActions : MonoBehaviour
                         MoveSelectedUnits?.Invoke(lastHit.point);
                         break;
                     case ActionTypes.Attack:
-						TryAttackObject?.Invoke(lastHit.collider.gameObject);
+						TryAttackObject?.Invoke(lastHit.collider.gameObject, true);
 						break;
                     case ActionTypes.Interact:
                         break;
