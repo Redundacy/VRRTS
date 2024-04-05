@@ -11,6 +11,7 @@ public class Structures : GamePieces
     float health;
 
     public TextMeshProUGUI healthBarText;
+    public Canvas healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,9 @@ public class Structures : GamePieces
         //{
         //    TakeDamage(10f);
         //}
+
+        Vector3 lookDirection = healthBar.transform.position - GameObject.Find("VRRTS Player").transform.position;
+        healthBar.transform.rotation = Quaternion.LookRotation(lookDirection);
     }
 
     public void TakeDamage(float damage)

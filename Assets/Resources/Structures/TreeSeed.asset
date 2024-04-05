@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 757bdc612710f9c4d832aa0c8f93d5a8, type: 3}
+  m_Name: TreeSeed
+  m_EditorClassIdentifier: 
+  gamePieceName: TreeSeed
+  maxHealth: 1
+  model: {fileID: 100000, guid: 8c0fbd56181ea0843b1596b4cb0e5498, type: 3}
+  team: 3
+  cost: 10
+  destructionReward: 1
+  rewardAmount: 0
