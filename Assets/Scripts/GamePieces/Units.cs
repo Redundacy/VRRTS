@@ -28,6 +28,9 @@ public class Units : GamePieces
     NavMeshAgent m_Agent;
 
     public LayerMask onlyTargetGamePieces;
+    
+    public TextMeshProUGUI healthBarText;
+    public Canvas healthBar;
 
     //overhead text
     //public TextMeshProUGUI selectedText; //Unit text needs to look at camera otherwse its weird.
@@ -39,6 +42,8 @@ public class Units : GamePieces
         outline = GetComponent<Outline>();
         PlayerActions.MoveSelectedUnits += MoveToLocation;
         PlayerActions.TryAttackObject += AttackTarget;
+
+        healthBarText.text = "Health: " + health + "/" + unit.maxHealth;
     }
 
     public void InitializeData()
@@ -79,6 +84,9 @@ public class Units : GamePieces
             CheckForEnemies();
         }
         //selectedText.text = "Selected: " + isSelected;
+
+        Vector3 lookDirection = healthBar.transform.position - GameObject.Find("VRRTS Player").transform.position;
+        healthBar.transform.rotation = Quaternion.LookRotation(lookDirection);
     }
 
     public void ToggleSelection()
@@ -171,7 +179,7 @@ public class Units : GamePieces
     {
         //Take damage from some external source.
         health -= damage;
-
+        healthBarText.text = "Health: " + health + "/" + unit.maxHealth;
         if (health <= 0)
         {
             SlayUnit();
