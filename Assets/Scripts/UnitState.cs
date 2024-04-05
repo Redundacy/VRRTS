@@ -64,7 +64,7 @@ public class UnitState : MonoBehaviour
         m_Agent = GetComponent<NavMeshAgent>();
         outline = GetComponent<Outline>();
         PlayerActions.MoveSelectedUnits += MoveToLocation;
-        PlayerActions.TryAttackObject += SetAttacks;
+        //PlayerActions.TryAttackObject += SetAttacks;
     }
 
     // Update is called once per frame
