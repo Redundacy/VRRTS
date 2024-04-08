@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - Unit
   - Object
+  - Structure
   layers:
   - Default
   - TransparentFX

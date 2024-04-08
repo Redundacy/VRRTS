@@ -241,7 +241,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5608972390853036882}
@@ -286,7 +286,7 @@ MonoBehaviour:
   isSelected: 0
   onlyTargetGamePieces:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   healthBarText: {fileID: 8314605669474312863}
   healthBar: {fileID: 8298257106917859205}
 --- !u!1001 &7970749917413173140

@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 1995485333279971021}
   - component: {fileID: 4723174687049864945}
   m_Layer: 5
-  m_Name: Cube
+  m_Name: Showcase Visor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

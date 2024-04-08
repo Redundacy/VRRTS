@@ -23,4 +23,4 @@ MonoBehaviour:
   visionRange: 3
   cost: 10
   speed: 0
-  hat: {fileID: 5673460838223092859, guid: 381eaf24cf7bd6d41b6021c4d164dd29, type: 3}
+  hat: {fileID: 0}

@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
+        List<GameObject> structures = new List<GameObject>(GameObject.FindGameObjectsWithTag("Structure"));
+        playerInfo.transform.Find("Structure Count").GetComponent<TMP_Text>().text = structures.FindAll((GameObject obj) => obj.GetComponent<Structures>().structure.GetTeamString() == "AlliedTeam").Count.ToString();
     }
 
     // Update is called once per frame

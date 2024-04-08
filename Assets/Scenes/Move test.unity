@@ -4879,21 +4879,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2984882142079315448, guid: a30353210057ce24cb15c41a1bae5f58,
-        type: 3}
-      propertyPath: onlyTargetGamePieces.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
-    - target: {fileID: 4322684917031236097, guid: a30353210057ce24cb15c41a1bae5f58,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy Mesh
-      objectReference: {fileID: 0}
-    - target: {fileID: 5160000191822901120, guid: a30353210057ce24cb15c41a1bae5f58,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy Cube
-      objectReference: {fileID: 0}
     - target: {fileID: 6704020865073524908, guid: a30353210057ce24cb15c41a1bae5f58,
         type: 3}
       propertyPath: m_Name
