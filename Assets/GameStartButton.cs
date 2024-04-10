@@ -35,6 +35,7 @@ public class GameStartButton : MonoBehaviour
         bool isGrabEnding = hand.IsGrabEnding(this.gameObject);
         if (interactable.attachedToHand == null && startingGrabType != GrabTypes.None)
         {
+            //TODO: Fade the screen before doing this
             player.transform.position = GameObject.Find("PlayerSpawnPoint").transform.position;
             //TODO: Add a start game function to the game manager.
             //GameObject.Find("GameManager").GetComponent<GameManager>().StartTheGame();

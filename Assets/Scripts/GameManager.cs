@@ -31,6 +31,20 @@ public class GameManager : MonoBehaviour
         
     }
 
+    void StartTheGame()
+    {
+        playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
+        List<GameObject> structures = new List<GameObject>(GameObject.FindGameObjectsWithTag("Structure"));
+        playerInfo.transform.Find("Structure Count").GetComponent<TMP_Text>().text = structures.FindAll((GameObject obj) => obj.GetComponent<Structures>().structure.GetTeamString() == "AlliedTeam").Count.ToString();
+    
+        //Spawn in AllyCommandTower?
+        //Spawn in EnemyCommandTower?
+        //Give player and enemy starting resources?
+        //Instantiate starting units and structures for both players?
+        //Start playing music?
+        //Activate enemy AI?
+    }
+
     public void GivePlayerResources(float resourceAmount)
     {
         playerResources += resourceAmount;
