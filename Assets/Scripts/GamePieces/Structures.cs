@@ -19,6 +19,10 @@ public class Structures : GamePieces
         health = structure.maxHealth;
         healthBarText.text = "Health: " + health + "/" + structure.maxHealth;
     }
+    public void InitializeData()
+    {
+        health = structure.maxHealth;
+    }
 
     // Update is called once per frame
     void Update()

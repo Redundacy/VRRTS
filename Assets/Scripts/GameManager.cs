@@ -49,4 +49,17 @@ public class GameManager : MonoBehaviour
             playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
         }
     }
+
+    public void RequestMakeStructure(string team, StructureData boughtStructure, Vector3 buildPoint)
+    {
+        if (playerResources >= boughtStructure.cost)
+        {
+            playerResources -= boughtStructure.cost;
+            GameObject createdGuy = Instantiate(UnitPrefab, buildPoint, new Quaternion());
+            boughtStructure.SetTeam(team);
+            createdGuy.GetComponent<Structures>().structure = boughtStructure;
+            createdGuy.GetComponent<Structures>().InitializeData();
+            playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
+        }
+    }
 }

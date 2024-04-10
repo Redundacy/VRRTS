@@ -11,7 +11,8 @@ using TMPro;
 /// </summary>
 public class PlayerActions : MonoBehaviour
 {
-    public SteamVR_Action_Boolean isSelectButtonPressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("GrabGrip");
+    public SteamVR_Action_Boolean isGripPressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("GrabGrip");
+    public SteamVR_Action_Boolean isTriggerPressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("GrabPinch");
     public SteamVR_Action_Boolean isCyclePressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("cycleactions");
     public SteamVR_Action_Boolean openMenu = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("openactionwheel");
     /* 
@@ -59,7 +60,7 @@ public class PlayerActions : MonoBehaviour
     {
         foreach (SteamVR_Input_Sources source in sources)
         {
-            if (isSelectButtonPressed.GetState(source))
+            if (isGripPressed.GetState(source))
             {
                 indexFinger = indexFingers[sources.IndexOf(source)];
                 if (Physics.Raycast(indexFinger.position, indexFinger.right, out lastHit, raycastDistance, collectedLayers)) //currently pointing in the wrong direction (and also I would like to change the angle
@@ -74,57 +75,90 @@ public class PlayerActions : MonoBehaviour
                     lrend.SetPosition(0, indexFinger.position);
                     lrend.SetPosition(1, indexFinger.position + indexFinger.right);
                 }
-                //Debug.Log("pointing? " + lastHit.collider);
-            } else if (isSelectButtonPressed.GetStateUp(source))
-            {
-                //Debug.Log(lastHit.point);
-                //if lastHit was a world thing, do the action on that thing. If it was a UI thing, do the UI procedure
 
-                if (actionWheel.activeSelf)
+                // possibly do long-select here
+
+                //Debug.Log("pointing? " + lastHit.collider);
+            }
+            if(isTriggerPressed.GetStateDown(source))
+            {
+                GameObject mysteryShopper = lastHit.collider.gameObject;
+
+
+                if(mysteryShopper.layer == 7) //unit
                 {
-                    switch (lastHit.collider.name)
+                    if(mysteryShopper.GetComponentInParent<Units>().unit.GetTeamString() == "AlliedTeam")
                     {
-                        case "Move":
-                            currentAction = ActionTypes.Move; break;
-                        case "Select":
-                            currentAction = ActionTypes.Select; break;
-                        case "Attack":
-                            currentAction = ActionTypes.Attack; break;
-                        case "Interact":
-                            currentAction = ActionTypes.Interact; break;
-						default:
-							currentAction = ActionTypes.None; break;
-					}
-					currentActionText.text = currentAction.ToString();
-					actionWheel.SetActive(false);
-				}
-                switch(currentAction)
+                        mysteryShopper.GetComponentInParent<Units>().ToggleSelection();
+                        Debug.Log("selected " + mysteryShopper.GetComponentInParent<Units>());
+                    } else
+                    {
+                        TryAttackObject?.Invoke(mysteryShopper, true);
+                    }
+                } else if (mysteryShopper.layer == 6)
                 {
-                    case ActionTypes.Select:
-                        Units unit = lastHit.collider.gameObject.GetComponentInParent<Units>();
-                        if (unit != null && unit.GetComponentInParent<Units>().unit.GetTeamString() == "AlliedTeam")
-                        {
-                            unit.ToggleSelection();
-                            Debug.Log("selected " + unit);
-                        }
-                            
-                        Debug.Log("select " + lastHit.collider.name);
-						break;
-                    case ActionTypes.Move:
-                        MoveSelectedUnits?.Invoke(lastHit.point);
-                        break;
-                    case ActionTypes.Attack:
-						TryAttackObject?.Invoke(lastHit.collider.gameObject, true);
-						break;
-                    case ActionTypes.Interact:
-                        break;
-                    case ActionTypes.Buy:
-                        GameObject.Find("GameManager").GetComponent<GameManager>().RequestMakeGuy("AlliedUnit", handUnit, lastHit.point);
-                        Debug.Log("buy " + handUnit);
-                        break;
-                    default:
-                        break;
+                    if(mysteryShopper.GetComponent<Structures>() != null && mysteryShopper.GetComponent<Structures>().structure.GetTeamString() == "AlliedTeam")
+                    {
+                        // repair????
+                    } else
+                    {
+                        TryAttackObject?.Invoke(mysteryShopper, true);
+                    }
+                } else if (mysteryShopper.layer == 3)
+                {
+                    MoveSelectedUnits?.Invoke(lastHit.point);
                 }
+            } 
+            else if (isGripPressed.GetStateUp(source))
+            {
+    //            //Debug.Log(lastHit.point);
+    //            //if lastHit was a world thing, do the action on that thing. If it was a UI thing, do the UI procedure
+
+    //            if (actionWheel.activeSelf)
+    //            {
+    //                switch (lastHit.collider.name)
+    //                {
+    //                    case "Move":
+    //                        currentAction = ActionTypes.Move; break;
+    //                    case "Select":
+    //                        currentAction = ActionTypes.Select; break;
+    //                    case "Attack":
+    //                        currentAction = ActionTypes.Attack; break;
+    //                    case "Interact":
+    //                        currentAction = ActionTypes.Interact; break;
+				//		default:
+				//			currentAction = ActionTypes.None; break;
+				//	}
+				//	currentActionText.text = currentAction.ToString();
+				//	actionWheel.SetActive(false);
+				//}
+    //            switch(currentAction)
+    //            {
+    //                case ActionTypes.Select:
+    //                    Units unit = lastHit.collider.gameObject.GetComponentInParent<Units>();
+    //                    if (unit != null && unit.GetComponentInParent<Units>().unit.GetTeamString() == "AlliedTeam")
+    //                    {
+    //                        unit.ToggleSelection();
+    //                        Debug.Log("selected " + unit);
+    //                    }
+                            
+    //                    Debug.Log("select " + lastHit.collider.name);
+				//		break;
+    //                case ActionTypes.Move:
+    //                    MoveSelectedUnits?.Invoke(lastHit.point);
+    //                    break;
+    //                case ActionTypes.Attack:
+				//		TryAttackObject?.Invoke(lastHit.collider.gameObject, true);
+				//		break;
+    //                case ActionTypes.Interact:
+    //                    break;
+    //                case ActionTypes.Buy:
+    //                    GameObject.Find("GameManager").GetComponent<GameManager>().RequestMakeGuy("AlliedUnit", handUnit, lastHit.point);
+    //                    Debug.Log("buy " + handUnit);
+    //                    break;
+    //                default:
+    //                    break;
+    //            }
                 lrend.SetPositions(new Vector3[] { Vector3.zero, Vector3.zero });
             }
         }
@@ -156,6 +190,13 @@ public class PlayerActions : MonoBehaviour
         currentAction = ActionTypes.Buy;
         actionWheel.SetActive(false);
         handUnit = heldUnit.unit;
+        currentActionText.text = currentAction.ToString();
+    }
+
+    public void OnShopReturn()
+    {
+        currentAction = ActionTypes.None;
+        handUnit = null;
     }
 
 }
