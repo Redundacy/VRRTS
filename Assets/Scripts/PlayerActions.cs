@@ -13,8 +13,6 @@ public class PlayerActions : MonoBehaviour
 {
     public SteamVR_Action_Boolean isGripPressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("GrabGrip");
     public SteamVR_Action_Boolean isTriggerPressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("GrabPinch");
-    public SteamVR_Action_Boolean isCyclePressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("cycleactions");
-    public SteamVR_Action_Boolean openMenu = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("openactionwheel");
     /* 
      * 
             "parameters": {
@@ -163,26 +161,26 @@ public class PlayerActions : MonoBehaviour
             }
         }
 
-        foreach(SteamVR_Input_Sources source in sources)
-        {
-            if (isCyclePressed.GetStateUp(source))
-            {
-                Debug.Log("cycle pressed on hand " + source.ToString());
-                currentAction++;
-                if (currentAction > ActionTypes.Interact)
-                    currentAction = ActionTypes.None;
-                currentActionText.text = currentAction.ToString();
-            }
-        }
+        //foreach(SteamVR_Input_Sources source in sources)
+        //{
+        //    if (isCyclePressed.GetStateUp(source))
+        //    {
+        //        Debug.Log("cycle pressed on hand " + source.ToString());
+        //        currentAction++;
+        //        if (currentAction > ActionTypes.Interact)
+        //            currentAction = ActionTypes.None;
+        //        currentActionText.text = currentAction.ToString();
+        //    }
+        //}
 
-        foreach (SteamVR_Input_Sources source in sources)
-        {
-            if (openMenu.GetStateUp(source))
-            {
-                Debug.Log("open menu");
-                actionWheel.SetActive(!actionWheel.activeSelf);
-            }
-        }
+        //foreach (SteamVR_Input_Sources source in sources)
+        //{
+        //    if (openMenu.GetStateUp(source))
+        //    {
+        //        Debug.Log("open menu");
+        //        actionWheel.SetActive(!actionWheel.activeSelf);
+        //    }
+        //}
     }
 
     public void OnShopSelect(ShowcaseUnits heldUnit)

@@ -50,11 +50,11 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/CycleActions",
+      "name": "/actions/default/in/RotateWheel",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/OpenActionWheel",
+      "name": "/actions/default/in/ChangeWheelType",
       "type": "boolean"
     },
     {
@@ -62,7 +62,7 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/CycleBuyables",
+      "name": "/actions/default/in/ShowHUD",
       "type": "boolean"
     },
     {

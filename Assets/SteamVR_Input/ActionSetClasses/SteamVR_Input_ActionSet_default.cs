@@ -105,19 +105,19 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean CycleActions
+        public virtual SteamVR_Action_Boolean RotateWheel
         {
             get
             {
-                return SteamVR_Actions.default_CycleActions;
+                return SteamVR_Actions.default_RotateWheel;
             }
         }
         
-        public virtual SteamVR_Action_Boolean OpenActionWheel
+        public virtual SteamVR_Action_Boolean ChangeWheelType
         {
             get
             {
-                return SteamVR_Actions.default_OpenActionWheel;
+                return SteamVR_Actions.default_ChangeWheelType;
             }
         }
         
@@ -129,11 +129,11 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean CycleBuyables
+        public virtual SteamVR_Action_Boolean ShowHUD
         {
             get
             {
-                return SteamVR_Actions.default_CycleBuyables;
+                return SteamVR_Actions.default_ShowHUD;
             }
         }
         

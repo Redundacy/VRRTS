@@ -19,6 +19,7 @@ public class GuyMaker : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("hit " + collision.collider.name);
         if(collision.collider.gameObject.layer == 3)
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().RequestMakeGuy("AlliedUnit", showcaseUnit.unit, collision.contacts[0].point);

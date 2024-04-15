@@ -284,30 +284,6 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/cycleactions"
-                  },
-                  "long" : {
-                     "output" : "/actions/default/in/openactionwheel"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/left/input/x"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/cycleactions"
-                  },
-                  "long" : {
-                     "output" : "/actions/default/in/openactionwheel"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/a"
-            },
-            {
-               "inputs" : {
-                  "click" : {
                      "output" : "/actions/default/in/supersizemode"
                   }
                },
@@ -325,8 +301,53 @@
             },
             {
                "inputs" : {
+                  "touch" : {
+                     "output" : "/actions/default/in/showhud"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/thumbrest"
+            },
+            {
+               "inputs" : {
+                  "touch" : {
+                     "output" : "/actions/default/in/showhud"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/thumbrest"
+            },
+            {
+               "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/cyclebuyables"
+                     "output" : "/actions/default/in/rotatewheel"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/x"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/rotatewheel"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/x"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/rotatewheel"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/a"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/changewheeltype"
                   }
                },
                "mode" : "button",
