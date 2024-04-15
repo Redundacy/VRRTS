@@ -10565,11 +10565,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerResources: 100
   playerUnitCount: 0
+  playerStartingResources: 100
   enemyResources: 0
   enemyUnitCount: 0
+  enemyStartingResources: 100
   playerInfo: {fileID: 209416451}
   UnitPrefab: {fileID: 6704020865073524908, guid: a6ef65ac4e0f7e9408a4fef987883330,
     type: 3}
+  playerCommandTower: {fileID: 0}
+  enemyCommandTower: {fileID: 0}
+  startingUnitsData: {fileID: 0}
+  playerCommandTowerSpawnLocation: {fileID: 0}
+  enemyCommandTowerSpawnLocation: {fileID: 0}
 --- !u!4 &1638307099
 Transform:
   m_ObjectHideFlags: 0

@@ -29,6 +29,7 @@ public class GameStartButton : MonoBehaviour
 
     }
 
+    //When the button is pressed, it moves the player to their start position and calls the start game function in game manager.
     private void HandHoverUpdate(Hand hand)
     {
         GrabTypes startingGrabType = hand.GetGrabStarting();
@@ -39,6 +40,7 @@ public class GameStartButton : MonoBehaviour
             player.transform.position = GameObject.Find("PlayerSpawnPoint").transform.position;
             //TODO: Add a start game function to the game manager.
             //GameObject.Find("GameManager").GetComponent<GameManager>().StartTheGame();
+            //TODO: Unfade once all is done
         }
         else if (isGrabEnding)
         {
