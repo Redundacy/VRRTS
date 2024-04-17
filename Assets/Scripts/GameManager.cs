@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.Services.Matchmaker.Models;
+using Valve.VR;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -85,7 +87,8 @@ public class GameManager : MonoBehaviour
         //CURRENTLY accepts a boolean for win or lose.
         //Do some celebratory stuff, play a bunch of confetti particles around the player and applaud if they won or something, wah wah trumpet if they lose. (POLISH)
         //Display a "YOU WIN" or "YOU LOSE" in the player's face.
-        //After some time has passed, load the same scene again to reset everything.
+        //TEST: After some time has passed, load the same scene again to reset everything.
+        Invoke("FadeOutToResetGame", 5.0f);
     }
 
     public void GivePlayerResources(float resourceAmount)
@@ -118,5 +121,17 @@ public class GameManager : MonoBehaviour
             createdGuy.GetComponent<Structures>().InitializeData();
             playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
         }
+    }
+
+    void FadeOutToResetGame()
+    {
+        SteamVR_Fade.View(Color.black, 0.5f);
+        Invoke("ResetGame", 0.5f);
+    }
+
+    void ResetGame()
+    {
+        //Replace thing with either index or name of scene that is being played in.
+        //SceneManager.LoadScene(1);
     }
 }
