@@ -1090,7 +1090,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pickupEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 416084392}
+      objectReference: {fileID: 0}
     - target: {fileID: 4586426656606962863, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
         type: 3}
       propertyPath: pickupEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1156,7 +1156,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pickupEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1696274363}
+      objectReference: {fileID: 0}
     - target: {fileID: 6544014301143269919, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
         type: 3}
       propertyPath: pickupEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2965,18 +2965,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 392951640}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &416084392 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3310536555078677095, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
-    type: 3}
-  m_PrefabInstance: {fileID: 209416450}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d326b59883d12a64ea2b8f7a8fc138aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &428268109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10572,8 +10560,8 @@ MonoBehaviour:
   playerInfo: {fileID: 209416451}
   UnitPrefab: {fileID: 6704020865073524908, guid: a6ef65ac4e0f7e9408a4fef987883330,
     type: 3}
-  playerCommandTower: {fileID: 0}
-  enemyCommandTower: {fileID: 0}
+  playerCommandTowerPrefab: {fileID: 0}
+  enemyCommandTowerPrefab: {fileID: 0}
   startingUnitsData: {fileID: 0}
   playerCommandTowerSpawnLocation: {fileID: 0}
   enemyCommandTowerSpawnLocation: {fileID: 0}
@@ -10829,18 +10817,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1691923314}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1696274363 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6207344302212486331, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
-    type: 3}
-  m_PrefabInstance: {fileID: 209416450}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d326b59883d12a64ea2b8f7a8fc138aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1698534768
 PrefabInstance:
   m_ObjectHideFlags: 0
