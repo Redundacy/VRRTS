@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 757bdc612710f9c4d832aa0c8f93d5a8, type: 3}
-  m_Name: TreeSeed
+  m_Script: {fileID: 11500000, guid: b58a3bc647e70774b8c7225eb3b51e7e, type: 3}
+  m_Name: UnityPlayerAccountSettings
   m_EditorClassIdentifier: 
-  gamePieceName: TreeSeed
-  maxHealth: 1
-  model: {fileID: 5003922754186979607, guid: 04e5361f05c15dd41a25efe8146a3d85, type: 3}
-  team: 3
-  cost: 10
-  destructionReward: 1
-  rewardAmount: 0
+  clientId: 
+  scopeMask: 7
+  useCustomDeepLinkUri: 0
+  customScheme: 
+  customHost: 

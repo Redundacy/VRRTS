@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
         if (playerResources >= boughtStructure.cost)
         {
             playerResources -= boughtStructure.cost;
-            GameObject createdGuy = Instantiate(UnitPrefab, buildPoint, new Quaternion());
+            GameObject createdGuy = Instantiate(boughtStructure.model, buildPoint, new Quaternion());
             boughtStructure.SetTeam(team);
             createdGuy.GetComponent<Structures>().structure = boughtStructure;
             createdGuy.GetComponent<Structures>().InitializeData();

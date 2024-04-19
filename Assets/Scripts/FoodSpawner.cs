@@ -35,7 +35,14 @@ public class FoodSpawner : MonoBehaviour
 			// Instantiate the new object and position it at the hand's attachment point
 			GameObject spawnedFood = Instantiate(food, hand.transform.position, hand.transform.rotation) as GameObject;
 			Debug.Log("Food spawned!");
-			spawnedFood.GetComponent<ShowcaseUnits>().unit = showcaseUnits.unit;
+			if(spawnedFood.GetComponent<ShowcaseUnits>() != null)
+            {
+				spawnedFood.GetComponent<ShowcaseUnits>().unit = showcaseUnits.unit;
+			} else if(spawnedFood.GetComponent<ShowcaseStructures>() != null)
+            {
+				spawnedFood.GetComponent<ShowcaseStructures>().structure = GetComponent<ShowcaseStructures>().structure;
+            }
+			
 			// Attach the spawned object to the hand
 			hand.AttachObject(spawnedFood, startingGrabType);
 		}
