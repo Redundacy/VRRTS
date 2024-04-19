@@ -356,6 +356,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70cefd1b12d2a634d9b2b806d02386ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Treefab: {fileID: 7533202256425239222, guid: 159d148f3d0d33247b1e204443e7d5e5, type: 3}
+  Treefab0: {fileID: 7533202256425239222, guid: 159d148f3d0d33247b1e204443e7d5e5,
+    type: 3}
+  Treefab1: {fileID: 7346079513994155262, guid: 6d36b4ecbf59cca4eb2245de94c9bcdb,
+    type: 3}
+  Treefab2: {fileID: 8049164228605829977, guid: 2d3016bde470b2e4b98954d9f6efbe24,
+    type: 3}
   timeToGrow: 60
   scaleSize: 1
