@@ -6698,6 +6698,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2936222907744689507}
     m_Modifications:
+    - target: {fileID: 778700090723388308, guid: 4c4b62f41e2ed4347a3938b761785b9b,
+        type: 3}
+      propertyPath: iconPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 778700090723388308, guid: 4c4b62f41e2ed4347a3938b761785b9b,
+        type: 3}
+      propertyPath: iconPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5603619887674136179, guid: 71b03f51626420747aa5259a70c14a32,
+        type: 3}
+    - target: {fileID: 778700090723388308, guid: 4c4b62f41e2ed4347a3938b761785b9b,
+        type: 3}
+      propertyPath: iconPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 8905769749532466657, guid: 727b46e46d762774c85154ab8fd11ae6,
+        type: 3}
+    - target: {fileID: 778700090723388308, guid: 4c4b62f41e2ed4347a3938b761785b9b,
+        type: 3}
+      propertyPath: buildableStructures.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 778700090723388308, guid: 4c4b62f41e2ed4347a3938b761785b9b,
+        type: 3}
+      propertyPath: buildableStructures.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 71e9d7ab0990695419af77525f1a3911,
+        type: 2}
+    - target: {fileID: 778700090723388308, guid: 4c4b62f41e2ed4347a3938b761785b9b,
+        type: 3}
+      propertyPath: buildableStructures.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e45adec20f86ed42971ddd4df6ca7d2,
+        type: 2}
+    - target: {fileID: 778700090723388308, guid: 4c4b62f41e2ed4347a3938b761785b9b,
+        type: 3}
+      propertyPath: buildableStructures.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e45adec20f86ed42971ddd4df6ca7d2,
+        type: 2}
+    - target: {fileID: 778700090723388308, guid: 4c4b62f41e2ed4347a3938b761785b9b,
+        type: 3}
+      propertyPath: buildableStructures.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e45adec20f86ed42971ddd4df6ca7d2,
+        type: 2}
+    - target: {fileID: 778700090723388308, guid: 4c4b62f41e2ed4347a3938b761785b9b,
+        type: 3}
+      propertyPath: buildableStructures.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e45adec20f86ed42971ddd4df6ca7d2,
+        type: 2}
     - target: {fileID: 3579615001960617664, guid: 4c4b62f41e2ed4347a3938b761785b9b,
         type: 3}
       propertyPath: m_Name
@@ -6752,6 +6804,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5523301664613696964, guid: 4c4b62f41e2ed4347a3938b761785b9b,
+        type: 3}
+      propertyPath: m_Name
+      value: Showcase Unit(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571919642841539599, guid: 4c4b62f41e2ed4347a3938b761785b9b,
+        type: 3}
+      propertyPath: m_Name
+      value: Showcase Unit(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691574475140934810, guid: 4c4b62f41e2ed4347a3938b761785b9b,
+        type: 3}
+      propertyPath: m_Name
+      value: Showcase Unit(Clone)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
