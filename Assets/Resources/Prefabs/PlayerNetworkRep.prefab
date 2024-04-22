@@ -363,10 +363,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02747375abf7954286026824a9da241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 0}
+  head: {fileID: 999332941194541652}
   body: {fileID: 0}
-  leftHand: {fileID: 0}
-  rightHand: {fileID: 0}
+  leftHand: {fileID: 7215454330998679321}
+  rightHand: {fileID: 690869962248722437}
 --- !u!1 &8039800817045042778
 GameObject:
   m_ObjectHideFlags: 0

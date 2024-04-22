@@ -20,7 +20,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class EricsQuickJoin : NetworkBehaviour
 {
-	public string newLobbyName = "Fishin" + Guid.NewGuid();
+	public string newLobbyName = "VRRTSn" + Guid.NewGuid();
 	private int maxPlayers = 4;
 	private int currentPlayers = 1;
 	public bool isPrivate = false;
