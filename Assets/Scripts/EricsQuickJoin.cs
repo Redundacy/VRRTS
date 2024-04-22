@@ -21,7 +21,7 @@ using UnityEngine.SceneManagement;
 public class EricsQuickJoin : NetworkBehaviour
 {
 	public string newLobbyName = "VRRTSn" + Guid.NewGuid();
-	private int maxPlayers = 4;
+	private int maxPlayers = 2;
 	private int currentPlayers = 1;
 	public bool isPrivate = false;
 
@@ -74,7 +74,7 @@ public class EricsQuickJoin : NetworkBehaviour
 			new QueryFilter(
 				field:QueryFilter.FieldOptions.AvailableSlots,
 				op: QueryFilter.OpOptions.LT,
-				value: "4"),
+				value: "2"),
 			//new QueryFilter(
 			//	field:QueryFilter.FieldOptions.S1,
 			//	op: QueryFilter.OpOptions.LT,
