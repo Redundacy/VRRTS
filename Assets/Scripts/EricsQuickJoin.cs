@@ -43,6 +43,8 @@ public class EricsQuickJoin : NetworkBehaviour
 
 	private ILobbyEvents currentLobbyEvents;
 
+	public NetworkObject networkGameManager;
+
 	private async void Awake()
 	{
 		await UnityServices.InitializeAsync();
@@ -215,6 +217,8 @@ public class EricsQuickJoin : NetworkBehaviour
 			if (currentPlayers == maxPlayers)
             {
 				await LockLobby();
+				FindObjectOfType<GameManager>().gameObject.SetActive(false);
+				Instantiate(networkGameManager);
 			}
 		}
 	}
