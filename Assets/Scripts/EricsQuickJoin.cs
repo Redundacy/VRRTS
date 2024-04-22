@@ -232,8 +232,8 @@ public class EricsQuickJoin : NetworkBehaviour
 	private void SpawnGameManagerServerRpc()
 	{
 		var spawn = Instantiate(networkGameManager);
-		//spawn.SpawnWithOwnership();
-	}
+		spawn.Spawn();
+    }
 
 	static async Task<Player> GetPlayerLogin()
 	{
