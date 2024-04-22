@@ -206,10 +206,15 @@ public class EricsQuickJoin : NetworkBehaviour
 
 	private async void CallbacksPlayerJoined(List<LobbyPlayerJoined> obj)
 	{
-		Debug.Log(obj[currentPlayers].Player.Id);
+		Debug.Log(obj);
+		foreach(LobbyPlayerJoined player in obj)
+        {
+			Debug.Log(player.Player.Id);
+        }
+		//Debug.Log(obj[currentPlayers].Player.Id);
 		if (currentPlayers == 1)
         {
-			NetworkManager.Singleton.SceneManager.LoadScene("Game", LoadSceneMode.Single);
+			//NetworkManager.Singleton.SceneManager.LoadScene("Game", LoadSceneMode.Single);
         }
 		if (currentPlayers < maxPlayers)
 		{
