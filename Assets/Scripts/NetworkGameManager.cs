@@ -7,7 +7,7 @@ public class NetworkGameManager : NetworkBehaviour
 {
     [SerializeField] private NetworkObject playerPrefab;
 
-    public override void OnNetworkSpawn()
+    public void Awake()
     {
         SpawnPlayerServerRpc(NetworkManager.Singleton.LocalClientId);
     }
