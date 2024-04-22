@@ -248,7 +248,7 @@ public class EricsQuickJoin : NetworkBehaviour
 		while (!heartbeatSource.IsCancellationRequested && currentLobby != null)
 		{
 			await Lobbies.Instance.SendHeartbeatPingAsync(currentLobby.Id);
-			await Task.Delay(15000); // change this
+			await Task.Delay(5000); // change this
 		}
 	}
 
