@@ -5,7 +5,9 @@ using UnityEngine;
 public class Seed : MonoBehaviour
 {
 
-    public GameObject Treefab;
+    [SerializeField] GameObject Treefab0;
+    [SerializeField] GameObject Treefab1;
+    [SerializeField] GameObject Treefab2;
     public int timeToGrow;
     public int scaleSize;
     // Start is called before the first frame update
@@ -50,7 +52,22 @@ public class Seed : MonoBehaviour
 
     void TransformIntoTree()
     {
-        Instantiate(Treefab, gameObject.transform.position, Quaternion.identity);
+        int treefabIndexToInstantiate = Random.Range(0, 2);
+        GameObject treefabToInstantiate = null;
+        switch(treefabIndexToInstantiate)
+        {
+            case 0:
+                treefabToInstantiate = Treefab0;
+                break;
+            case 1:
+                treefabToInstantiate = Treefab1;
+                break;
+            case 2:
+                treefabToInstantiate = Treefab2;
+                break;
+        }
+
+        Instantiate(treefabToInstantiate, gameObject.transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

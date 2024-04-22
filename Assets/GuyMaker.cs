@@ -5,10 +5,15 @@ using UnityEngine;
 public class GuyMaker : MonoBehaviour
 {
     private ShowcaseUnits showcaseUnit;
+    private ShowcaseStructures showcaseStructure;
+
     // Start is called before the first frame update
     void Start()
     {
-        showcaseUnit = GetComponent<ShowcaseUnits>();
+        if(GetComponent<ShowcaseUnits>() != null)
+            showcaseUnit = GetComponent<ShowcaseUnits>();
+        if(GetComponent<ShowcaseStructures>() != null)
+            showcaseStructure = GetComponent<ShowcaseStructures>();
     }
 
     // Update is called once per frame
@@ -19,10 +24,16 @@ public class GuyMaker : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("hit " + collision.collider.name);
+        // Debug.Log("hit " + collision.collider.name);
         if(collision.collider.gameObject.layer == 3)
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().RequestMakeGuy("AlliedUnit", showcaseUnit.unit, collision.contacts[0].point);
+            if(showcaseUnit != null)
+            {
+                GameObject.Find("GameManager").GetComponent<GameManager>().RequestMakeGuy("AlliedUnit", showcaseUnit.unit, collision.contacts[0].point);
+            } else if (showcaseStructure != null)
+            {
+                GameObject.Find("GameManager").GetComponent<GameManager>().RequestMakeStructure("AlliedUnit", showcaseStructure.structure, collision.contacts[0].point);
+            }
             Destroy(gameObject);
         }
     }

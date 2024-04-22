@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
 using Valve.VR.InteractionSystem;
 
 public class GameStartButton : MonoBehaviour
@@ -36,15 +37,27 @@ public class GameStartButton : MonoBehaviour
         bool isGrabEnding = hand.IsGrabEnding(this.gameObject);
         if (interactable.attachedToHand == null && startingGrabType != GrabTypes.None)
         {
-            //TODO: Fade the screen before doing this
+            //TEST: Fade the screen before doing this
+            ScreenFadeOutAndIn();
             player.transform.position = GameObject.Find("PlayerSpawnPoint").transform.position;
-            //TODO: Add a start game function to the game manager.
-            //GameObject.Find("GameManager").GetComponent<GameManager>().StartTheGame();
-            //TODO: Unfade once all is done
+            //TEST: Add a start game function to the game manager.
+            GameObject.Find("GameManager").GetComponent<GameManager>().StartTheGame();
+            //TEST: Unfade once all is done
         }
         else if (isGrabEnding)
         {
 
         }
+    }
+
+    void ScreenFadeOutAndIn()
+    {
+        SteamVR_Fade.View(Color.black, 0.5f);
+        Invoke("ScreenFadeIn", 0.5f);
+    }
+
+    void ScreenFadeIn()
+    {
+        SteamVR_Fade.View(Color.clear, 0.5f);
     }
 }

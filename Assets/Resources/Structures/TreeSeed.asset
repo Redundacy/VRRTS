@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamePieceName: TreeSeed
   maxHealth: 1
-  model: {fileID: 100000, guid: 8c0fbd56181ea0843b1596b4cb0e5498, type: 3}
+  model: {fileID: 5003922754186979607, guid: 04e5361f05c15dd41a25efe8146a3d85, type: 3}
   team: 3
   cost: 10
   destructionReward: 1

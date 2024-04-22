@@ -492,11 +492,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerResources: 100
   playerUnitCount: 0
+  playerStartingResources: 0
   enemyResources: 0
   enemyUnitCount: 0
+  enemyStartingResources: 0
   playerInfo: {fileID: 236678657}
   UnitPrefab: {fileID: 6704020865073524908, guid: a6ef65ac4e0f7e9408a4fef987883330,
     type: 3}
+  playerCommandTowerPrefab: {fileID: 0}
+  enemyCommandTowerPrefab: {fileID: 0}
+  startingUnitsData: {fileID: 0}
+  playerCommandTowerSpawnLocation: {fileID: 0}
+  enemyCommandTowerSpawnLocation: {fileID: 0}
 --- !u!4 &402268309
 Transform:
   m_ObjectHideFlags: 0
@@ -2505,7 +2512,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.041666668
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 8ff94bfbf297e904389caa7d9362f84d, type: 2}
   m_BuildHeightMesh: 0
@@ -4537,6 +4544,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHandPanel: {fileID: 487608526}
+  isHUD:
+    actionPath: /actions/default/in/ShowHUD
+    needsReinit: 0
 --- !u!1 &2023412054
 GameObject:
   m_ObjectHideFlags: 0
@@ -4905,17 +4915,17 @@ PrefabInstance:
     - target: {fileID: 7684764699038875691, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.81
+      value: -49.05
       objectReference: {fileID: 0}
     - target: {fileID: 7684764699038875691, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: -0.87
       objectReference: {fileID: 0}
     - target: {fileID: 7684764699038875691, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.18
+      value: -240.23
       objectReference: {fileID: 0}
     - target: {fileID: 7684764699038875691, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
         type: 3}
