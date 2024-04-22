@@ -223,9 +223,16 @@ public class EricsQuickJoin : NetworkBehaviour
             {
 				await LockLobby();
 				FindObjectOfType<GameManager>().gameObject.SetActive(false);
-				Instantiate(networkGameManager);
+				SpawnGameManagerServerRpc();
 			}
 		}
+	}
+
+	[ServerRpc(RequireOwnership = false)]
+	private void SpawnGameManagerServerRpc()
+	{
+		var spawn = Instantiate(networkGameManager);
+		//spawn.SpawnWithOwnership();
 	}
 
 	static async Task<Player> GetPlayerLogin()
@@ -253,7 +260,7 @@ public class EricsQuickJoin : NetworkBehaviour
 		while (!heartbeatSource.IsCancellationRequested && currentLobby != null)
 		{
 			await Lobbies.Instance.SendHeartbeatPingAsync(currentLobby.Id);
-			await Task.Delay(5000); // change this
+			await Task.Delay(9000); // change this
 		}
 	}
 
