@@ -153,10 +153,10 @@ public class Units : GamePieces
             isAttacking = true;
         }
         targetedObject = target;
-        Debug.Log("omw to " + target.name);
+        //Debug.Log("omw to " + target.name);
         //While the unit is too far from the target, move towards the target. Otherwise, attack the target.
         float distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
-        Debug.Log(distance + " and " + unit.attackRange);
+        //Debug.Log(distance + " and " + unit.attackRange);
 
         if (distance < unit.attackRange && isAttacking)
         {
