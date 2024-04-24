@@ -114,11 +114,12 @@ public class Units : GamePieces
         {
             foreach (Collider collider in hitColliders)
             {
-                if ((collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().unit.GetTeamString() == unit.GetTeamString()) 
+                if ((collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().unit.GetTeamString() == unit.GetTeamString())
                     || (collider.gameObject.GetComponent<Structures>() && collider.gameObject.GetComponent<Structures>().structure.GetTeamString() == unit.GetTeamString()))
                 {
                     //Do nothing
-                } else
+                }
+                else
                 {
                     //Debug.Log(collider.gameObject.GetComponentInParent<Units>().unit.GetTeamString() + " And " + unit.GetTeamString());
                     Debug.Log("Attacking " + collider.gameObject);
@@ -133,6 +134,7 @@ public class Units : GamePieces
     {
         if (!isSelected && !isAttacking)
         {
+            Debug.Log("Unit cannot move! " + isSelected + " " + isAttacking);
             return;
         }
         //Sets nav agent destination to the targeted location.
@@ -151,10 +153,10 @@ public class Units : GamePieces
             isAttacking = true;
         }
         targetedObject = target;
-        //Debug.Log("omw to " + target.name);
+        Debug.Log("omw to " + target.name);
         //While the unit is too far from the target, move towards the target. Otherwise, attack the target.
         float distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
-        //Debug.Log(distance + " and " + unit.attackRange);
+        Debug.Log(distance + " and " + unit.attackRange);
 
         if (distance < unit.attackRange && isAttacking)
         {
@@ -172,11 +174,20 @@ public class Units : GamePieces
     IEnumerator Attack(GameObject target)
     {
         Debug.Log("attacking " + target.name);
+        int targetHealth;
         while (target != null)
         {
             if (target.GetComponentInParent<Units>() != null)
             {
-                target.GetComponentInParent<Units>().TakeDamage(unit.damage);
+                targetHealth = target.GetComponentInParent<Units>().TakeDamage(unit.damage, gameObject);
+                if(targetHealth <=0)
+                {
+                    isAttacking = false;
+                    targetedObject = null;
+                    m_Agent.isStopped = false;
+                    Debug.Log("attack finished");
+                    break;
+                }
             }
             else if (target.GetComponent<Structures>() != null)
             {
@@ -197,10 +208,11 @@ public class Units : GamePieces
         }
         isAttacking = false;
         targetedObject = null;
+        m_Agent.isStopped = false;
         Debug.Log("attack finished");
     }
 
-    void TakeDamage(int damage)
+    int TakeDamage(int damage, GameObject source)
     {
         //Take damage from some external source.
         health -= damage;
@@ -213,6 +225,13 @@ public class Units : GamePieces
         {
             SlayUnit();
         }
+        if(!isAttacking)
+        {
+            isAttacking=true;
+            targetedObject = source;
+        }
+
+        return health;
     }
 
     void SlayUnit()

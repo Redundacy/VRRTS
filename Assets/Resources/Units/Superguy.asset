@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a9be052c285741a9e3ec2ece4d259, type: 3}
   m_Name: Superguy
   m_EditorClassIdentifier: 
-  unitType: Superguy
+  gamePieceName: 
   maxHealth: 30
+  model: {fileID: 0}
+  team: 0
   damage: 6
-  attackRange: 1
+  attackRange: 2
+  timeBetweenAttacks: 0
   moveSpeed: 10
+  visionRange: 0
   cost: 100
+  speed: 0
   hat: {fileID: 0}
