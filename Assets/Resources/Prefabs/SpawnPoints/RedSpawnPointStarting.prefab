@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2150168827642088533}
   - component: {fileID: 5528641418537185829}
   m_Layer: 0
-  m_Name: EnemySpawnPointStarting
+  m_Name: RedSpawnPointStarting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
