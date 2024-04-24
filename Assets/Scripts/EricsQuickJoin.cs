@@ -51,6 +51,11 @@ public class EricsQuickJoin : NetworkBehaviour
 		await AuthenticationService.Instance.SignInAnonymouslyAsync(); // change when stretch goal
 	}
 
+	public void Start()
+	{
+		TryFindMatch();
+	}
+
 	public async void TryFindMatch()
 	{
 		DontDestroyOnLoad(this);
@@ -214,8 +219,8 @@ public class EricsQuickJoin : NetworkBehaviour
 		//Debug.Log(obj[currentPlayers].Player.Id);
 		if (currentPlayers == 1)
         {
-			//NetworkManager.Singleton.SceneManager.LoadScene("Game", LoadSceneMode.Single);
-        }
+			NetworkManager.Singleton.SceneManager.LoadScene("GameLoopFunctionality", LoadSceneMode.Single);
+		}
 		if (currentPlayers < maxPlayers)
 		{
 			currentPlayers++;
@@ -223,13 +228,13 @@ public class EricsQuickJoin : NetworkBehaviour
             {
 				await LockLobby();
 				FindObjectOfType<GameManager>().gameObject.SetActive(false);
-				SpawnGameManagerServerRpc();
+				SpawnGameManagerClientRpc();
 			}
 		}
 	}
 
-	[ServerRpc(RequireOwnership = false)]
-	private void SpawnGameManagerServerRpc()
+	[ClientRpc]
+	private void SpawnGameManagerClientRpc()
 	{
 		var spawn = Instantiate(networkGameManager);
 		spawn.Spawn();
@@ -260,7 +265,7 @@ public class EricsQuickJoin : NetworkBehaviour
 		while (!heartbeatSource.IsCancellationRequested && currentLobby != null)
 		{
 			await Lobbies.Instance.SendHeartbeatPingAsync(currentLobby.Id);
-			await Task.Delay(9000); // change this
+			await Task.Delay(15000); // change this
 		}
 	}
 
