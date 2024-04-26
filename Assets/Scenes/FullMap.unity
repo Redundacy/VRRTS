@@ -13282,10 +13282,11 @@ MonoBehaviour:
   playerInfo: {fileID: 209416451}
   UnitPrefab: {fileID: 6704020865073524908, guid: a6ef65ac4e0f7e9408a4fef987883330,
     type: 3}
-  playerCommandTowerPrefab: {fileID: 0}
+  playerCommandTowerPrefab: {fileID: 8905769749532466657, guid: 0f585ab5b1a99c444a886db2fae93ca6,
+    type: 3}
   enemyCommandTowerPrefab: {fileID: 0}
-  startingUnitsData: {fileID: 0}
-  playerCommandTowerSpawnLocation: {fileID: 0}
+  startingUnitsData: {fileID: 11400000, guid: 327060ef0709020448d6096905703d88, type: 2}
+  playerCommandTowerSpawnLocation: {fileID: 735657589}
   enemyCommandTowerSpawnLocation: {fileID: 0}
 --- !u!4 &1638307099
 Transform:
