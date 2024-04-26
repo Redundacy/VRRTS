@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     List<PlayerSpawnPointsStarting> playerSpawnPointsStarting;
     List<EnemySpawnPointsStarting> enemySpawnPointsStarting;
 
+    [SerializeField] GameObject opponentBrainObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +66,7 @@ public class GameManager : MonoBehaviour
         //TEST: Spawn in AllyCommandTower?
         Instantiate(playerCommandTowerPrefab, playerCommandTowerSpawnLocation.transform.position, Quaternion.identity);
         //TEST: Spawn in EnemyCommandTower?
-        Instantiate(enemyCommandTowerPrefab, enemyCommandTowerSpawnLocation.transform.position, Quaternion.identity);
+        //Instantiate(enemyCommandTowerPrefab, enemyCommandTowerSpawnLocation.transform.position, Quaternion.identity);
         //TEST: Give player and enemy starting resources?
         playerResources = playerStartingResources;
         enemyResources = enemyStartingResources;
@@ -80,6 +82,7 @@ public class GameManager : MonoBehaviour
         }
         //Start playing music? (POLISH)
         //Activate enemy AI? (Maybe not doing? Instead we make it a two player experience?)
+        opponentBrainObject.GetComponent<OpponentBrain>().ActivateAI();
     }
 
     public void EndTheGame(bool wonTheGame)
