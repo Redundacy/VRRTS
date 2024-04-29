@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571337, b: 0.3069219, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9443,12 +9443,12 @@ PrefabInstance:
     - target: {fileID: 2150168827642088533, guid: ff1be6dadb4e6734aadb861c197ae508,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 2150168827642088533, guid: ff1be6dadb4e6734aadb861c197ae508,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 2150168827642088533, guid: ff1be6dadb4e6734aadb861c197ae508,
         type: 3}
@@ -11001,12 +11001,12 @@ PrefabInstance:
     - target: {fileID: 2150168827642088533, guid: ff1be6dadb4e6734aadb861c197ae508,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 2150168827642088533, guid: ff1be6dadb4e6734aadb861c197ae508,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 2150168827642088533, guid: ff1be6dadb4e6734aadb861c197ae508,
         type: 3}
@@ -13284,10 +13284,11 @@ MonoBehaviour:
     type: 3}
   playerCommandTowerPrefab: {fileID: 8905769749532466657, guid: 0f585ab5b1a99c444a886db2fae93ca6,
     type: 3}
-  enemyCommandTowerPrefab: {fileID: 0}
+  enemyCommandTowerPrefab: {fileID: 8905769749532466657, guid: 93ceff462a65845568a67c5dd77dff3c,
+    type: 3}
   startingUnitsData: {fileID: 11400000, guid: 327060ef0709020448d6096905703d88, type: 2}
-  playerCommandTowerSpawnLocation: {fileID: 735657589}
-  enemyCommandTowerSpawnLocation: {fileID: 0}
+  playerCommandTowerSpawnLocation: {fileID: 2067259247}
+  enemyCommandTowerSpawnLocation: {fileID: 735657589}
 --- !u!4 &1638307099
 Transform:
   m_ObjectHideFlags: 0
