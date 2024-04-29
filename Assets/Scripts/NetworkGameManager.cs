@@ -46,10 +46,17 @@ public class NetworkGameManager : NetworkBehaviour
 
     public void RequestMakeGuy(string team, UnitData boughtUnit, Vector3 spawnPoint)
     {
+        if(IsClient)
+        {
+            MakeGuyServerRpc(playersInGame[1], "EnemyTeam", boughtUnit.name, spawnPoint);
+        } else
+        {
+            MakeGuyServerRpc(playersInGame[0], team, boughtUnit.name, spawnPoint);
+        }
         //if (playerResources >= boughtUnit.cost)
         //{
         //    playerResources -= boughtUnit.cost;
-            MakeGuyServerRpc(OwnerClientId, team, boughtUnit.name, spawnPoint);
+            
         //    playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
         //}
     }

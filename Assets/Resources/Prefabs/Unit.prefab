@@ -308,6 +308,7 @@ MonoBehaviour:
     m_Bits: 128
   healthBarText: {fileID: 4434045648866028103}
   healthBar: {fileID: 4450356965465560925}
+  EnemyColor: {fileID: 2100000, guid: 968f90970fb064a4c863b08d94838d50, type: 2}
 --- !u!1001 &2339134134050582348
 PrefabInstance:
   m_ObjectHideFlags: 0

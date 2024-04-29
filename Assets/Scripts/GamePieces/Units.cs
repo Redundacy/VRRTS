@@ -32,6 +32,8 @@ public class Units : GamePieces
     public TextMeshProUGUI healthBarText;
     public Canvas healthBar;
 
+    public Material EnemyColor;
+
     //overhead text
     //public TextMeshProUGUI selectedText; //Unit text needs to look at camera otherwse its weird.
     // Start is called before the first frame update
@@ -60,7 +62,10 @@ public class Units : GamePieces
     {
         health = unit.maxHealth;
         if(unit.GetTeam() == GamePieceData.Team.EnemyTeam)
-        gameObject.GetComponentInChildren<Material>().color = Color.blue;
+        {
+            gameObject.GetComponentInChildren<MeshRenderer>().material = EnemyColor;
+        }
+        
     }
 
     // Update is called once per frame
