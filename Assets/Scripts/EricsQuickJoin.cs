@@ -53,7 +53,7 @@ public class EricsQuickJoin : NetworkBehaviour
 
 	public void Start()
 	{
-		TryFindMatch();
+		//TryFindMatch();
 	}
 
 	public async void TryFindMatch()
