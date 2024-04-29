@@ -236,7 +236,7 @@ public class EricsQuickJoin : NetworkBehaviour
 			if (currentPlayers == maxPlayers)
             {
 				await LockLobby();
-				FindObjectOfType<GameManager>().gameObject.SetActive(false);
+				//FindObjectOfType<GameManager>().gameObject.SetActive(false);
 				SpawnGameManagerClientRpc();
 			}
 		}

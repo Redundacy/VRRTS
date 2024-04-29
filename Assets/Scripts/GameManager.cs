@@ -99,6 +99,11 @@ public class GameManager : MonoBehaviour
 
     public void RequestMakeGuy(string team, UnitData boughtUnit, Vector3 spawnPoint)
     {
+        if(FindObjectOfType<NetworkGameManager>() != null)
+        {
+            FindObjectOfType<NetworkGameManager>().RequestMakeGuy(team, boughtUnit, spawnPoint);
+            return;
+        } 
         if(playerResources>= boughtUnit.cost)
         {
             playerResources -= boughtUnit.cost;
