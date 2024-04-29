@@ -15,9 +15,12 @@ public class NetworkGameManager : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         SpawnPlayerServerRpc(NetworkManager.Singleton.LocalClientId);
-        foreach(ulong player in NetworkManager.Singleton.ConnectedClientsIds)
+        if(IsHost)
         {
-            playersInGame.Add(player);
+            foreach (ulong player in NetworkManager.Singleton.ConnectedClientsIds)
+            {
+                playersInGame.Add(player);
+            }
         }
     }
 
@@ -46,18 +49,19 @@ public class NetworkGameManager : NetworkBehaviour
         //if (playerResources >= boughtUnit.cost)
         //{
         //    playerResources -= boughtUnit.cost;
-            MakeGuyServerRpc(OwnerClientId, team/*, boughtUnit*/, spawnPoint);
+            MakeGuyServerRpc(OwnerClientId, team, boughtUnit.name, spawnPoint);
         //    playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
         //}
     }
 
     [ServerRpc(RequireOwnership =false)]
-    private void MakeGuyServerRpc(ulong playerId, string team/*, UnitData boughtUnit*/, Vector3 spawnPoint)
+    private void MakeGuyServerRpc(ulong playerId, string team, string boughtUnit, Vector3 spawnPoint)
     {
         NetworkObject createdGuy = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
         createdGuy.SpawnWithOwnership(playerId);
-        //boughtUnit.SetTeam(team);
-        //createdGuy.GetComponent<Units>().unit = boughtUnit;
-        //createdGuy.GetComponent<Units>().InitializeData();
+        UnitData foundData = Resources.Load<UnitData>($"Units/{boughtUnit}");
+        foundData.SetTeam(team);
+        createdGuy.GetComponent<Units>().unit = foundData;
+        createdGuy.GetComponent<Units>().InitializeData();
     }
 }

@@ -59,6 +59,8 @@ public class Units : GamePieces
     public void InitializeData()
     {
         health = unit.maxHealth;
+        if(unit.GetTeam() == GamePieceData.Team.EnemyTeam)
+        gameObject.GetComponentInChildren<Material>().color = Color.blue;
     }
 
     // Update is called once per frame

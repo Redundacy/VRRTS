@@ -29,10 +29,10 @@ public class GuyMaker : MonoBehaviour
         {
             if(showcaseUnit != null)
             {
-                GameObject.Find("GameManager").GetComponent<GameManager>().RequestMakeGuy("AlliedUnit", showcaseUnit.unit, collision.contacts[0].point);
+                GameObject.Find("GameManager").GetComponent<GameManager>().RequestMakeGuy("AlliedTeam", showcaseUnit.unit, collision.contacts[0].point);
             } else if (showcaseStructure != null)
             {
-                GameObject.Find("GameManager").GetComponent<GameManager>().RequestMakeStructure("AlliedUnit", showcaseStructure.structure, collision.contacts[0].point);
+                GameObject.Find("GameManager").GetComponent<GameManager>().RequestMakeStructure("AlliedTeam", showcaseStructure.structure, collision.contacts[0].point);
             }
             Destroy(gameObject);
         }
