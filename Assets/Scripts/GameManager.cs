@@ -59,19 +59,20 @@ public class GameManager : MonoBehaviour
     //Called when the player presses the Start Game button, instantiates all the necessary gameplay stuff. Potentially want different start game functions for different maps?
     public void StartTheGame()
     {
+        //TEST: Spawn in AllyCommandTower?
+        Instantiate(playerCommandTowerPrefab, playerCommandTowerSpawnLocation.transform.position, Quaternion.identity);
+        //TEST: Spawn in EnemyCommandTower?
+        Instantiate(enemyCommandTowerPrefab, enemyCommandTowerSpawnLocation.transform.position, Quaternion.identity);
+        //TEST: Give player and enemy starting resources?
+        playerResources = playerStartingResources;
+        enemyResources = enemyStartingResources;
+
         playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
         List<GameObject> structures = new List<GameObject>(GameObject.FindGameObjectsWithTag("Structure"));
         playerInfo.transform.Find("Structure Count").GetComponent<TMP_Text>().text = structures.FindAll((GameObject obj) => obj.GetComponent<Structures>().structure.GetTeamString() == "AlliedTeam").Count.ToString();
 
-        //TEST: Spawn in AllyCommandTower?
-        Instantiate(playerCommandTowerPrefab, playerCommandTowerSpawnLocation.transform.position, Quaternion.identity);
-        //TEST: Spawn in EnemyCommandTower?
-        //Instantiate(enemyCommandTowerPrefab, enemyCommandTowerSpawnLocation.transform.position, Quaternion.identity);
-        //TEST: Give player and enemy starting resources?
-        playerResources = playerStartingResources;
-        enemyResources = enemyStartingResources;
         //TEST: Instantiate starting units and structures for both players?
-        foreach(PlayerSpawnPointsStarting spawnPoint in playerSpawnPointsStarting)
+        foreach (PlayerSpawnPointsStarting spawnPoint in playerSpawnPointsStarting)
         {
             RequestMakeGuy("AlliedTeam", startingUnitsData, spawnPoint.gameObject.transform.position);
         }
