@@ -107,9 +107,9 @@ public class GameManager : MonoBehaviour
         {
             playerResources -= boughtUnit.cost;
             GameObject createdGuy = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
-            boughtUnit.SetTeam(team);
             createdGuy.GetComponent<Units>().unit = boughtUnit;
             createdGuy.GetComponent<Units>().InitializeData();
+            boughtUnit.SetTeam(team);
             playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
         }
     }
@@ -120,9 +120,9 @@ public class GameManager : MonoBehaviour
         {
             playerResources -= boughtStructure.cost;
             GameObject createdGuy = Instantiate(boughtStructure.model, buildPoint, new Quaternion());
-            boughtStructure.SetTeam(team);
             createdGuy.GetComponent<Structures>().structure = boughtStructure;
             createdGuy.GetComponent<Structures>().InitializeData();
+            boughtStructure.SetTeam(team);
             playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
         }
     }
