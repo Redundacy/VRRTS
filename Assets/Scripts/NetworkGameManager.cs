@@ -48,10 +48,10 @@ public class NetworkGameManager : NetworkBehaviour
     {
         if(IsClient)
         {
-            MakeGuyServerRpc(playersInGame[1], "EnemyTeam", boughtUnit.name, spawnPoint);
+            MakeGuyServerRpc(1, "EnemyTeam", boughtUnit.name, spawnPoint);
         } else
         {
-            MakeGuyServerRpc(playersInGame[0], team, boughtUnit.name, spawnPoint);
+            MakeGuyServerRpc(OwnerClientId, team, boughtUnit.name, spawnPoint);
         }
         //if (playerResources >= boughtUnit.cost)
         //{
