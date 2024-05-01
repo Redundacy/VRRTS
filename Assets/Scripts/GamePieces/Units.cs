@@ -24,6 +24,16 @@ public class Units : GamePieces
     bool isMoving;
     bool movingToAttack;
 
+    public enum Team
+    {
+        AlliedTeam,
+        EnemyTeam,
+        Hostile,
+        Neutral
+    }
+
+    Team team;
+
     //The nav mesh agent.
     NavMeshAgent m_Agent;
 
@@ -211,6 +221,30 @@ public class Units : GamePieces
         targetedObject = null;
         m_Agent.isStopped = false;
         Debug.Log("attack finished");
+    }
+
+    public void SetTeam(string teamToSet)
+    {
+        switch (teamToSet)
+        {
+            case "AlliedTeam":
+                team = Team.AlliedTeam;
+                break;
+            case "EnemyTeam":
+                team = Team.EnemyTeam;
+                break;
+            case "Hostile":
+                team = Team.Hostile;
+                break;
+            case "Neutral":
+                team = Team.Neutral;
+                break;
+        }
+    }
+
+    public string GetTeamString()
+    {
+        return team.ToString();
     }
 
     int TakeDamage(int damage, GameObject source)

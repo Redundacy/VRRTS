@@ -13,6 +13,16 @@ public class Structures : GamePieces
     public TextMeshProUGUI healthBarText;
     public Canvas healthBar;
 
+    public enum Team
+    {
+        AlliedTeam,
+        EnemyTeam,
+        Hostile,
+        Neutral
+    }
+
+    Team team;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +57,30 @@ public class Structures : GamePieces
         {
             DestroyStructure();
         }
+    }
+
+    public void SetTeam(string teamToSet)
+    {
+        switch (teamToSet)
+        {
+            case "AlliedTeam":
+                team = Team.AlliedTeam;
+                break;
+            case "EnemyTeam":
+                team = Team.EnemyTeam;
+                break;
+            case "Hostile":
+                team = Team.Hostile;
+                break;
+            case "Neutral":
+                team = Team.Neutral;
+                break;
+        }
+    }
+
+    public string GetTeamString()
+    {
+        return team.ToString();
     }
 
     void DestroyStructure()

@@ -85,7 +85,7 @@ public class PlayerActions : MonoBehaviour
 
                 if(mysteryShopper.layer == 7) //unit
                 {
-                    if(mysteryShopper.GetComponentInParent<Units>().unit.GetTeamString() == "AlliedTeam")
+                    if(mysteryShopper.GetComponentInParent<Units>().GetTeamString() == "AlliedTeam")
                     {
                         mysteryShopper.GetComponentInParent<Units>().ToggleSelection();
                         Debug.Log("selected " + mysteryShopper.GetComponentInParent<Units>());
@@ -95,7 +95,7 @@ public class PlayerActions : MonoBehaviour
                     }
                 } else if (mysteryShopper.layer == 6)
                 {
-                    if(mysteryShopper.GetComponent<Structures>() != null && mysteryShopper.GetComponent<Structures>().structure.GetTeamString() == "AlliedTeam")
+                    if(mysteryShopper.GetComponent<Structures>() != null && mysteryShopper.GetComponent<Structures>().GetTeamString() == "AlliedTeam")
                     {
                         // repair????
                     } else
