@@ -87,11 +87,13 @@ public class NetworkGameManager : NetworkBehaviour
     [ClientRpc]
     private void InitGuyClientRpc(string boughtUnit, string team)
     {
+        Debug.Log("is this running");
         UnitData foundData = Resources.Load<UnitData>($"Units/{boughtUnit}");
         foundData.SetTeam(team);//replace later
         Units[] allUnits = GameObject.FindObjectsOfType<Units>();
         Units ourGuy = allUnits[allUnits.Length - 1];
         ourGuy.unit = foundData;
+        Debug.Log("is this running " + ourGuy.unit.ToString());
         ourGuy.InitializeData();
     }
 }
