@@ -49,10 +49,10 @@ public class NetworkGameManager : NetworkBehaviour
     {
         if(IsClient)
         {
-            MakeGuyClientRpc(1, "EnemyTeam", boughtUnit.name, spawnPoint);
+            MakeGuyServerRpc(1, "EnemyTeam", boughtUnit.name, spawnPoint);
         } else
         {
-            MakeGuyClientRpc(OwnerClientId, team, boughtUnit.name, spawnPoint);
+            MakeGuyServerRpc(OwnerClientId, team, boughtUnit.name, spawnPoint);
         }
         //if (playerResources >= boughtUnit.cost)
         //{
@@ -62,8 +62,8 @@ public class NetworkGameManager : NetworkBehaviour
         //}
     }
 
-    [ClientRpc]
-    private void MakeGuyClientRpc(ulong playerId, string team, string boughtUnit, Vector3 spawnPoint)
+    [ServerRpc]
+    private void MakeGuyServerRpc(ulong playerId, string team, string boughtUnit, Vector3 spawnPoint)
     {
         UnitData foundData = Resources.Load<UnitData>($"Units/{boughtUnit}");
         //foreach (ulong player in playersInGame)
@@ -72,10 +72,7 @@ public class NetworkGameManager : NetworkBehaviour
         //}
         if (resourcesPerPlayer[playersInGame.IndexOf(playerId)] >= foundData.cost)
         {
-            if (IsHost)
-            {
-                resourcesPerPlayer[playersInGame.IndexOf(playerId)] -= foundData.cost;
-            }
+            resourcesPerPlayer[playersInGame.IndexOf(playerId)] -= foundData.cost;
             Debug.Log("check paid for");
         }
         if(playerId == playersInGame[0])
@@ -83,7 +80,7 @@ public class NetworkGameManager : NetworkBehaviour
             //allied team
             NetworkObject createdGuy = Instantiate(AlliedUnitPrefab, spawnPoint, new Quaternion());
             createdGuy.SpawnWithOwnership(playerId);
-            foundData.SetTeam(team);
+            foundData.SetTeam("AlliedTeam");
             createdGuy.GetComponent<Units>().unit = foundData;
             createdGuy.GetComponent<Units>().InitializeData();
         } else if (playerId == playersInGame[1])
@@ -91,7 +88,7 @@ public class NetworkGameManager : NetworkBehaviour
             //enemy team
             NetworkObject createdGuy = Instantiate(EnemyUnitPrefab, spawnPoint, new Quaternion());
             createdGuy.SpawnWithOwnership(playerId);
-            foundData.SetTeam(team);
+            foundData.SetTeam("EnemyTeam");
             createdGuy.GetComponent<Units>().unit = foundData;
             createdGuy.GetComponent<Units>().InitializeData();
         }
