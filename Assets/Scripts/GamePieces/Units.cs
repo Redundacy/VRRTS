@@ -42,6 +42,7 @@ public class Units : GamePieces
         if(unit != null)
         {
             health = unit.maxHealth;
+            healthBarText.text = "Health: " + health + "/" + unit.maxHealth;
         }
         
         m_Agent= GetComponent<NavMeshAgent>();
@@ -49,7 +50,6 @@ public class Units : GamePieces
         PlayerActions.MoveSelectedUnits += MoveToLocation;
         PlayerActions.TryAttackObject += AttackTarget;
 
-        healthBarText.text = "Health: " + health + "/" + unit.maxHealth;
     }
 
     private void OnDestroy()
@@ -61,7 +61,8 @@ public class Units : GamePieces
     public void InitializeData()
     {
         health = unit.maxHealth;
-        if(unit.GetTeam() == GamePieceData.Team.EnemyTeam)
+        healthBarText.text = "Health: " + health + "/" + unit.maxHealth;
+        if (unit.GetTeam() == GamePieceData.Team.EnemyTeam)
         {
             gameObject.GetComponentInChildren<MeshRenderer>().material = EnemyColor;
         }
