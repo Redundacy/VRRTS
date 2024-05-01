@@ -13,7 +13,7 @@ public class NetworkGameManager : NetworkBehaviour
     [SerializeField] private NetworkList<int> resourcesPerPlayer = new NetworkList<int>();
 
     public NetworkObject UnitPrefab;
-    private NetworkObject createdGuy;
+    private NetworkVariable<NetworkObject> createdGuy;
 
     public override void OnNetworkSpawn()
     {
@@ -74,9 +74,14 @@ public class NetworkGameManager : NetworkBehaviour
         {
             resourcesPerPlayer[playersInGame.IndexOf(playerId)] -= foundData.cost;
             Debug.Log("check paid for");
+        } else
+        {
+            Debug.Log("not enough money");
+            return;
         }
-        createdGuy = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
-        createdGuy.SpawnWithOwnership(playerId);
+        
+        createdGuy.Value = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
+        createdGuy.Value.SpawnWithOwnership(playerId);
         InitGuyClientRpc(boughtUnit, team);
     }
 
@@ -84,8 +89,8 @@ public class NetworkGameManager : NetworkBehaviour
     private void InitGuyClientRpc(string boughtUnit, string team)
     {
         UnitData foundData = Resources.Load<UnitData>($"Units/{boughtUnit}");
-        foundData.SetTeam("AlliedTeam");
-        createdGuy.GetComponent<Units>().unit = foundData;
-        createdGuy.GetComponent<Units>().InitializeData();
+        foundData.SetTeam(team);
+        createdGuy.Value.GetComponent<Units>().unit = foundData;
+        createdGuy.Value.GetComponent<Units>().InitializeData();
     }
 }
