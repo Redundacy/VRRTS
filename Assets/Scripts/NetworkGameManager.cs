@@ -13,7 +13,7 @@ public class NetworkGameManager : NetworkBehaviour
     [SerializeField] private NetworkList<int> resourcesPerPlayer = new NetworkList<int>();
 
     public NetworkObject UnitPrefab;
-    private NetworkVariable<NetworkObject> createdGuy;
+    private NetworkVariable<NetworkObject> createdGuy = new();
 
     public override void OnNetworkSpawn()
     {
