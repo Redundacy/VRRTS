@@ -18,14 +18,6 @@ public class NetworkGameManager : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         SpawnPlayerServerRpc(NetworkManager.Singleton.LocalClientId);
-        if(IsHost)
-        {
-            foreach (ulong player in NetworkManager.Singleton.ConnectedClientsIds)
-            {
-                playersInGame.Add(player);
-                resourcesPerPlayer.Add(100);
-            }
-        }
     }
 
 
@@ -34,7 +26,11 @@ public class NetworkGameManager : NetworkBehaviour
     {
         var spawn = Instantiate(playerPrefab);
         spawn.SpawnWithOwnership(playerId);
-        Debug.Log(NetworkManager.Singleton.ConnectedClientsIds.Count);
+        if(!playersInGame.Contains(playerId))
+        {
+            playersInGame.Add(playerId);
+            resourcesPerPlayer.Add(100);
+        }
     }
 
     // Start is called before the first frame update
@@ -70,10 +66,10 @@ public class NetworkGameManager : NetworkBehaviour
     private void MakeGuyClientRpc(ulong playerId, string team, string boughtUnit, Vector3 spawnPoint)
     {
         UnitData foundData = Resources.Load<UnitData>($"Units/{boughtUnit}");
-        foreach (ulong player in playersInGame)
-        {
-            Debug.Log("player " + player);
-        }
+        //foreach (ulong player in playersInGame)
+        //{
+        //    Debug.Log("player " + player);
+        //}
         if (resourcesPerPlayer[playersInGame.IndexOf(playerId)] >= foundData.cost)
         {
             if (IsHost)
