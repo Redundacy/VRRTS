@@ -62,7 +62,7 @@ public class NetworkGameManager : NetworkBehaviour
         //}
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership =false)]
     private void MakeGuyServerRpc(ulong playerId, string team, string boughtUnit, Vector3 spawnPoint)
     {
         UnitData foundData = Resources.Load<UnitData>($"Units/{boughtUnit}");
