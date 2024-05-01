@@ -34,6 +34,7 @@ public class NetworkGameManager : NetworkBehaviour
     {
         var spawn = Instantiate(playerPrefab);
         spawn.SpawnWithOwnership(playerId);
+        Debug.Log(NetworkManager.Singleton.ConnectedClientsIds.Count);
     }
 
     // Start is called before the first frame update
