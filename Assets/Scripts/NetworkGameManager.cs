@@ -69,6 +69,10 @@ public class NetworkGameManager : NetworkBehaviour
     private void MakeGuyClientRpc(ulong playerId, string team, string boughtUnit, Vector3 spawnPoint)
     {
         UnitData foundData = Resources.Load<UnitData>($"Units/{boughtUnit}");
+        foreach (ulong player in playersInGame)
+        {
+            Debug.Log("player " + player);
+        }
         if (resourcesPerPlayer[playersInGame.IndexOf(playerId)] >= foundData.cost)
         {
             if (IsHost)
