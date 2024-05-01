@@ -13,7 +13,6 @@ public class NetworkGameManager : NetworkBehaviour
     [SerializeField] private NetworkList<int> resourcesPerPlayer = new NetworkList<int>();
 
     public NetworkObject UnitPrefab;
-    private NetworkVariable<NetworkObject> createdGuy = new();
 
     public override void OnNetworkSpawn()
     {
@@ -80,8 +79,8 @@ public class NetworkGameManager : NetworkBehaviour
             return;
         }
         
-        createdGuy.Value = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
-        createdGuy.Value.SpawnWithOwnership(playerId);
+        NetworkObject createdGuy = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
+        createdGuy.SpawnWithOwnership(playerId);
         InitGuyClientRpc(boughtUnit, team);
     }
 
@@ -89,8 +88,10 @@ public class NetworkGameManager : NetworkBehaviour
     private void InitGuyClientRpc(string boughtUnit, string team)
     {
         UnitData foundData = Resources.Load<UnitData>($"Units/{boughtUnit}");
-        foundData.SetTeam(team);
-        createdGuy.Value.GetComponent<Units>().unit = foundData;
-        createdGuy.Value.GetComponent<Units>().InitializeData();
+        foundData.SetTeam(team);//replace later
+        Units[] allUnits = GameObject.FindObjectsOfType<Units>();
+        Units ourGuy = allUnits[allUnits.Length - 1];
+        ourGuy.unit = foundData;
+        ourGuy.InitializeData();
     }
 }
