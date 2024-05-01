@@ -12,8 +12,8 @@ public class NetworkGameManager : NetworkBehaviour
     [SerializeField] private NetworkList<ulong> playersInGame = new NetworkList<ulong>();
     [SerializeField] private NetworkList<int> resourcesPerPlayer = new NetworkList<int>();
 
-    public NetworkObject AlliedUnitPrefab;
-    public NetworkObject EnemyUnitPrefab;
+    public NetworkObject UnitPrefab;
+    public NetworkObject createdGuy;
 
     public override void OnNetworkSpawn()
     {
@@ -52,7 +52,7 @@ public class NetworkGameManager : NetworkBehaviour
             MakeGuyServerRpc(1, "EnemyTeam", boughtUnit.name, spawnPoint);
         } else
         {
-            MakeGuyServerRpc(0, team, boughtUnit.name, spawnPoint);
+            MakeGuyServerRpc(0, "AlliedTeam", boughtUnit.name, spawnPoint);
         }
         //if (playerResources >= boughtUnit.cost)
         //{
@@ -75,22 +75,17 @@ public class NetworkGameManager : NetworkBehaviour
             resourcesPerPlayer[playersInGame.IndexOf(playerId)] -= foundData.cost;
             Debug.Log("check paid for");
         }
-        if(playerId == playersInGame[0])
-        {
-            //allied team
-            NetworkObject createdGuy = Instantiate(AlliedUnitPrefab, spawnPoint, new Quaternion());
-            createdGuy.SpawnWithOwnership(playerId);
-            foundData.SetTeam("AlliedTeam");
-            createdGuy.GetComponent<Units>().unit = foundData;
-            createdGuy.GetComponent<Units>().InitializeData();
-        } else if (playerId == playersInGame[1])
-        {
-            //enemy team
-            NetworkObject createdGuy = Instantiate(EnemyUnitPrefab, spawnPoint, new Quaternion());
-            createdGuy.SpawnWithOwnership(playerId);
-            foundData.SetTeam("EnemyTeam");
-            createdGuy.GetComponent<Units>().unit = foundData;
-            createdGuy.GetComponent<Units>().InitializeData();
-        }
+        createdGuy = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
+        createdGuy.SpawnWithOwnership(playerId);
+        InitGuyClientRpc(boughtUnit, team);
+    }
+
+    [ClientRpc]
+    private void InitGuyClientRpc(string boughtUnit, string team)
+    {
+        UnitData foundData = Resources.Load<UnitData>($"Units/{boughtUnit}");
+        foundData.SetTeam("AlliedTeam");
+        createdGuy.GetComponent<Units>().unit = foundData;
+        createdGuy.GetComponent<Units>().InitializeData();
     }
 }
