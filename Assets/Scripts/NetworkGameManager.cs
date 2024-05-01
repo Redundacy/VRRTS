@@ -47,12 +47,12 @@ public class NetworkGameManager : NetworkBehaviour
 
     public void RequestMakeGuy(string team, UnitData boughtUnit, Vector3 spawnPoint)
     {
-        if(IsClient)
+        if(!IsHost)
         {
             MakeGuyServerRpc(1, "EnemyTeam", boughtUnit.name, spawnPoint);
         } else
         {
-            MakeGuyServerRpc(OwnerClientId, team, boughtUnit.name, spawnPoint);
+            MakeGuyServerRpc(0, team, boughtUnit.name, spawnPoint);
         }
         //if (playerResources >= boughtUnit.cost)
         //{
