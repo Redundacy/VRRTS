@@ -309,6 +309,7 @@ MonoBehaviour:
     m_Bits: 128
   healthBarText: {fileID: 4434045648866028103}
   healthBar: {fileID: 4450356965465560925}
+  EnemyColor: {fileID: 2100000, guid: 968f90970fb064a4c863b08d94838d50, type: 2}
 --- !u!114 &-7466056327182416964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 0
+  GlobalObjectIdHash: 697615379
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0

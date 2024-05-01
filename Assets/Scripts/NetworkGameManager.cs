@@ -10,7 +10,10 @@ public class NetworkGameManager : NetworkBehaviour
     [SerializeField] private NetworkObject playerPrefab;
 
     [SerializeField] private NetworkList<ulong> playersInGame = new NetworkList<ulong>();
-    public NetworkObject UnitPrefab;
+    [SerializeField] private NetworkList<int> resourcesPerPlayer = new NetworkList<int>();
+
+    public NetworkObject AlliedUnitPrefab;
+    public NetworkObject EnemyUnitPrefab;
 
     public override void OnNetworkSpawn()
     {
@@ -20,6 +23,7 @@ public class NetworkGameManager : NetworkBehaviour
             foreach (ulong player in NetworkManager.Singleton.ConnectedClientsIds)
             {
                 playersInGame.Add(player);
+                resourcesPerPlayer.Add(100);
             }
         }
     }
@@ -48,10 +52,10 @@ public class NetworkGameManager : NetworkBehaviour
     {
         if(IsClient)
         {
-            MakeGuyServerRpc(1, "EnemyTeam", boughtUnit.name, spawnPoint);
+            MakeGuyClientRpc(1, "EnemyTeam", boughtUnit.name, spawnPoint);
         } else
         {
-            MakeGuyServerRpc(OwnerClientId, team, boughtUnit.name, spawnPoint);
+            MakeGuyClientRpc(OwnerClientId, team, boughtUnit.name, spawnPoint);
         }
         //if (playerResources >= boughtUnit.cost)
         //{
@@ -61,14 +65,34 @@ public class NetworkGameManager : NetworkBehaviour
         //}
     }
 
-    [ServerRpc(RequireOwnership =false)]
-    private void MakeGuyServerRpc(ulong playerId, string team, string boughtUnit, Vector3 spawnPoint)
+    [ClientRpc]
+    private void MakeGuyClientRpc(ulong playerId, string team, string boughtUnit, Vector3 spawnPoint)
     {
-        NetworkObject createdGuy = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
-        createdGuy.SpawnWithOwnership(playerId);
         UnitData foundData = Resources.Load<UnitData>($"Units/{boughtUnit}");
-        foundData.SetTeam(team);
-        createdGuy.GetComponent<Units>().unit = foundData;
-        createdGuy.GetComponent<Units>().InitializeData();
+        if (resourcesPerPlayer[playersInGame.IndexOf(playerId)] >= foundData.cost)
+        {
+            if (IsHost)
+            {
+                resourcesPerPlayer[playersInGame.IndexOf(playerId)] -= foundData.cost;
+            }
+            Debug.Log("check paid for");
+        }
+        if(playerId == playersInGame[0])
+        {
+            //allied team
+            NetworkObject createdGuy = Instantiate(AlliedUnitPrefab, spawnPoint, new Quaternion());
+            createdGuy.SpawnWithOwnership(playerId);
+            foundData.SetTeam(team);
+            createdGuy.GetComponent<Units>().unit = foundData;
+            createdGuy.GetComponent<Units>().InitializeData();
+        } else if (playerId == playersInGame[1])
+        {
+            //enemy team
+            NetworkObject createdGuy = Instantiate(EnemyUnitPrefab, spawnPoint, new Quaternion());
+            createdGuy.SpawnWithOwnership(playerId);
+            foundData.SetTeam(team);
+            createdGuy.GetComponent<Units>().unit = foundData;
+            createdGuy.GetComponent<Units>().InitializeData();
+        }
     }
 }
