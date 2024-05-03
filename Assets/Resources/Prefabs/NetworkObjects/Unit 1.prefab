@@ -304,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
   isSelected: 0
+  team: 0
   onlyTargetGamePieces:
     serializedVersion: 2
     m_Bits: 128

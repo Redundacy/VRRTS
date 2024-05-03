@@ -81,6 +81,8 @@ public class NetworkGameManager : NetworkBehaviour
         
         NetworkObject createdGuy = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
         createdGuy.SpawnWithOwnership(playerId);
+        createdGuy.GetComponent<Units>().unit = foundData;
+        createdGuy.GetComponent<Units>().SetTeam(team);
         InitGuyClientRpc(boughtUnit, team);
     }
 
