@@ -24,6 +24,16 @@ public class Units : GamePieces
     bool isMoving;
     bool movingToAttack;
 
+    public enum Team
+    {
+        AlliedTeam,
+        EnemyTeam,
+        Hostile,
+        Neutral
+    }
+
+    Team team;
+
     //The nav mesh agent.
     NavMeshAgent m_Agent;
 
@@ -65,7 +75,7 @@ public class Units : GamePieces
     void Update()
     {
         //I think these are gonna wanna be coroutines, for now I'm just getting the code down.
-        if (isAttacking)
+        if (movingToAttack)
         {
             if (targetedObject != null)
             {
@@ -73,7 +83,7 @@ public class Units : GamePieces
             }
             else
             {
-                isAttacking= false;
+                movingToAttack= false;
             }
         }
 
@@ -114,16 +124,17 @@ public class Units : GamePieces
         {
             foreach (Collider collider in hitColliders)
             {
-                if ((collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().unit.GetTeamString() == unit.GetTeamString()) 
+                if ((collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().unit.GetTeamString() == unit.GetTeamString())
                     || (collider.gameObject.GetComponent<Structures>() && collider.gameObject.GetComponent<Structures>().structure.GetTeamString() == unit.GetTeamString()))
                 {
                     //Do nothing
-                } else
+                }
+                else
                 {
                     //Debug.Log(collider.gameObject.GetComponentInParent<Units>().unit.GetTeamString() + " And " + unit.GetTeamString());
                     Debug.Log("Attacking " + collider.gameObject);
                     targetedObject = collider.gameObject;
-                    isAttacking = true;
+                    movingToAttack = true;
                 }
             }
         }
@@ -131,8 +142,9 @@ public class Units : GamePieces
 
     void MoveToLocation(Vector3 location)
     {
-        if (!isSelected && !isAttacking)
+        if (!isSelected && !movingToAttack)
         {
+            Debug.Log("Unit cannot move! " + isSelected + " " + movingToAttack);
             return;
         }
         //Sets nav agent destination to the targeted location.
@@ -148,7 +160,7 @@ public class Units : GamePieces
             {
                 return;
             }
-            isAttacking = true;
+            movingToAttack = true;
         }
         targetedObject = target;
         //Debug.Log("omw to " + target.name);
@@ -156,12 +168,13 @@ public class Units : GamePieces
         float distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
         //Debug.Log(distance + " and " + unit.attackRange);
 
-        if (distance < unit.attackRange && isAttacking)
+        if (distance < unit.attackRange && movingToAttack)
         {
             m_Agent.isStopped = true;
             StartCoroutine(Attack(target));
             Debug.Log("attack started");
-            isAttacking=false;
+            movingToAttack=false;
+            isAttacking = true;
         }
         else
         {
@@ -172,11 +185,20 @@ public class Units : GamePieces
     IEnumerator Attack(GameObject target)
     {
         Debug.Log("attacking " + target.name);
+        int targetHealth;
         while (target != null)
         {
             if (target.GetComponentInParent<Units>() != null)
             {
-                target.GetComponentInParent<Units>().TakeDamage(unit.damage);
+                targetHealth = target.GetComponentInParent<Units>().TakeDamage(unit.damage, gameObject);
+                if(targetHealth <=0)
+                {
+                    isAttacking = false;
+                    targetedObject = null;
+                    m_Agent.isStopped = false;
+                    Debug.Log("attack finished");
+                    break;
+                }
             }
             else if (target.GetComponent<Structures>() != null)
             {
@@ -197,10 +219,35 @@ public class Units : GamePieces
         }
         isAttacking = false;
         targetedObject = null;
+        m_Agent.isStopped = false;
         Debug.Log("attack finished");
     }
 
-    void TakeDamage(int damage)
+    public void SetTeam(string teamToSet)
+    {
+        switch (teamToSet)
+        {
+            case "AlliedTeam":
+                team = Team.AlliedTeam;
+                break;
+            case "EnemyTeam":
+                team = Team.EnemyTeam;
+                break;
+            case "Hostile":
+                team = Team.Hostile;
+                break;
+            case "Neutral":
+                team = Team.Neutral;
+                break;
+        }
+    }
+
+    public string GetTeamString()
+    {
+        return team.ToString();
+    }
+
+    int TakeDamage(int damage, GameObject source)
     {
         //Take damage from some external source.
         health -= damage;
@@ -213,6 +260,13 @@ public class Units : GamePieces
         {
             SlayUnit();
         }
+        if(!isAttacking)
+        {
+            movingToAttack=true;
+            targetedObject = source;
+        }
+
+        return health;
     }
 
     void SlayUnit()

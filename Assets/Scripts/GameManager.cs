@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     List<PlayerSpawnPointsStarting> playerSpawnPointsStarting;
     List<EnemySpawnPointsStarting> enemySpawnPointsStarting;
 
+    [SerializeField] GameObject opponentBrainObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,10 +59,6 @@ public class GameManager : MonoBehaviour
     //Called when the player presses the Start Game button, instantiates all the necessary gameplay stuff. Potentially want different start game functions for different maps?
     public void StartTheGame()
     {
-        playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
-        List<GameObject> structures = new List<GameObject>(GameObject.FindGameObjectsWithTag("Structure"));
-        playerInfo.transform.Find("Structure Count").GetComponent<TMP_Text>().text = structures.FindAll((GameObject obj) => obj.GetComponent<Structures>().structure.GetTeamString() == "AlliedTeam").Count.ToString();
-
         //TEST: Spawn in AllyCommandTower?
         Instantiate(playerCommandTowerPrefab, playerCommandTowerSpawnLocation.transform.position, Quaternion.identity);
         //TEST: Spawn in EnemyCommandTower?
@@ -68,8 +66,13 @@ public class GameManager : MonoBehaviour
         //TEST: Give player and enemy starting resources?
         playerResources = playerStartingResources;
         enemyResources = enemyStartingResources;
+
+        playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
+        List<GameObject> structures = new List<GameObject>(GameObject.FindGameObjectsWithTag("Structure"));
+        playerInfo.transform.Find("Structure Count").GetComponent<TMP_Text>().text = structures.FindAll((GameObject obj) => obj.GetComponent<Structures>().structure.GetTeamString() == "AlliedTeam").Count.ToString();
+
         //TEST: Instantiate starting units and structures for both players?
-        foreach(PlayerSpawnPointsStarting spawnPoint in playerSpawnPointsStarting)
+        foreach (PlayerSpawnPointsStarting spawnPoint in playerSpawnPointsStarting)
         {
             RequestMakeGuy("AlliedTeam", startingUnitsData, spawnPoint.gameObject.transform.position);
         }
@@ -80,6 +83,7 @@ public class GameManager : MonoBehaviour
         }
         //Start playing music? (POLISH)
         //Activate enemy AI? (Maybe not doing? Instead we make it a two player experience?)
+        opponentBrainObject.GetComponent<OpponentBrain>().ActivateAI();
     }
 
     public void EndTheGame(bool wonTheGame)
@@ -103,9 +107,9 @@ public class GameManager : MonoBehaviour
         {
             playerResources -= boughtUnit.cost;
             GameObject createdGuy = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
-            boughtUnit.SetTeam(team);
             createdGuy.GetComponent<Units>().unit = boughtUnit;
             createdGuy.GetComponent<Units>().InitializeData();
+            createdGuy.GetComponent<Units>().SetTeam(team);
             playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
         }
     }
@@ -116,9 +120,9 @@ public class GameManager : MonoBehaviour
         {
             playerResources -= boughtStructure.cost;
             GameObject createdGuy = Instantiate(boughtStructure.model, buildPoint, new Quaternion());
-            boughtStructure.SetTeam(team);
             createdGuy.GetComponent<Structures>().structure = boughtStructure;
             createdGuy.GetComponent<Structures>().InitializeData();
+            createdGuy.GetComponent<Structures>().SetTeam(team);
             playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
         }
     }

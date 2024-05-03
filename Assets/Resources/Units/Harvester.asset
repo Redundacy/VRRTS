@@ -17,10 +17,10 @@ MonoBehaviour:
   model: {fileID: 0}
   team: 0
   damage: 1
-  attackRange: 3
+  attackRange: 1
   timeBetweenAttacks: 2
   moveSpeed: 10
-  visionRange: 3
+  visionRange: 1
   cost: 10
   speed: 0
   hat: {fileID: 0}
