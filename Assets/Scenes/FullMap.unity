@@ -2034,7 +2034,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: ff1be6dadb4e6734aadb861c197ae508, type: 3}
 --- !u!4 &263694748 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2150168827642088533, guid: ff1be6dadb4e6734aadb861c197ae508,
+  m_CorrespondingSourceObject: {fileID: 2892837771710770330, guid: ff1be6dadb4e6734aadb861c197ae508,
     type: 3}
   m_PrefabInstance: {fileID: 263694747}
   m_PrefabAsset: {fileID: 0}
@@ -4429,7 +4429,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 72
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -5565,7 +5565,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: ff1be6dadb4e6734aadb861c197ae508, type: 3}
 --- !u!4 &667579047 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2150168827642088533, guid: ff1be6dadb4e6734aadb861c197ae508,
+  m_CorrespondingSourceObject: {fileID: 2892837771710770330, guid: ff1be6dadb4e6734aadb861c197ae508,
     type: 3}
   m_PrefabInstance: {fileID: 667579046}
   m_PrefabAsset: {fileID: 0}
@@ -7730,7 +7730,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: d2bbbd01c5b7a6b4bb5a1316f21fc1ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
