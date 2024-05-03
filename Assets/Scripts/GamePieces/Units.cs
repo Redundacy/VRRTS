@@ -42,6 +42,8 @@ public class Units : GamePieces
     public TextMeshProUGUI healthBarText;
     public Canvas healthBar;
 
+    public Material EnemyColor;
+
     //overhead text
     //public TextMeshProUGUI selectedText; //Unit text needs to look at camera otherwse its weird.
     // Start is called before the first frame update
@@ -50,6 +52,7 @@ public class Units : GamePieces
         if(unit != null)
         {
             health = unit.maxHealth;
+            healthBarText.text = "Health: " + health + "/" + unit.maxHealth;
         }
         
         m_Agent= GetComponent<NavMeshAgent>();
@@ -57,7 +60,6 @@ public class Units : GamePieces
         PlayerActions.MoveSelectedUnits += MoveToLocation;
         PlayerActions.TryAttackObject += AttackTarget;
 
-        healthBarText.text = "Health: " + health + "/" + unit.maxHealth;
     }
 
     private void OnDestroy()
@@ -69,6 +71,12 @@ public class Units : GamePieces
     public void InitializeData()
     {
         health = unit.maxHealth;
+        healthBarText.text = "Health: " + health + "/" + unit.maxHealth;
+        if (unit.GetTeam() == GamePieceData.Team.EnemyTeam)
+        {
+            gameObject.GetComponentInChildren<MeshRenderer>().material = EnemyColor;
+        }
+        
     }
 
     // Update is called once per frame

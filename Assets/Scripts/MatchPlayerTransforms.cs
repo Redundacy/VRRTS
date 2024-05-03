@@ -36,7 +36,7 @@ public class MatchPlayerTransforms : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsOwner)
+        if (IsOwner) //set
         {
             head.position = Camera.main.transform.position;
             head.rotation = Camera.main.transform.rotation;

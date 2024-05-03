@@ -53,7 +53,15 @@ public class EricsQuickJoin : NetworkBehaviour
 
 	public void Start()
 	{
-		TryFindMatch();
+		//TryFindMatch();
+	}
+
+	public void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.F))
+		{
+			TryFindMatch();
+		}
 	}
 
 	public async void TryFindMatch()
@@ -219,7 +227,8 @@ public class EricsQuickJoin : NetworkBehaviour
 		//Debug.Log(obj[currentPlayers].Player.Id);
 		if (currentPlayers == 1)
         {
-			NetworkManager.Singleton.SceneManager.LoadScene("GameLoopFunctionality", LoadSceneMode.Single);
+			// don't reload
+			//NetworkManager.Singleton.SceneManager.LoadScene("GameLoopFunctionality", LoadSceneMode.Single);
 		}
 		if (currentPlayers < maxPlayers)
 		{
@@ -227,7 +236,7 @@ public class EricsQuickJoin : NetworkBehaviour
 			if (currentPlayers == maxPlayers)
             {
 				await LockLobby();
-				FindObjectOfType<GameManager>().gameObject.SetActive(false);
+				//FindObjectOfType<GameManager>().gameObject.SetActive(false);
 				SpawnGameManagerClientRpc();
 			}
 		}

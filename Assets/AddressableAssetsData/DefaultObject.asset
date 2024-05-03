@@ -9,18 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b56a9be052c285741a9e3ec2ece4d259, type: 3}
-  m_Name: Puncher
+  m_Script: {fileID: 11500000, guid: 3a189bb168d8d90478a09ea08c2f3d72, type: 3}
+  m_Name: DefaultObject
   m_EditorClassIdentifier: 
-  gamePieceName: Puncher
-  maxHealth: 20
-  model: {fileID: 0}
-  team: 0
-  damage: 5
-  attackRange: 1.5
-  timeBetweenAttacks: 1
-  moveSpeed: 3
-  visionRange: 3
-  cost: 25
-  speed: 0
-  hat: {fileID: 0}
+  m_AddressableAssetSettingsGuid: 67b03b6aef965ce4fac2ae7b602ba559

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a9be052c285741a9e3ec2ece4d259, type: 3}
   m_Name: Harvester
   m_EditorClassIdentifier: 
-  gamePieceName: 
+  gamePieceName: Harvester
   maxHealth: 10
   model: {fileID: 0}
   team: 0
