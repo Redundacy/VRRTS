@@ -39,7 +39,6 @@ public class GameStartButton : MonoBehaviour
         {
             //TEST: Fade the screen before doing this
             ScreenFadeOutAndIn();
-            player.transform.position = GameObject.Find("PlayerSpawnPoint").transform.position;
             //TEST: Add a start game function to the game manager.
             GameObject.Find("GameManager").GetComponent<GameManager>().StartTheGame();
             //TEST: Unfade once all is done
@@ -58,6 +57,7 @@ public class GameStartButton : MonoBehaviour
 
     void ScreenFadeIn()
     {
+        player.transform.position = GameObject.Find("PlayerSpawnLocation").transform.position;
         SteamVR_Fade.View(Color.clear, 0.5f);
     }
 }

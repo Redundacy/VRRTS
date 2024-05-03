@@ -18,6 +18,7 @@ public class ResourceEntities : GamePieces
     void Start()
     {
         health = resourceEntity.maxHealth;
+        healthBarText.text = "Health: " + health + "/" + resourceEntity.maxHealth;
     }
 
     // Update is called once per frame

@@ -24,12 +24,9 @@ public class MapObject : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void OnDestroy()
     {
-        if(Input.GetKeyDown(KeyCode.J)) //replace with harvest callbacks
-        {
-            NavMeshSurfaceManager.RequestNavMeshUpdate();
-            Destroy(gameObject);
-        }
+        NavMeshSurfaceManager.RequestNavMeshUpdate();
+        Destroy(gameObject);
     }
 }

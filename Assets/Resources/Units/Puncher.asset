@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a9be052c285741a9e3ec2ece4d259, type: 3}
   m_Name: Puncher
   m_EditorClassIdentifier: 
-  gamePieceName: 
+  gamePieceName: Puncher
   maxHealth: 20
   model: {fileID: 0}
   team: 0
   damage: 5
-  attackRange: 3
+  attackRange: 1.5
   timeBetweenAttacks: 1
   moveSpeed: 3
-  visionRange: 10
+  visionRange: 3
   cost: 25
   speed: 0
   hat: {fileID: 0}

@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a9be052c285741a9e3ec2ece4d259, type: 3}
   m_Name: Bower
   m_EditorClassIdentifier: 
-  gamePieceName: 
+  gamePieceName: Bower
   maxHealth: 15
   model: {fileID: 0}
   team: 0
   damage: 3
-  attackRange: 10
+  attackRange: 5
   timeBetweenAttacks: 5
   moveSpeed: 3
-  visionRange: 20
+  visionRange: 5
   cost: 30
   speed: 0
   hat: {fileID: 0}
