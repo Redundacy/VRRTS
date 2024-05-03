@@ -10768,6 +10768,7 @@ MonoBehaviour:
   startingUnitsData: {fileID: 0}
   playerCommandTowerSpawnLocation: {fileID: 0}
   enemyCommandTowerSpawnLocation: {fileID: 0}
+  opponentBrainObject: {fileID: 0}
 --- !u!4 &1638307099
 Transform:
   m_ObjectHideFlags: 0
