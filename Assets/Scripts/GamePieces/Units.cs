@@ -32,7 +32,7 @@ public class Units : GamePieces
         Neutral
     }
 
-    Team team;
+    [SerializeField]private Team team;
 
     //The nav mesh agent.
     NavMeshAgent m_Agent;
@@ -72,10 +72,6 @@ public class Units : GamePieces
     {
         health = unit.maxHealth;
         healthBarText.text = "Health: " + health + "/" + unit.maxHealth;
-        if (unit.GetTeam() == GamePieceData.Team.EnemyTeam)
-        {
-            gameObject.GetComponentInChildren<MeshRenderer>().material = EnemyColor;
-        }
         
     }
 
@@ -240,6 +236,7 @@ public class Units : GamePieces
                 break;
             case "EnemyTeam":
                 team = Team.EnemyTeam;
+                gameObject.GetComponentInChildren<MeshRenderer>().material = EnemyColor;
                 break;
             case "Hostile":
                 team = Team.Hostile;

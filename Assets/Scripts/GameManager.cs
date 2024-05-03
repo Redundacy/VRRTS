@@ -113,8 +113,8 @@ public class GameManager : MonoBehaviour
             playerResources -= boughtUnit.cost;
             GameObject createdGuy = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
             createdGuy.GetComponent<Units>().unit = boughtUnit;
-            createdGuy.GetComponent<Units>().InitializeData();
             createdGuy.GetComponent<Units>().SetTeam(team);
+            createdGuy.GetComponent<Units>().InitializeData();
             playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
         }
     }
