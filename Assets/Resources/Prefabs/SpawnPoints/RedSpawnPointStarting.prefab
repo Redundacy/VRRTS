@@ -11,11 +11,7 @@ GameObject:
   - component: {fileID: 360211794490080727}
   - component: {fileID: -8721066993787883542}
   m_Layer: 0
-<<<<<<<< HEAD:Assets/Resources/Prefabs/SpawnPoints/BlueSpawnPointStarting.prefab
-  m_Name: BlueSpawnPointStarting
-========
   m_Name: RedSpawnPointStarting
->>>>>>>> origin/nonmultiplayer:Assets/Resources/Prefabs/SpawnPoints/RedSpawnPointStarting.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
