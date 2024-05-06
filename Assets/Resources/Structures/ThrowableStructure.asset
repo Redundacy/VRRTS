@@ -15,7 +15,7 @@ MonoBehaviour:
   gamePieceName: ThrowableStructure
   maxHealth: 20
   model: {fileID: 3568514859393644296, guid: f053b0f7fe539124099e622287e0fd2e, type: 3}
-  team: 0
+  team: 3
   cost: 50
   destructionReward: 0
   rewardAmount: 0

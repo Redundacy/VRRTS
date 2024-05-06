@@ -237,6 +237,7 @@ public class Units : GamePieces
             case "EnemyTeam":
                 team = Team.EnemyTeam;
                 gameObject.GetComponentInChildren<MeshRenderer>().material = EnemyColor;
+
                 break;
             case "Hostile":
                 team = Team.Hostile;
