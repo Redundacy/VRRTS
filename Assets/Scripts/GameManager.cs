@@ -74,12 +74,12 @@ public class GameManager : MonoBehaviour
         //TEST: Instantiate starting units and structures for both players?
         foreach (PlayerSpawnPointsStarting spawnPoint in playerSpawnPointsStarting)
         {
-            RequestMakeGuy("AlliedTeam", startingUnitsData, spawnPoint.gameObject.transform.position);
+            RequestMakeGuyFree("AlliedTeam", startingUnitsData, spawnPoint.gameObject.transform.position);
         }
 
         foreach (EnemySpawnPointsStarting spawnPoint in enemySpawnPointsStarting)
         {
-            RequestMakeGuy("EnemyTeam", startingUnitsData, spawnPoint.gameObject.transform.position);
+            RequestMakeGuyFree("EnemyTeam", startingUnitsData, spawnPoint.gameObject.transform.position);
         }
         //Start playing music? (POLISH)
         //Activate enemy AI? (Maybe not doing? Instead we make it a two player experience?)
@@ -119,6 +119,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void RequestMakeGuyFree(string team, UnitData boughtUnit, Vector3 spawnPoint)
+    {
+        if (FindObjectOfType<NetworkGameManager>() != null)
+        {
+            FindObjectOfType<NetworkGameManager>().RequestMakeGuy(team, boughtUnit, spawnPoint);
+            return;
+        }
+        GameObject createdGuy = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
+        createdGuy.GetComponent<Units>().unit = boughtUnit;
+        createdGuy.GetComponent<Units>().SetTeam(team);
+        createdGuy.GetComponent<Units>().InitializeData();
+        playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
+    }
+
     public void RequestMakeStructure(string team, StructureData boughtStructure, Vector3 buildPoint)
     {
         if (playerResources >= boughtStructure.cost)
@@ -132,6 +146,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void RequestMakeStructureFree(string team, StructureData boughtStructure, Vector3 buildPoint)
+    {
+        GameObject createdGuy = Instantiate(boughtStructure.model, buildPoint, new Quaternion());
+        createdGuy.GetComponent<Structures>().structure = boughtStructure;
+        createdGuy.GetComponent<Structures>().InitializeData();
+        createdGuy.GetComponent<Structures>().SetTeam(team);
+        playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
+    }
+
     void FadeOutToResetGame()
     {
         SteamVR_Fade.View(Color.black, 0.5f);
@@ -141,6 +164,6 @@ public class GameManager : MonoBehaviour
     void ResetGame()
     {
         //Replace thing with either index or name of scene that is being played in.
-        //SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }

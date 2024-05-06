@@ -247,17 +247,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 409d090d8602c014d91acba714673b3a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.0746508
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 409d090d8602c014d91acba714673b3a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.636
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 409d090d8602c014d91acba714673b3a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -49.54894
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 409d090d8602c014d91acba714673b3a,
         type: 3}
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008adf1fb186e2140ac223010619d843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  structure: {fileID: 11400000, guid: 265f303c947fe9947a5903db1274b281, type: 2}
+  structure: {fileID: 11400000, guid: 52c8eb7eadaab4b36a41a9e1440d98e9, type: 2}
   healthBarText: {fileID: 5435477593159824394}
   healthBar: {fileID: 2459597304579538089}
 --- !u!114 &-6675872073364432360

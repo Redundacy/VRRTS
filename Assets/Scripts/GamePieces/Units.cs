@@ -128,8 +128,8 @@ public class Units : GamePieces
         {
             foreach (Collider collider in hitColliders)
             {
-                if ((collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().unit.GetTeamString() == unit.GetTeamString())
-                    || (collider.gameObject.GetComponent<Structures>() && collider.gameObject.GetComponent<Structures>().structure.GetTeamString() == unit.GetTeamString()))
+                if ((collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().GetTeamString() == GetTeamString())
+                    || (collider.gameObject.GetComponentInParent<Structures>() && collider.gameObject.GetComponentInParent<Structures>().GetTeamString() == GetTeamString()))
                 {
                     //Do nothing
                 }
@@ -204,12 +204,12 @@ public class Units : GamePieces
                     break;
                 }
             }
-            else if (target.GetComponent<Structures>() != null)
+            else if (target.GetComponentInParent<Structures>() != null)
             {
-                target.GetComponent<Structures>().TakeDamage(unit.damage);
+                target.GetComponentInParent<Structures>().TakeDamage(unit.damage);
 
                 //I don't think this needs to be here anymore.
-                if (target.GetComponent<Structures>() == null)
+                if (target.GetComponentInParent<Structures>() == null)
                 {
                     isAttacking = false;
                     targetedObject = null;

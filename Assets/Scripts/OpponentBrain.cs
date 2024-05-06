@@ -65,7 +65,7 @@ public class OpponentBrain : MonoBehaviour
         Debug.Log("Attempting to Spawn guy.");
         int spawnLocationIndex = Random.Range(0, numSpawnPoints);
         int unitToSpawnIndex = Random.Range(0, spawnableUnits.Count);
-        gameManager.RequestMakeGuy("EnemyTeam", spawnableUnits[unitToSpawnIndex], spawnPoints[spawnLocationIndex].gameObject.transform.position);
+        gameManager.RequestMakeGuyFree("EnemyTeam", spawnableUnits[unitToSpawnIndex], spawnPoints[spawnLocationIndex].gameObject.transform.position);
         readyToSpawnGuy = true;
     }
 
