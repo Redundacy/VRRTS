@@ -236,7 +236,10 @@ public class Units : GamePieces
                 break;
             case "EnemyTeam":
                 team = Team.EnemyTeam;
-                gameObject.GetComponentInChildren<MeshRenderer>().material = EnemyColor;
+                foreach (MeshRenderer bodyPart in transform.Find("Unit Model").GetComponentsInChildren<MeshRenderer>())
+                {
+                    bodyPart.material = EnemyColor;
+                }
                 break;
             case "Hostile":
                 team = Team.Hostile;
