@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class OpponentBrain : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class OpponentBrain : MonoBehaviour
     [SerializeField] float attackTimer;
 
     [SerializeField] int oddsToAttack;
+
+    public static event Action<Vector3> Muster;
+    public static event Action<GameObject> AttackPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,8 +68,8 @@ public class OpponentBrain : MonoBehaviour
     {
         //Find a random spawn point and randomize which unit is being spawned, then spawn that unit at that spawn point.
         Debug.Log("Attempting to Spawn guy.");
-        int spawnLocationIndex = Random.Range(0, numSpawnPoints);
-        int unitToSpawnIndex = Random.Range(0, spawnableUnits.Count);
+        int spawnLocationIndex = UnityEngine.Random.Range(0, numSpawnPoints);
+        int unitToSpawnIndex = UnityEngine.Random.Range(0, spawnableUnits.Count);
         gameManager.RequestMakeGuyFree("EnemyTeam", spawnableUnits[unitToSpawnIndex], spawnPoints[spawnLocationIndex].gameObject.transform.position);
         readyToSpawnGuy = true;
     }
@@ -73,7 +78,7 @@ public class OpponentBrain : MonoBehaviour
     {
         //If the random int is 0, the AI attacks. It attacks by sending its units towards the player base.
         Debug.Log("Attempting to attack...");
-        int attackIfZero = Random.Range(0, oddsToAttack);
+        int attackIfZero = UnityEngine.Random.Range(0, oddsToAttack);
         if (attackIfZero == 0)
         {
             Debug.Log("Attacking!!!");
