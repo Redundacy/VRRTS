@@ -398,6 +398,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 327060ef0709020448d6096905703d88,
         type: 2}
+    - target: {fileID: 6312869234881771280, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: iconPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8855263091268095984, guid: f8297e39e5b194a4fa23c6f787c73728,
+        type: 3}
     - target: {fileID: 6544014301143269919, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
         type: 3}
       propertyPath: pickupEvent.m_PersistentCalls.m_Calls.Array.size
