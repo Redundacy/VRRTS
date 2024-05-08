@@ -91,15 +91,18 @@ public class PlayerActions : MonoBehaviour
                         Debug.Log("selected " + mysteryShopper.GetComponentInParent<Units>());
                     } else
                     {
+                        Debug.Log("Attempting to attack an enemy unit");
                         TryAttackObject?.Invoke(mysteryShopper, true);
                     }
-                } else if (mysteryShopper.layer == 6)
+                } else if (mysteryShopper.layer == 6) //Structures and Objects
                 {
-                    if(mysteryShopper.GetComponent<Structures>() != null && mysteryShopper.GetComponent<Structures>().GetTeamString() == "AlliedTeam")
+                    if(mysteryShopper.GetComponentInParent<Structures>() != null && mysteryShopper.GetComponentInParent<Structures>().GetTeamString() == "AlliedTeam")
                     {
                         // repair????
+                        Debug.Log("Trying to attack an ally structure");
                     } else
                     {
+                        Debug.Log("Attempting to attack enemy structure");
                         TryAttackObject?.Invoke(mysteryShopper, true);
                     }
                 } else if (mysteryShopper.layer == 3)
