@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamePieceName: Bandit
   maxHealth: 25
-  model: {fileID: 0}
+  model: {fileID: 8003120390836327828, guid: f99036857ca8777429c2bce5756f14f0, type: 3}
   team: 1
   damage: 2
   attackRange: 1
