@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2459597304579538089}
   - component: {fileID: 7856505500278617011}
   - component: {fileID: 3703703279552945587}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 4092602758009476201}
   - component: {fileID: 5703121040423993548}
   - component: {fileID: 5435477593159824394}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HealthBarText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,15 +294,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8513424388201257645, guid: 409d090d8602c014d91acba714673b3a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -6067185528594298527, guid: 409d090d8602c014d91acba714673b3a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 968f90970fb064a4c863b08d94838d50, type: 2}
+    - target: {fileID: -3957782524123411102, guid: 409d090d8602c014d91acba714673b3a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 409d090d8602c014d91acba714673b3a,
         type: 3}
       propertyPath: m_Name
       value: EnemyCommandTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 409d090d8602c014d91acba714673b3a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 409d090d8602c014d91acba714673b3a,
         type: 3}

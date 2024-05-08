@@ -51,7 +51,7 @@ public class Structures : GamePieces
     public void TakeDamage(float damage)
     {
         health -= damage;
-        Debug.Log("Damage taken! Health: " + health);
+        Debug.Log("Structure Damage taken! Health: " + health);
         healthBarText.text = "Health: " + health + "/" + structure.maxHealth; //Kinda not a fan of just having this line here, but making a method feels silly. Idk.
         if (health <= 0)
         {
