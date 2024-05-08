@@ -182,6 +182,8 @@ public class ArmWheelHandler : MonoBehaviour
             icon.transform.localScale = new Vector3(0.5f,5,0.5f);
 
             icon.GetComponent<ShowcaseUnits>().unit = (UnitData)currentPodiumUnits[podiumIndex];
+            GameObject hat = Instantiate(icon.GetComponent<ShowcaseUnits>().unit.hat,icon.transform.Find("upperBody").Find("head").Find("hatParent"));
+
         } else
         {
             GameObject icon = Instantiate(iconPrefabs[1], cylinderRef);

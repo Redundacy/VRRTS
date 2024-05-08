@@ -72,7 +72,7 @@ public class Units : GamePieces
     {
         health = unit.maxHealth;
         healthBarText.text = "Health: " + health + "/" + unit.maxHealth;
-        
+        Instantiate(unit.hat, transform.Find("Unit Model").Find("upperBody").Find("head").Find("hatParent"));
     }
 
     // Update is called once per frame
