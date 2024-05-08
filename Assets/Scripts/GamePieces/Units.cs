@@ -43,6 +43,7 @@ public class Units : GamePieces
     public Canvas healthBar;
 
     public Material EnemyColor;
+    public Animator modelAnimator;
 
     //overhead text
     //public TextMeshProUGUI selectedText; //Unit text needs to look at camera otherwse its weird.
@@ -100,6 +101,7 @@ public class Units : GamePieces
             }
             else
             {
+                modelAnimator.SetBool("characterWalk", false);
                 isMoving = false;
             }
         }
@@ -107,6 +109,7 @@ public class Units : GamePieces
         else if(targetedObject == null)
         {
             CheckForEnemies();
+            modelAnimator.SetBool("CharacterAttack", false);
         }
         //selectedText.text = "Selected: " + isSelected;
 
@@ -154,6 +157,7 @@ public class Units : GamePieces
         }
         //Sets nav agent destination to the targeted location.
         m_Agent.destination = location;
+        modelAnimator.SetBool("characterWalk", true);
         //StopAllCoroutines(); //maybe
     }
 
@@ -179,6 +183,8 @@ public class Units : GamePieces
             StartCoroutine(Attack(target));
             Debug.Log("attack started");
             movingToAttack=false;
+            modelAnimator.SetBool("characterWalk", false);
+            modelAnimator.SetBool("CharacterAttack", true);
             isAttacking = true;
         }
         else
@@ -225,6 +231,7 @@ public class Units : GamePieces
         isAttacking = false;
         targetedObject = null;
         m_Agent.isStopped = false;
+        modelAnimator.SetBool("CharacterAttack", false);
         Debug.Log("attack finished");
     }
 
@@ -282,6 +289,13 @@ public class Units : GamePieces
     {
         //Unit dies, probably destroy it and do some stuff on death.
         Debug.Log("dead");
+        StartCoroutine(DeathAnimation());
+    }
+
+    public IEnumerator DeathAnimation()
+    {
+        modelAnimator.SetBool("characterDIE", true);
+        yield return new WaitForSeconds(3);
         Destroy(gameObject);
     }
 }
