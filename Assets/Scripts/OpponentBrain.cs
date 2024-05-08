@@ -27,6 +27,8 @@ public class OpponentBrain : MonoBehaviour
     public static event Action<Vector3> Muster;
     public static event Action<GameObject> AttackPlayer;
 
+    public static event Action MarchOnPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,21 +85,23 @@ public class OpponentBrain : MonoBehaviour
         {
             Debug.Log("Attacking!!!");
             //Find half of the enemy units and send them towards an attack point, near the enemy base likely.
-            GameObject[] allUnits = GameObject.FindGameObjectsWithTag("Unit");
-            List<GameObject> allEnemyUnits = new List<GameObject>();
-            foreach (GameObject unit in allUnits)
-            {
-                if (unit.GetComponent<Units>().unit.GetTeamString() == "EnemyTeam")
-                {
-                    allEnemyUnits.Add(unit);
-                }
-            }
-            int amountOfUnitsToAttack = allEnemyUnits.Count/2;
+            //GameObject[] allUnits = GameObject.FindGameObjectsWithTag("Unit");
+            //List<GameObject> allEnemyUnits = new List<GameObject>();
+            //foreach (GameObject unit in allUnits)
+            //{
+            //    if (unit.GetComponent<Units>().unit.GetTeamString() == "EnemyTeam")
+            //    {
+            //        allEnemyUnits.Add(unit);
+            //    }
+            //}
+            //int amountOfUnitsToAttack = allEnemyUnits.Count/2;
 
-            for (int i = 0; i < amountOfUnitsToAttack; i++)
-            {
+            //for (int i = 0; i < amountOfUnitsToAttack; i++)
+            //{
                 //Call each of these Units to move towards the attack position
-            }
+            //}
+
+            MarchOnPlayer.Invoke();
         }
         else
         {

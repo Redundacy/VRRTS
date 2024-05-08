@@ -45,6 +45,16 @@ public class Units : GamePieces
     public Material EnemyColor;
     public Animator modelAnimator;
 
+    //This SUCKS but it hopefully works
+    [SerializeField] GameObject marchingPoint0;
+    [SerializeField] GameObject marchingPoint1;
+    [SerializeField] GameObject marchingPoint2;
+    [SerializeField] GameObject marchingPoint3;
+    [SerializeField] GameObject marchingPoint4;
+    [SerializeField] GameObject marchingPoint5;
+    [SerializeField] GameObject marchingPoint6;
+    [SerializeField] GameObject playerCommandTower;
+
     //overhead text
     //public TextMeshProUGUI selectedText; //Unit text needs to look at camera otherwse its weird.
     // Start is called before the first frame update
@@ -60,12 +70,35 @@ public class Units : GamePieces
         outline = GetComponent<Outline>();
         PlayerActions.MoveSelectedUnits += MoveToLocation;
         PlayerActions.TryAttackObject += AttackTarget;
+
+        marchingPoint0 = GameObject.Find("MarchingPoint");
+        marchingPoint1 = GameObject.Find("MarchingPoint (1)");
+        marchingPoint2 = GameObject.Find("MarchingPoint (2)");
+        marchingPoint3 = GameObject.Find("MarchingPoint (3)");
+        marchingPoint4 = GameObject.Find("MarchingPoint (4)");
+        marchingPoint5 = GameObject.Find("MarchingPoint (5)");
+        marchingPoint6 = GameObject.Find("MarchingPoint (6)");
+        playerCommandTower = GameObject.Find("AllyCommandTower");
+
+        float xOffset = Random.Range(-3f, 3f);
+        float zOffset = Random.Range(-3f, 3f);
+
+        Vector3 newLocation = gameObject.transform.position;
+        newLocation.x = newLocation.x + xOffset;
+        newLocation.z = newLocation.z + zOffset;
+
+        MarchToLocation(newLocation);
     }
 
     private void OnDestroy()
     {
         PlayerActions.MoveSelectedUnits -= MoveToLocation;
         PlayerActions.TryAttackObject -= AttackTarget;
+
+        if (GetTeamString() == "EnemyTeam")
+        {
+            OpponentBrain.MarchOnPlayer -= MarchOnThePlayer;
+        }
     }
 
     public void InitializeData()
@@ -153,7 +186,16 @@ public class Units : GamePieces
         {
             Debug.Log("Unit cannot move! " + isSelected + " " + movingToAttack);
             return;
-        }
+        }   
+        
+        //Sets nav agent destination to the targeted location.
+        m_Agent.destination = location;
+        modelAnimator.SetBool("characterWalk", true);
+        //StopAllCoroutines(); //maybe
+    }
+
+    void MarchToLocation(Vector3 location)
+    {
         //Sets nav agent destination to the targeted location.
         m_Agent.destination = location;
         modelAnimator.SetBool("characterWalk", true);
@@ -247,6 +289,7 @@ public class Units : GamePieces
                 {
                     bodyPart.material = EnemyColor;
                 }
+                OpponentBrain.MarchOnPlayer += MarchOnThePlayer;
                 break;
             case "Hostile":
                 team = Team.Hostile;
@@ -260,6 +303,30 @@ public class Units : GamePieces
     public string GetTeamString()
     {
         return team.ToString();
+    }
+
+    void MarchOnThePlayer()
+    {
+        StartCoroutine(March());
+    }
+
+    IEnumerator March()
+    {
+        MarchToLocation(marchingPoint0.transform.position);
+        yield return new WaitForSeconds(5f);
+        MarchToLocation(marchingPoint1.transform.position);
+        yield return new WaitForSeconds(5f);
+        MarchToLocation(marchingPoint2.transform.position);
+        yield return new WaitForSeconds(5f);
+        MarchToLocation(marchingPoint3.transform.position);
+        yield return new WaitForSeconds(5f);
+        MarchToLocation(marchingPoint4.transform.position);
+        yield return new WaitForSeconds(5f);
+        MarchToLocation(marchingPoint5.transform.position);
+        yield return new WaitForSeconds(5f);
+        MarchToLocation(marchingPoint6.transform.position);
+        yield return new WaitForSeconds(5f);
+        AttackTarget(playerCommandTower, false);
     }
 
     int TakeDamage(int damage, GameObject source)
