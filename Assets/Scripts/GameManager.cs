@@ -5,6 +5,7 @@ using TMPro;
 using Unity.Services.Matchmaker.Models;
 using Valve.VR;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -60,9 +61,13 @@ public class GameManager : MonoBehaviour
     public void StartTheGame()
     {
         //TEST: Spawn in AllyCommandTower?
-        Instantiate(playerCommandTowerPrefab, playerCommandTowerSpawnLocation.transform.position, Quaternion.identity);
+        GameObject redCommandTower = Instantiate(playerCommandTowerPrefab, playerCommandTowerSpawnLocation.transform.position, Quaternion.identity);
         //TEST: Spawn in EnemyCommandTower?
-        Instantiate(enemyCommandTowerPrefab, enemyCommandTowerSpawnLocation.transform.position, Quaternion.identity);
+        GameObject blueCommandTower = Instantiate(enemyCommandTowerPrefab, enemyCommandTowerSpawnLocation.transform.position, Quaternion.identity);
+
+        redCommandTower.GetComponent<Structures>().SetTeam("AlliedTeam");
+        blueCommandTower.GetComponent<Structures>().SetTeam("EnemyTeam");
+
         //TEST: Give player and enemy starting resources?
         playerResources = playerStartingResources;
         enemyResources = enemyStartingResources;
