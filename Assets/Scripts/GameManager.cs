@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     List<PlayerSpawnPointsStarting> playerSpawnPointsStarting;
     List<EnemySpawnPointsStarting> enemySpawnPointsStarting;
 
+    [SerializeField] GameObject redCommandTower;
+    [SerializeField] GameObject blueCommandTower;
+
     [SerializeField] GameObject opponentBrainObject;
 
     // Start is called before the first frame update
@@ -65,8 +68,8 @@ public class GameManager : MonoBehaviour
         //TEST: Spawn in EnemyCommandTower?
         //GameObject blueCommandTower = Instantiate(enemyCommandTowerPrefab, enemyCommandTowerSpawnLocation.transform.position, Quaternion.identity);
 
-        //redCommandTower.GetComponent<Structures>().SetTeam("AlliedTeam");
-        //blueCommandTower.GetComponent<Structures>().SetTeam("EnemyTeam");
+        redCommandTower.GetComponent<Structures>().SetTeam("AlliedTeam");
+        blueCommandTower.GetComponent<Structures>().SetTeam("EnemyTeam");
 
         //TEST: Give player and enemy starting resources?
         playerResources = playerStartingResources;
@@ -169,6 +172,7 @@ public class GameManager : MonoBehaviour
     void ResetGame()
     {
         //Replace thing with either index or name of scene that is being played in.
+        SteamVR_Fade.View(Color.clear, 0.5f);
         SceneManager.LoadScene(0);
     }
 }
