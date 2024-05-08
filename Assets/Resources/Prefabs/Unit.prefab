@@ -181,6 +181,7 @@ MonoBehaviour:
   healthBarText: {fileID: 4434045648866028103}
   healthBar: {fileID: 4450356965465560925}
   EnemyColor: {fileID: 2100000, guid: 968f90970fb064a4c863b08d94838d50, type: 2}
+  modelAnimator: {fileID: 2953944497310722667}
 --- !u!1001 &2339134134050582348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -490,6 +491,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4877840925959721113}
   m_SourcePrefab: {fileID: 100100000, guid: 9b04a0d65f0abeb4eab00c9f240491f9, type: 3}
+--- !u!95 &2953944497310722667 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8702445305651047876, guid: 9b04a0d65f0abeb4eab00c9f240491f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5781442400059934639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7307400408415849109 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3842369620000345402, guid: 9b04a0d65f0abeb4eab00c9f240491f9,

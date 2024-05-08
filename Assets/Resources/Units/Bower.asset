@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamePieceName: Bower
   maxHealth: 15
-  model: {fileID: 0}
+  model: {fileID: 8292564089571819962, guid: 0212e75834c2a774081b8f7b22ef0e38, type: 3}
   team: 0
   damage: 3
   attackRange: 5
