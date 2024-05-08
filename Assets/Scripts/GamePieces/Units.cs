@@ -59,7 +59,6 @@ public class Units : GamePieces
         outline = GetComponent<Outline>();
         PlayerActions.MoveSelectedUnits += MoveToLocation;
         PlayerActions.TryAttackObject += AttackTarget;
-
     }
 
     private void OnDestroy()
