@@ -61,12 +61,12 @@ public class GameManager : MonoBehaviour
     public void StartTheGame()
     {
         //TEST: Spawn in AllyCommandTower?
-        GameObject redCommandTower = Instantiate(playerCommandTowerPrefab, playerCommandTowerSpawnLocation.transform.position, Quaternion.identity);
+        //GameObject redCommandTower = Instantiate(playerCommandTowerPrefab, playerCommandTowerSpawnLocation.transform.position, Quaternion.identity);
         //TEST: Spawn in EnemyCommandTower?
-        GameObject blueCommandTower = Instantiate(enemyCommandTowerPrefab, enemyCommandTowerSpawnLocation.transform.position, Quaternion.identity);
+        //GameObject blueCommandTower = Instantiate(enemyCommandTowerPrefab, enemyCommandTowerSpawnLocation.transform.position, Quaternion.identity);
 
-        redCommandTower.GetComponent<Structures>().SetTeam("AlliedTeam");
-        blueCommandTower.GetComponent<Structures>().SetTeam("EnemyTeam");
+        //redCommandTower.GetComponent<Structures>().SetTeam("AlliedTeam");
+        //blueCommandTower.GetComponent<Structures>().SetTeam("EnemyTeam");
 
         //TEST: Give player and enemy starting resources?
         playerResources = playerStartingResources;

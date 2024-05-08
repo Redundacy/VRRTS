@@ -40,6 +40,7 @@ public class GameStartButton : MonoBehaviour
             //TEST: Fade the screen before doing this
             ScreenFadeOutAndIn();
             //TEST: Add a start game function to the game manager.
+            Debug.Log("Starting the game");
             GameObject.Find("GameManager").GetComponent<GameManager>().StartTheGame();
             //TEST: Unfade once all is done
         }
