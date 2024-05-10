@@ -1424,6 +1424,12 @@ MonoBehaviour:
   isTriggerPressed:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
+  isSelectAllPressed:
+    actionPath: /actions/default/in/SelectAll
+    needsReinit: 0
+  isDeselectAllPressed:
+    actionPath: /actions/default/in/DeselectAll
+    needsReinit: 0
   sources: 0100000002000000
   indexFingers:
   - {fileID: 8225985104489690887}
@@ -2983,7 +2989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initializeSteamVROnAwake: 1
-  doNotDestroy: 1
+  doNotDestroy: 0
   steamvr_render: {fileID: 0}
 --- !u!114 &2045619969927944978
 MonoBehaviour:
@@ -5704,7 +5710,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7684764699038875691}
   - component: {fileID: 7980595101913752300}
-  - component: {fileID: 1553134867027374252}
   m_Layer: 2
   m_Name: VRRTS Player
   m_TagString: Untagged
@@ -5763,23 +5768,6 @@ MonoBehaviour:
     actionPath: /actions/default/in/HeadsetOnHead
     needsReinit: 0
   allowToggleTo2D: 1
---- !u!114 &1553134867027374252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7392540299622465180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 463ea9b86ee103540825a6f6d9d99917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sources: 0100000002000000
-  supersizeMe:
-    actionPath: /actions/default/in/SupersizeMode
-    needsReinit: 0
-  scaleSize: 10
 --- !u!1 &7499297399581212466
 GameObject:
   m_ObjectHideFlags: 0
@@ -6707,7 +6695,7 @@ PrefabInstance:
         type: 3}
       propertyPath: iconPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 5603619887674136179, guid: 71b03f51626420747aa5259a70c14a32,
+      objectReference: {fileID: 8855263091268095984, guid: f8297e39e5b194a4fa23c6f787c73728,
         type: 3}
     - target: {fileID: 778700090723388308, guid: 4c4b62f41e2ed4347a3938b761785b9b,
         type: 3}
