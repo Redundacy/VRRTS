@@ -322,7 +322,7 @@ public class Units : GamePieces
 
     void MarchOnThePlayer()
     {
-        int randomOdds = Random.Range(0, 1);
+        int randomOdds = Random.Range(0, 2);
         if (randomOdds == 0)
         {
             StartCoroutine(March());

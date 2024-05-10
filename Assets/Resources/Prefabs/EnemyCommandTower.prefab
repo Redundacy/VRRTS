@@ -384,6 +384,10 @@ MonoBehaviour:
   structure: {fileID: 11400000, guid: 52c8eb7eadaab4b36a41a9e1440d98e9, type: 2}
   healthBarText: {fileID: 5435477593159824394}
   healthBar: {fileID: 2459597304579538089}
+  hitEffect: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0,
+    type: 3}
+  deathEffect: {fileID: 7226888052703040409, guid: 7ec363c8df426644ea85f8d6d570561c,
+    type: 3}
 --- !u!114 &-6675872073364432360
 MonoBehaviour:
   m_ObjectHideFlags: 0

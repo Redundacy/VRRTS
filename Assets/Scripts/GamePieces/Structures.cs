@@ -23,6 +23,9 @@ public class Structures : GamePieces
 
     Team team;
 
+    [SerializeField] GameObject hitEffect;
+    [SerializeField] GameObject deathEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +56,11 @@ public class Structures : GamePieces
         health -= damage;
         Debug.Log("Structure Damage taken! Health: " + health);
         healthBarText.text = "Health: " + health + "/" + structure.maxHealth; //Kinda not a fan of just having this line here, but making a method feels silly. Idk.
+
+        Vector3 hitParticlePosition = gameObject.transform.position;
+        hitParticlePosition.y = hitParticlePosition.y + 0.25f;
+        Instantiate(hitEffect, hitParticlePosition, Quaternion.identity);
+
         if (health <= 0)
         {
             DestroyStructure();
@@ -90,6 +98,10 @@ public class Structures : GamePieces
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().GivePlayerResources(structure.rewardAmount);
         }
+
+        Vector3 deathParticlePosition = gameObject.transform.position;
+        deathParticlePosition.y = deathParticlePosition.y + 0.5f;
+        Instantiate(deathEffect, deathParticlePosition, Quaternion.identity);
 
         //Destroy self when all is done.
         Debug.Log("Structure destroyed! Hopefully I don't exist anymore.");
