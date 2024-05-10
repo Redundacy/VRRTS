@@ -64,11 +64,6 @@ public class GameManager : MonoBehaviour
     //Called when the player presses the Start Game button, instantiates all the necessary gameplay stuff. Potentially want different start game functions for different maps?
     public void StartTheGame()
     {
-        //TEST: Spawn in AllyCommandTower?
-        //GameObject redCommandTower = Instantiate(playerCommandTowerPrefab, playerCommandTowerSpawnLocation.transform.position, Quaternion.identity);
-        //TEST: Spawn in EnemyCommandTower?
-        //GameObject blueCommandTower = Instantiate(enemyCommandTowerPrefab, enemyCommandTowerSpawnLocation.transform.position, Quaternion.identity);
-
         redCommandTower.GetComponent<Structures>().SetTeam("AlliedTeam");
         blueCommandTower.GetComponent<Structures>().SetTeam("EnemyTeam");
 

@@ -84,29 +84,14 @@ public class OpponentBrain : MonoBehaviour
         if (attackIfZero == 0)
         {
             Debug.Log("Attacking!!!");
-            //Find half of the enemy units and send them towards an attack point, near the enemy base likely.
-            //GameObject[] allUnits = GameObject.FindGameObjectsWithTag("Unit");
-            //List<GameObject> allEnemyUnits = new List<GameObject>();
-            //foreach (GameObject unit in allUnits)
-            //{
-            //    if (unit.GetComponent<Units>().unit.GetTeamString() == "EnemyTeam")
-            //    {
-            //        allEnemyUnits.Add(unit);
-            //    }
-            //}
-            //int amountOfUnitsToAttack = allEnemyUnits.Count/2;
-
-            //for (int i = 0; i < amountOfUnitsToAttack; i++)
-            //{
-                //Call each of these Units to move towards the attack position
-            //}
-
             MarchOnPlayer.Invoke();
         }
         else
         {
             Debug.Log("Did not attack...");
         }
+
+        readyToMaybeAttack = true;
     }
 
     public void ActivateAI()
