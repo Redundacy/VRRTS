@@ -4,6 +4,10 @@
    "app_key" : "application.generated.unity.vrrts.exe",
    "bindings" : {
       "/actions/buggy" : {
+         "chords" : [],
+         "haptics" : [],
+         "poses" : [],
+         "skeleton" : [],
          "sources" : [
             {
                "inputs" : {
@@ -283,24 +287,6 @@
             },
             {
                "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/supersizemode"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/left/input/y"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/supersizemode"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/y"
-            },
-            {
-               "inputs" : {
                   "touch" : {
                      "output" : "/actions/default/in/showhud"
                   }
@@ -320,7 +306,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/rotatewheel"
+                     "output" : "/actions/default/in/deselectall"
                   }
                },
                "mode" : "button",
@@ -329,7 +315,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/rotatewheel"
+                     "output" : "/actions/default/in/deselectall"
                   }
                },
                "mode" : "button",
@@ -352,10 +338,32 @@
                },
                "mode" : "button",
                "path" : "/user/hand/right/input/b"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/selectall"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/y"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/selectall"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/y"
             }
          ]
       },
       "/actions/platformer" : {
+         "chords" : [],
+         "haptics" : [],
+         "poses" : [],
+         "skeleton" : [],
          "sources" : [
             {
                "inputs" : {

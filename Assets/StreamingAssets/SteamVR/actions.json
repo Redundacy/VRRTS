@@ -58,11 +58,15 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/SupersizeMode",
+      "name": "/actions/default/in/ShowHUD",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/ShowHUD",
+      "name": "/actions/default/in/SelectAll",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/DeselectAll",
       "type": "boolean"
     },
     {
