@@ -101,6 +101,28 @@ public class GameManager : MonoBehaviour
         //Do some celebratory stuff, play a bunch of confetti particles around the player and applaud if they won or something, wah wah trumpet if they lose. (POLISH)
         //Display a "YOU WIN" or "YOU LOSE" in the player's face.
         //TEST: After some time has passed, load the same scene again to reset everything.
+
+        if (wonTheGame)
+        {
+            playerInfo.transform.Find("Text (TMP)").GetComponent<TMP_Text>().text = "";
+            playerInfo.transform.Find("Text (TMP) (1)").GetComponent<TMP_Text>().text = "";
+            playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = "";
+            playerInfo.transform.Find("Text (TMP) (3)").GetComponent<TMP_Text>().text = "YOU WON!!";
+            playerInfo.transform.Find("Text (TMP) (4)").GetComponent<TMP_Text>().text = "";
+            playerInfo.transform.Find("Text (TMP) (5)").GetComponent<TMP_Text>().text = "";
+            playerInfo.transform.Find("Structure Count").GetComponent<TMP_Text>().text = "";
+        }
+        else
+        {
+            playerInfo.transform.Find("Text (TMP)").GetComponent<TMP_Text>().text = "";
+            playerInfo.transform.Find("Text (TMP) (1)").GetComponent<TMP_Text>().text = "";
+            playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = "";
+            playerInfo.transform.Find("Text (TMP) (3)").GetComponent<TMP_Text>().text = "you lose,,,";
+            playerInfo.transform.Find("Text (TMP) (4)").GetComponent<TMP_Text>().text = "";
+            playerInfo.transform.Find("Text (TMP) (5)").GetComponent<TMP_Text>().text = "";
+            playerInfo.transform.Find("Structure Count").GetComponent<TMP_Text>().text = "";
+        }
+
         Invoke("FadeOutToResetGame", 5.0f);
     }
 
@@ -174,6 +196,6 @@ public class GameManager : MonoBehaviour
     {
         //Replace thing with either index or name of scene that is being played in.
         SteamVR_Fade.View(Color.clear, 0.5f);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadSceneAsync(0);
     }
 }

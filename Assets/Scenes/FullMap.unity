@@ -3003,6 +3003,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5208504399648122483, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: doNotDestroy
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5334715726652353627, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
         type: 3}
       propertyPath: m_Name

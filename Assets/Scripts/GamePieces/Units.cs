@@ -307,7 +307,11 @@ public class Units : GamePieces
 
     void MarchOnThePlayer()
     {
-        StartCoroutine(March());
+        int randomOdds = Random.Range(0, 1);
+        if (randomOdds == 0)
+        {
+            StartCoroutine(March());
+        }
     }
 
     IEnumerator March()
@@ -326,6 +330,7 @@ public class Units : GamePieces
         yield return new WaitForSeconds(5f);
         MarchToLocation(marchingPoint6.transform.position);
         yield return new WaitForSeconds(5f);
+        movingToAttack = true;
         AttackTarget(playerCommandTower, false);
     }
 
