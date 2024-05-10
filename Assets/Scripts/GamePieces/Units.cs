@@ -155,6 +155,18 @@ public class Units : GamePieces
         outline.enabled = !outline.enabled;
         Debug.Log(isSelected + "\n" + outline.enabled);
     }
+    public void SelectOn()
+    {
+        isSelected = true;
+        outline.enabled = true;
+        Debug.Log(isSelected + "\n" + outline.enabled);
+    }
+    public void SelectOff()
+    {
+        isSelected = false;
+        outline.enabled = false;
+        Debug.Log(isSelected + "\n" + outline.enabled);
+    }
 
     void CheckForEnemies()
     {
@@ -218,7 +230,7 @@ public class Units : GamePieces
         float distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
         //Debug.Log(distance + " and " + unit.attackRange);
 
-        if (distance < unit.attackRange && movingToAttack)
+        if (distance < unit.attackRange && movingToAttack && !isAttacking)
         {
             m_Agent.isStopped = true;
             StartCoroutine(Attack(target));

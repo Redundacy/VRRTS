@@ -13,6 +13,8 @@ public class PlayerActions : MonoBehaviour
 {
     public SteamVR_Action_Boolean isGripPressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("GrabGrip");
     public SteamVR_Action_Boolean isTriggerPressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("GrabPinch");
+    public SteamVR_Action_Boolean isSelectAllPressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("SelectAll");
+    public SteamVR_Action_Boolean isDeselectAllPressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("DeselectAll");
     /* 
      * 
             "parameters": {
@@ -161,6 +163,25 @@ public class PlayerActions : MonoBehaviour
     //                    break;
     //            }
                 lrend.SetPositions(new Vector3[] { Vector3.zero, Vector3.zero });
+            }
+            if(isSelectAllPressed.GetStateDown(source))
+            {
+                foreach(Units unit in FindObjectsByType<Units>(FindObjectsSortMode.InstanceID))
+                {
+                    if(unit.GetTeamString() == "AlliedTeam")
+                    {
+                        unit.SelectOn();
+                    }
+                }
+            } else if(isDeselectAllPressed.GetStateDown(source))
+            {
+                foreach (Units unit in FindObjectsByType<Units>(FindObjectsSortMode.InstanceID))
+                {
+                    if (unit.GetTeamString() == "AlliedTeam")
+                    {
+                        unit.SelectOff();
+                    }
+                }
             }
         }
 

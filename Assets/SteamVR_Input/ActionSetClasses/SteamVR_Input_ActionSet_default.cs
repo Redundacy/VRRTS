@@ -121,19 +121,27 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean SupersizeMode
-        {
-            get
-            {
-                return SteamVR_Actions.default_SupersizeMode;
-            }
-        }
-        
         public virtual SteamVR_Action_Boolean ShowHUD
         {
             get
             {
                 return SteamVR_Actions.default_ShowHUD;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean SelectAll
+        {
+            get
+            {
+                return SteamVR_Actions.default_SelectAll;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean DeselectAll
+        {
+            get
+            {
+                return SteamVR_Actions.default_DeselectAll;
             }
         }
         

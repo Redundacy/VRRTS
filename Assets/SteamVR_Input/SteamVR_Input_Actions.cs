@@ -43,9 +43,11 @@ namespace Valve.VR
         
         private static SteamVR_Action_Boolean p_default_ChangeWheelType;
         
-        private static SteamVR_Action_Boolean p_default_SupersizeMode;
-        
         private static SteamVR_Action_Boolean p_default_ShowHUD;
+        
+        private static SteamVR_Action_Boolean p_default_SelectAll;
+        
+        private static SteamVR_Action_Boolean p_default_DeselectAll;
         
         private static SteamVR_Action_Vibration p_default_Haptic;
         
@@ -167,19 +169,27 @@ namespace Valve.VR
             }
         }
         
-        public static SteamVR_Action_Boolean default_SupersizeMode
-        {
-            get
-            {
-                return SteamVR_Actions.p_default_SupersizeMode.GetCopy<SteamVR_Action_Boolean>();
-            }
-        }
-        
         public static SteamVR_Action_Boolean default_ShowHUD
         {
             get
             {
                 return SteamVR_Actions.p_default_ShowHUD.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean default_SelectAll
+        {
+            get
+            {
+                return SteamVR_Actions.p_default_SelectAll.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean default_DeselectAll
+        {
+            get
+            {
+                return SteamVR_Actions.p_default_DeselectAll.GetCopy<SteamVR_Action_Boolean>();
             }
         }
         
@@ -263,8 +273,9 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.default_RotateWheel,
                     SteamVR_Actions.default_ChangeWheelType,
-                    SteamVR_Actions.default_SupersizeMode,
                     SteamVR_Actions.default_ShowHUD,
+                    SteamVR_Actions.default_SelectAll,
+                    SteamVR_Actions.default_DeselectAll,
                     SteamVR_Actions.default_Haptic,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
@@ -287,8 +298,9 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.default_RotateWheel,
                     SteamVR_Actions.default_ChangeWheelType,
-                    SteamVR_Actions.default_SupersizeMode,
                     SteamVR_Actions.default_ShowHUD,
+                    SteamVR_Actions.default_SelectAll,
+                    SteamVR_Actions.default_DeselectAll,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Steering,
@@ -313,8 +325,9 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.default_RotateWheel,
                     SteamVR_Actions.default_ChangeWheelType,
-                    SteamVR_Actions.default_SupersizeMode,
                     SteamVR_Actions.default_ShowHUD,
+                    SteamVR_Actions.default_SelectAll,
+                    SteamVR_Actions.default_DeselectAll,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset};
@@ -339,8 +352,9 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.default_RotateWheel,
                     SteamVR_Actions.default_ChangeWheelType,
-                    SteamVR_Actions.default_SupersizeMode,
                     SteamVR_Actions.default_ShowHUD,
+                    SteamVR_Actions.default_SelectAll,
+                    SteamVR_Actions.default_DeselectAll,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Steering,
@@ -364,8 +378,9 @@ namespace Valve.VR
             SteamVR_Actions.p_default_SnapTurnRight = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/SnapTurnRight")));
             SteamVR_Actions.p_default_RotateWheel = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/RotateWheel")));
             SteamVR_Actions.p_default_ChangeWheelType = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/ChangeWheelType")));
-            SteamVR_Actions.p_default_SupersizeMode = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/SupersizeMode")));
             SteamVR_Actions.p_default_ShowHUD = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/ShowHUD")));
+            SteamVR_Actions.p_default_SelectAll = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/SelectAll")));
+            SteamVR_Actions.p_default_DeselectAll = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/DeselectAll")));
             SteamVR_Actions.p_default_Haptic = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/default/out/Haptic")));
             SteamVR_Actions.p_platformer_Move = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/platformer/in/Move")));
             SteamVR_Actions.p_platformer_Jump = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/platformer/in/Jump")));

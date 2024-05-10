@@ -17,7 +17,7 @@ MonoBehaviour:
   model: {fileID: 618431280778055079, guid: efe62859bef103143aa903dfb932cec2, type: 3}
   team: 0
   damage: 5
-  attackRange: 1.5
+  attackRange: 3
   timeBetweenAttacks: 1
   moveSpeed: 3
   visionRange: 3
