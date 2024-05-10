@@ -55,6 +55,9 @@ public class Units : GamePieces
     [SerializeField] GameObject marchingPoint6;
     [SerializeField] GameObject playerCommandTower;
 
+    [SerializeField] GameObject hitEffect;
+    [SerializeField] GameObject deathEffect;
+
     //overhead text
     //public TextMeshProUGUI selectedText; //Unit text needs to look at camera otherwse its weird.
     // Start is called before the first frame update
@@ -343,6 +346,10 @@ public class Units : GamePieces
 
         //Debug.Log($"{unit.name} @{health}/{unit.maxHealth}");
 
+        Vector3 hitParticlePosition = gameObject.transform.position;
+        hitParticlePosition.y = hitParticlePosition.y + 0.25f;
+        Instantiate(hitEffect, hitParticlePosition, Quaternion.identity);
+
         if (health <= 0)
         {
             SlayUnit();
@@ -366,6 +373,9 @@ public class Units : GamePieces
     public IEnumerator DeathAnimation()
     {
         modelAnimator.SetBool("characterDIE", true);
+        Vector3 deathParticlePosition = gameObject.transform.position;
+        deathParticlePosition.y = deathParticlePosition.y + 0.5f;
+        Instantiate(deathEffect, deathParticlePosition, Quaternion.identity);
         yield return new WaitForSeconds(3);
         Destroy(gameObject);
     }

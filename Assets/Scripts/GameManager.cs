@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject opponentBrainObject;
 
+    [SerializeField] GameObject spawnParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -138,6 +140,7 @@ public class GameManager : MonoBehaviour
         {
             playerResources -= boughtUnit.cost;
             GameObject createdGuy = Instantiate(UnitPrefab, spawnPoint, new Quaternion());
+            Instantiate(spawnParticles, spawnPoint, new Quaternion());
             createdGuy.GetComponent<Units>().unit = boughtUnit;
             createdGuy.GetComponent<Units>().SetTeam(team);
             createdGuy.GetComponent<Units>().InitializeData();

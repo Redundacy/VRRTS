@@ -182,6 +182,18 @@ MonoBehaviour:
   healthBar: {fileID: 4450356965465560925}
   EnemyColor: {fileID: 2100000, guid: 968f90970fb064a4c863b08d94838d50, type: 2}
   modelAnimator: {fileID: 2953944497310722667}
+  marchingPoint0: {fileID: 0}
+  marchingPoint1: {fileID: 0}
+  marchingPoint2: {fileID: 0}
+  marchingPoint3: {fileID: 0}
+  marchingPoint4: {fileID: 0}
+  marchingPoint5: {fileID: 0}
+  marchingPoint6: {fileID: 0}
+  playerCommandTower: {fileID: 0}
+  hitEffect: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7,
+    type: 3}
+  deathEffect: {fileID: 5985634496115995773, guid: 463cf9f7af4680240898f6aeba3fe3e6,
+    type: 3}
 --- !u!1001 &2339134134050582348
 PrefabInstance:
   m_ObjectHideFlags: 0
