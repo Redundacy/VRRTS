@@ -95,8 +95,6 @@ public class GameManager : MonoBehaviour
         //Start playing music? (POLISH)
         //Activate enemy AI? (Maybe not doing? Instead we make it a two player experience?)
         opponentBrainObject.GetComponent<OpponentBrain>().ActivateAI();
-
-        GameObject.Find("StartArea").SetActive(false);
     }
 
     public void EndTheGame(bool wonTheGame)

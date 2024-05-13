@@ -19,10 +19,10 @@ public class OpponentBrain : MonoBehaviour
     [SerializeField] UnitData BowerData;
     [SerializeField] UnitData PuncherData;
 
-    [SerializeField] float spawnTimer;
-    [SerializeField] float attackTimer;
+    [SerializeField] public float spawnTimer;
+    [SerializeField] public float attackTimer;
 
-    [SerializeField] int oddsToAttack;
+    [SerializeField] public int oddsToAttack;
 
     public static event Action<Vector3> Muster;
     public static event Action<GameObject> AttackPlayer;

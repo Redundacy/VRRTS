@@ -10,6 +10,9 @@ public class GameStartButton : MonoBehaviour
     private Interactable interactable;
     GameObject player;
 
+    [SerializeField] string difficulty;
+    [SerializeField] GameObject opponentBrain;
+
     private void Awake()
     {
         interactable = this.GetComponent<Interactable>();
@@ -41,7 +44,32 @@ public class GameStartButton : MonoBehaviour
             ScreenFadeOutAndIn();
             //TEST: Add a start game function to the game manager.
             Debug.Log("Starting the game");
+            switch (difficulty)
+            {
+                case "Easy":
+                    opponentBrain.GetComponent<OpponentBrain>().spawnTimer = 20;
+                    opponentBrain.GetComponent<OpponentBrain>().attackTimer = 60;
+                    opponentBrain.GetComponent<OpponentBrain>().oddsToAttack = 3;
+                    break;
+                case "Normal":
+                    opponentBrain.GetComponent<OpponentBrain>().spawnTimer = 10;
+                    opponentBrain.GetComponent<OpponentBrain>().attackTimer = 30;
+                    opponentBrain.GetComponent<OpponentBrain>().oddsToAttack = 3;
+                    break;
+                case "Hard":
+                    opponentBrain.GetComponent<OpponentBrain>().spawnTimer = 5;
+                    opponentBrain.GetComponent<OpponentBrain>().attackTimer = 20;
+                    opponentBrain.GetComponent<OpponentBrain>().oddsToAttack = 2;
+                    break;
+                case "Nightmare":
+                    opponentBrain.GetComponent<OpponentBrain>().spawnTimer = 3;
+                    opponentBrain.GetComponent<OpponentBrain>().attackTimer = 15;
+                    opponentBrain.GetComponent<OpponentBrain>().oddsToAttack = 1;
+                    break;
+
+            }
             GameObject.Find("GameManager").GetComponent<GameManager>().StartTheGame();
+
             //TEST: Unfade once all is done
         }
         else if (isGrabEnding)
@@ -60,5 +88,6 @@ public class GameStartButton : MonoBehaviour
     {
         player.transform.position = GameObject.Find("PlayerSpawnLocation").transform.position;
         SteamVR_Fade.View(Color.clear, 0.5f);
+        GameObject.Find("StartArea").SetActive(false);
     }
 }
