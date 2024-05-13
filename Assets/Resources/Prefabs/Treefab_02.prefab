@@ -282,6 +282,8 @@ MonoBehaviour:
   healthBarRenderDistance: 10
   takeDamageSound: {fileID: 8300000, guid: b7d91ece533312d44a7c920e4e0ef3a7, type: 3}
   volume: 1
+  hitEffect: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7,
+    type: 3}
 --- !u!64 &6501740327343677484
 MeshCollider:
   m_ObjectHideFlags: 0
