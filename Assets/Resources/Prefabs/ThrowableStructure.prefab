@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008adf1fb186e2140ac223010619d843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  structure: {fileID: 0}
+  structure: {fileID: 11400000, guid: 8e45adec20f86ed42971ddd4df6ca7d2, type: 2}
   healthBarText: {fileID: 6371584490784719909}
   healthBar: {fileID: 6351860277198764351}
   hitEffect: {fileID: 0}
