@@ -45,6 +45,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject spawnParticles;
 
+    [SerializeField] GameObject player;
+
+    [SerializeField] GameObject winParticles;
+    [SerializeField] GameObject loseParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -91,7 +96,7 @@ public class GameManager : MonoBehaviour
         //Activate enemy AI? (Maybe not doing? Instead we make it a two player experience?)
         opponentBrainObject.GetComponent<OpponentBrain>().ActivateAI();
 
-        GameObject.Find("Start Area").SetActive(false);
+        GameObject.Find("StartArea").SetActive(false);
     }
 
     public void EndTheGame(bool wonTheGame)
@@ -110,6 +115,14 @@ public class GameManager : MonoBehaviour
             playerInfo.transform.Find("Text (TMP) (4)").GetComponent<TMP_Text>().text = "";
             playerInfo.transform.Find("Text (TMP) (5)").GetComponent<TMP_Text>().text = "";
             playerInfo.transform.Find("Structure Count").GetComponent<TMP_Text>().text = "";
+
+            SpawnWinParticle();
+            SpawnWinParticle();
+            Invoke("SpawnWinParticle", 1.0f);
+            Invoke("SpawnWinParticle", 1.2f);
+            Invoke("SpawnWinParticle", 2.1f);
+            Invoke("SpawnWinParticle", 2.5f);
+            Invoke("SpawnWinParticle", 3.3f);
         }
         else
         {
@@ -120,9 +133,16 @@ public class GameManager : MonoBehaviour
             playerInfo.transform.Find("Text (TMP) (4)").GetComponent<TMP_Text>().text = "";
             playerInfo.transform.Find("Text (TMP) (5)").GetComponent<TMP_Text>().text = "";
             playerInfo.transform.Find("Structure Count").GetComponent<TMP_Text>().text = "";
+
+            Instantiate(loseParticles, player.transform.position, Quaternion.identity);
         }
 
         Invoke("FadeOutToResetGame", 5.0f);
+    }
+
+    void SpawnWinParticle()
+    {
+        Instantiate(winParticles, player.transform.position, Quaternion.identity);
     }
 
     public void GivePlayerResources(float resourceAmount)
