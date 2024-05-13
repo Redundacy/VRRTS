@@ -14,11 +14,18 @@ public class ResourceEntities : GamePieces
     public Canvas healthBar;
     [SerializeField] float healthBarRenderDistance;
 
+    [SerializeField] AudioClip takeDamageSound;
+    [SerializeField] float volume;
+
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         health = resourceEntity.maxHealth;
         healthBarText.text = "Health: " + health + "/" + resourceEntity.maxHealth;
+
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -41,6 +48,9 @@ public class ResourceEntities : GamePieces
         health -= damageTaken;
         Debug.Log("Damage taken! Health: " + health);
         healthBarText.text = "Health: " + health + "/" + resourceEntity.maxHealth; //Kinda not a fan of just having this line here, but making a method feels silly. Idk.
+
+        audioSource.PlayOneShot(takeDamageSound, volume);
+        
         if (health <= 0)
         {
             DestroyEntity();

@@ -282,6 +282,8 @@ MonoBehaviour:
   healthBarText: {fileID: 2361544531683431892}
   healthBar: {fileID: 2346332731006642382}
   healthBarRenderDistance: 10
+  takeDamageSound: {fileID: 8300000, guid: b7d91ece533312d44a7c920e4e0ef3a7, type: 3}
+  volume: 1
 --- !u!64 &9171461313108338487
 MeshCollider:
   m_ObjectHideFlags: 0

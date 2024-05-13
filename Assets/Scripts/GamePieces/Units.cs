@@ -58,6 +58,15 @@ public class Units : GamePieces
     [SerializeField] GameObject hitEffect;
     [SerializeField] GameObject deathEffect;
 
+    [SerializeField] AudioClip takeDamageSound;
+    [SerializeField] AudioClip attackMeleeSound;
+    [SerializeField] AudioClip attackRangeSound;
+    [SerializeField] AudioClip spawnSound;
+
+    [SerializeField] float volume;
+
+    AudioSource audioSource;
+
     //overhead text
     //public TextMeshProUGUI selectedText; //Unit text needs to look at camera otherwse its weird.
     // Start is called before the first frame update
@@ -91,6 +100,10 @@ public class Units : GamePieces
         newLocation.z = newLocation.z + zOffset;
 
         MarchToLocation(newLocation);
+
+        audioSource = gameObject.GetComponent<AudioSource>();
+
+        audioSource.PlayOneShot(spawnSound, volume);
     }
 
     private void OnDestroy()
@@ -253,6 +266,16 @@ public class Units : GamePieces
     {
         Debug.Log("attacking " + target.name);
         int targetHealth;
+
+        if (unit.name == "Bower")
+        {
+            audioSource.PlayOneShot(attackRangeSound, volume);
+        }
+        else
+        {
+            audioSource.PlayOneShot(attackMeleeSound, volume);
+        }
+
         while (target != null)
         {
             if (target.GetComponentInParent<Units>() != null)
@@ -355,6 +378,8 @@ public class Units : GamePieces
         health -= damage;
 
         healthBarText.text = "Health: " + health + "/" + unit.maxHealth;
+
+        audioSource.PlayOneShot(takeDamageSound, volume);
 
         //Debug.Log($"{unit.name} @{health}/{unit.maxHealth}");
 

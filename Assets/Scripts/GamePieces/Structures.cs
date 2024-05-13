@@ -26,6 +26,10 @@ public class Structures : GamePieces
     [SerializeField] GameObject hitEffect;
     [SerializeField] GameObject deathEffect;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip takeDamageSound;
+    [SerializeField] float volume;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +60,8 @@ public class Structures : GamePieces
         health -= damage;
         Debug.Log("Structure Damage taken! Health: " + health);
         healthBarText.text = "Health: " + health + "/" + structure.maxHealth; //Kinda not a fan of just having this line here, but making a method feels silly. Idk.
+
+        audioSource.PlayOneShot(takeDamageSound, volume);
 
         Vector3 hitParticlePosition = gameObject.transform.position;
         hitParticlePosition.y = hitParticlePosition.y + 0.25f;
