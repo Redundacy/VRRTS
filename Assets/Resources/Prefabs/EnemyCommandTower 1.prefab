@@ -58,10 +58,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8513424388201257645, guid: 0b4cbd78e6607e2479f3cf729d9427c0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0b4cbd78e6607e2479f3cf729d9427c0,
         type: 3}
       propertyPath: m_Name
       value: EnemyCommandTower 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b4cbd78e6607e2479f3cf729d9427c0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -83,6 +93,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6783202716943474116}
+    - targetCorrespondingSourceObject: {fileID: -8513424388201257645, guid: 0b4cbd78e6607e2479f3cf729d9427c0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7271218839601754756}
   m_SourcePrefab: {fileID: 100100000, guid: 0b4cbd78e6607e2479f3cf729d9427c0, type: 3}
 --- !u!1 &6002424494127147361 stripped
 GameObject:
@@ -219,6 +233,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a80331f3bb13be48a782a027ff75f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6221636059908649315 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8513424388201257645, guid: 0b4cbd78e6607e2479f3cf729d9427c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6885313988029076528}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &7271218839601754756
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6221636059908649315}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4068373912626513877, guid: 0b4cbd78e6607e2479f3cf729d9427c0, type: 3}
 --- !u!4 &6343097883226354651 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0b4cbd78e6607e2479f3cf729d9427c0,
@@ -237,6 +279,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthbarPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482651582556527088, guid: b3aa92a9bc018404d9996bb26e0be12c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6742991083276734201, guid: b3aa92a9bc018404d9996bb26e0be12c,
         type: 3}
@@ -357,6 +404,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8965215852449288617, guid: b3aa92a9bc018404d9996bb26e0be12c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

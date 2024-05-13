@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthbarPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 1482651582556527088, guid: b3aa92a9bc018404d9996bb26e0be12c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6742991083276734201, guid: b3aa92a9bc018404d9996bb26e0be12c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -133,6 +138,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8965215852449288617, guid: b3aa92a9bc018404d9996bb26e0be12c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -220,10 +230,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8513424388201257645, guid: b9a3fce01e9095545abcef955aff78ea,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3957782524123411102, guid: b9a3fce01e9095545abcef955aff78ea,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b9a3fce01e9095545abcef955aff78ea,
         type: 3}
       propertyPath: m_Name
       value: AllyCommandTower 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b9a3fce01e9095545abcef955aff78ea,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -245,6 +270,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8131717596092093072}
+    - targetCorrespondingSourceObject: {fileID: -8513424388201257645, guid: b9a3fce01e9095545abcef955aff78ea,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9171281484772744210}
   m_SourcePrefab: {fileID: 100100000, guid: b9a3fce01e9095545abcef955aff78ea, type: 3}
 --- !u!1 &2592286947200448612 stripped
 GameObject:
@@ -381,6 +410,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &2802069582298439782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8513424388201257645, guid: b9a3fce01e9095545abcef955aff78ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 3402697046917809461}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &9171281484772744210
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2802069582298439782}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4068373912626513877, guid: b9a3fce01e9095545abcef955aff78ea, type: 3}
 --- !u!4 &2932537780237230814 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b9a3fce01e9095545abcef955aff78ea,
