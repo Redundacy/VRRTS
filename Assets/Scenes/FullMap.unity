@@ -3890,7 +3890,7 @@ PrefabInstance:
         type: 3}
       propertyPath: iconPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 8905769749532466657, guid: 727b46e46d762774c85154ab8fd11ae6,
+      objectReference: {fileID: 8905769749532466657, guid: 3258e8d9536f14842ad2136dbe88fa08,
         type: 3}
     - target: {fileID: 6312869234881771280, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
         type: 3}

@@ -167,16 +167,24 @@ public class ArmWheelHandler : MonoBehaviour
     public void VisualizePodium(int podiumIndex)
     {
         Transform cylinderRef = shopPodiums[podiumIndex].transform;
-        cylinderRef.GetComponentInChildren<GameObject>();
         if(cylinderRef.Find("Showcase Unit(Clone)") != null)
         {
             Destroy(cylinderRef.Find("Showcase Unit(Clone)").gameObject);
-        } else if (cylinderRef.Find("Showcase Structure(Clone)") != null)
+        }
+        else if (cylinderRef.Find("Showcase Structure(Clone)") != null)
         {
             Destroy(cylinderRef.Find("Showcase Structure(Clone)").gameObject);
         }
+        else if (cylinderRef.Find("Showcase Seed(Clone)") != null)
+        {
+            Destroy(cylinderRef.Find("Showcase Seed(Clone)").gameObject);
+        }
+        else if (cylinderRef.Find("Showcase Throwable(Clone)") != null)
+        {
+            Destroy(cylinderRef.Find("Showcase Throwable(Clone)").gameObject);
+        }
 
-        if(isUnits)
+        if (isUnits)
         {
             GameObject icon = Instantiate(iconPrefabs[0],cylinderRef);
             icon.transform.SetLocalPositionAndRotation(new Vector3(0, 7, 0), new Quaternion(0, 0.707106829f, 0, 0.707106829f));
