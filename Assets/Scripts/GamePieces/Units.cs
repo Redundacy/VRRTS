@@ -306,9 +306,20 @@ public class Units : GamePieces
                     targetedObject = null;
                 }
             }
-            else if (target.GetComponentInParent<ResourceEntities>() != null)
+            else if (target.GetComponent<ResourceEntities>() != null)
             {
                 target.GetComponent<ResourceEntities>().TakeDamage(unit.damage);
+
+                //I don't think this needs to be here anymore.
+                if (target.GetComponent<ResourceEntities>() == null)
+                {
+                    isAttacking = false;
+                    targetedObject = null;
+                    m_Agent.isStopped = false;
+                    modelAnimator.SetBool("CharacterAttack", false);
+                    Debug.Log("attack finished");
+                    break;
+                }
             }
             yield return new WaitForSeconds(unit.timeBetweenAttacks);
         }
