@@ -127,6 +127,7 @@ public class GameManager : MonoBehaviour
             Invoke("SpawnWinParticle", 2.1f);
             Invoke("SpawnWinParticle", 2.5f);
             Invoke("SpawnWinParticle", 3.3f);
+            music.Stop();
             music.PlayOneShot(winSound);
         }
         else
@@ -140,6 +141,7 @@ public class GameManager : MonoBehaviour
             playerInfo.transform.Find("Structure Count").GetComponent<TMP_Text>().text = "";
 
             Instantiate(loseParticles, player.transform.position, Quaternion.identity);
+            music.Stop();
             music.PlayOneShot(loseSound);
         }
 

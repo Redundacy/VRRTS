@@ -193,7 +193,8 @@ public class Units : GamePieces
         {
             foreach (Collider collider in hitColliders)
             {
-                if ((collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().GetTeamString() == GetTeamString())
+                if ((collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().GetTeamString() == GetTeamString()) 
+                    || (collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().GetTeamString() != GetTeamString() && collider.gameObject.GetComponentInParent<Units>().health <= 0)
                     || (collider.gameObject.GetComponentInParent<Structures>() && collider.gameObject.GetComponentInParent<Structures>().GetTeamString() == GetTeamString()))
                 {
                     //Do nothing
