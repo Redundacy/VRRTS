@@ -156,8 +156,9 @@ public class Units : GamePieces
 
         else if(targetedObject == null)
         {
-            CheckForEnemies();
+            isAttacking = false;
             modelAnimator.SetBool("CharacterAttack", false);
+            CheckForEnemies();
         }
         //selectedText.text = "Selected: " + isSelected;
 
@@ -239,6 +240,8 @@ public class Units : GamePieces
                 return;
             }
             movingToAttack = true;
+            //StopCoroutine("Attack");
+            //m_Agent.isStopped = false;
         }
         targetedObject = target;
         //Debug.Log("omw to " + target.name);
