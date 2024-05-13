@@ -290,6 +290,7 @@ public class Units : GamePieces
                     targetedObject = null;
                     m_Agent.isStopped = false;
                     Debug.Log("attack finished");
+                    FindObjectOfType<GameManager>().UpdateUnitCount();
                     break;
                 }
             }
@@ -406,6 +407,7 @@ public class Units : GamePieces
     void SlayUnit()
     {
         //Unit dies, probably destroy it and do some stuff on death.
+        gameObject.layer = 0;
         Debug.Log("dead");
         StartCoroutine(DeathAnimation());
     }

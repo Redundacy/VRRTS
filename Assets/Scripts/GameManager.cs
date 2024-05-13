@@ -44,7 +44,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject opponentBrainObject;
 
     [SerializeField] GameObject spawnParticles;
+
     [SerializeField] AudioSource music;
+    [SerializeField] AudioClip winSound;
+    [SerializeField] AudioClip loseSound;
 
     [SerializeField] GameObject player;
 
@@ -113,7 +116,7 @@ public class GameManager : MonoBehaviour
             playerInfo.transform.Find("Text (TMP) (1)").GetComponent<TMP_Text>().text = "";
             playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = "";
             playerInfo.transform.Find("Text (TMP) (3)").GetComponent<TMP_Text>().text = "YOU WON!!";
-            playerInfo.transform.Find("Text (TMP) (4)").GetComponent<TMP_Text>().text = "";
+            playerInfo.transform.Find("Unit Count").GetComponent<TMP_Text>().text = "";
             playerInfo.transform.Find("Text (TMP) (5)").GetComponent<TMP_Text>().text = "";
             playerInfo.transform.Find("Structure Count").GetComponent<TMP_Text>().text = "";
 
@@ -124,6 +127,7 @@ public class GameManager : MonoBehaviour
             Invoke("SpawnWinParticle", 2.1f);
             Invoke("SpawnWinParticle", 2.5f);
             Invoke("SpawnWinParticle", 3.3f);
+            music.PlayOneShot(winSound);
         }
         else
         {
@@ -136,6 +140,7 @@ public class GameManager : MonoBehaviour
             playerInfo.transform.Find("Structure Count").GetComponent<TMP_Text>().text = "";
 
             Instantiate(loseParticles, player.transform.position, Quaternion.identity);
+            music.PlayOneShot(loseSound);
         }
 
         Invoke("FadeOutToResetGame", 5.0f);
@@ -168,6 +173,7 @@ public class GameManager : MonoBehaviour
             createdGuy.GetComponent<Units>().SetTeam(team);
             createdGuy.GetComponent<Units>().InitializeData();
             playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
+            UpdateUnitCount();
         }
     }
 
@@ -205,6 +211,12 @@ public class GameManager : MonoBehaviour
         createdGuy.GetComponent<Structures>().InitializeData();
         createdGuy.GetComponent<Structures>().SetTeam(team);
         playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = playerResources.ToString();
+    }
+
+    public void UpdateUnitCount()
+    {
+        List<GameObject> units = new List<GameObject>(GameObject.FindGameObjectsWithTag("Unit"));
+        playerInfo.transform.Find("Unit Count").GetComponent<TMP_Text>().text = units.FindAll((GameObject obj) => obj.GetComponent<Units>().GetTeamString() == "AlliedTeam").Count.ToString();
     }
 
     void FadeOutToResetGame()
