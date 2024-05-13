@@ -193,7 +193,8 @@ public class Units : GamePieces
         {
             foreach (Collider collider in hitColliders)
             {
-                if ((collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().GetTeamString() == GetTeamString())
+                if ((collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().GetTeamString() == GetTeamString()) 
+                    || (collider.gameObject.GetComponentInParent<Units>() && collider.gameObject.GetComponentInParent<Units>().GetTeamString() != GetTeamString() && collider.gameObject.GetComponentInParent<Units>().health <= 0)
                     || (collider.gameObject.GetComponentInParent<Structures>() && collider.gameObject.GetComponentInParent<Structures>().GetTeamString() == GetTeamString()))
                 {
                     //Do nothing
@@ -290,6 +291,7 @@ public class Units : GamePieces
                     targetedObject = null;
                     m_Agent.isStopped = false;
                     Debug.Log("attack finished");
+                    FindObjectOfType<GameManager>().UpdateUnitCount();
                     break;
                 }
             }
@@ -406,6 +408,7 @@ public class Units : GamePieces
     void SlayUnit()
     {
         //Unit dies, probably destroy it and do some stuff on death.
+        gameObject.layer = 0;
         Debug.Log("dead");
         StartCoroutine(DeathAnimation());
     }
