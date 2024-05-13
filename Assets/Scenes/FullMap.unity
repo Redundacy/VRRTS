@@ -24739,7 +24739,7 @@ Transform:
   m_GameObject: {fileID: 1396551958}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 61.5, y: -55.5, z: -13}
+  m_LocalPosition: {x: -61.5, y: -55.5, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28982,6 +28982,11 @@ MonoBehaviour:
   blueCommandTower: {fileID: 1548738867}
   opponentBrainObject: {fileID: 834372957}
   spawnParticles: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,
+    type: 3}
+  player: {fileID: 2039858321}
+  winParticles: {fileID: 1978689737715041617, guid: afa54037ffe627545886e2741abb365d,
+    type: 3}
+  loseParticles: {fileID: 5642766282230003982, guid: b5c8ca7ed10b61e499cce8ec3b6e2e4c,
     type: 3}
 --- !u!4 &1638307099
 Transform:
@@ -37255,6 +37260,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7187919993958668300, guid: 159d148f3d0d33247b1e204443e7d5e5,
     type: 3}
   m_PrefabInstance: {fileID: 2038391663}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2039858321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3314433274547679505, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 209416450}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2046080786
 PrefabInstance:

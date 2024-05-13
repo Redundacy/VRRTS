@@ -35,6 +35,8 @@ public class Structures : GamePieces
     {
         health = structure.maxHealth;
         healthBarText.text = "Health: " + health + "/" + structure.maxHealth;
+
+        audioSource= GetComponent<AudioSource>();
     }
     public void InitializeData()
     {
