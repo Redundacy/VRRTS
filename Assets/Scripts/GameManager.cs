@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
             playerInfo.transform.Find("Text (TMP) (1)").GetComponent<TMP_Text>().text = "";
             playerInfo.transform.Find("Resource Count").GetComponent<TMP_Text>().text = "";
             playerInfo.transform.Find("Text (TMP) (3)").GetComponent<TMP_Text>().text = "you lose,,,";
-            playerInfo.transform.Find("Text (TMP) (4)").GetComponent<TMP_Text>().text = "";
+            playerInfo.transform.Find("Unit Count").GetComponent<TMP_Text>().text = "";
             playerInfo.transform.Find("Text (TMP) (5)").GetComponent<TMP_Text>().text = "";
             playerInfo.transform.Find("Structure Count").GetComponent<TMP_Text>().text = "";
 

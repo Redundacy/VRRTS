@@ -3819,10 +3819,83 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 768009082051462036, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: m_text
+      value: 'jbv,mn '
+      objectReference: {fileID: 0}
+    - target: {fileID: 768009082051462036, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 44.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 768009082051462036, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 768009082051462036, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 768009082051462036, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 768009082051462036, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170509050156787687, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1771365708}
+    - target: {fileID: 2170509050156787687, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6035545541084095251, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
         type: 3}
       propertyPath: m_Name
       value: Unit Count
+      objectReference: {fileID: 0}
+    - target: {fileID: 6312869234881771280, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: iconPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6312869234881771280, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: buyableUnits.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6312869234881771280, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: iconPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 8905769749532466657, guid: 727b46e46d762774c85154ab8fd11ae6,
+        type: 3}
+    - target: {fileID: 6312869234881771280, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: iconPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 8905769749532466657, guid: 64e008ed957da3540ac426d6603fe7ef,
+        type: 3}
+    - target: {fileID: 6312869234881771280, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: iconPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 8905769749532466657, guid: 727b46e46d762774c85154ab8fd11ae6,
+        type: 3}
+    - target: {fileID: 6312869234881771280, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+        type: 3}
+      propertyPath: buildableStructures.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7392540299622465180, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
         type: 3}
@@ -3885,7 +3958,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6479344185715945717, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5419196056026279292, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
@@ -33682,6 +33756,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7187919993958668300, guid: 159d148f3d0d33247b1e204443e7d5e5,
     type: 3}
   m_PrefabInstance: {fileID: 1769917367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1771365708 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6001066245365035797, guid: 9fda18fb0d9af294fa9e574e4fc2bc8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 209416450}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1781377661
 PrefabInstance:
