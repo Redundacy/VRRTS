@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject opponentBrainObject;
 
     [SerializeField] GameObject spawnParticles;
+    [SerializeField] AudioSource music;
 
     [SerializeField] GameObject player;
 
@@ -93,6 +94,8 @@ public class GameManager : MonoBehaviour
             RequestMakeGuyFree("EnemyTeam", startingUnitsData, spawnPoint.gameObject.transform.position);
         }
         //Start playing music? (POLISH)
+        music.Play();
+
         //Activate enemy AI? (Maybe not doing? Instead we make it a two player experience?)
         opponentBrainObject.GetComponent<OpponentBrain>().ActivateAI();
     }
